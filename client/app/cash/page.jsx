@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { toPng } from 'html-to-image';
 import { saveAs } from 'file-saver';
-import Container from '../layer/Container';
+import Container from '@/app/component/layers';
 
 
 const convertToBangla = (num) => {
