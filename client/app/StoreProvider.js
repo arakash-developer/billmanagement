@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const StoreProvider = ({ children }) => {
     return (
-        <div>
+        <>
             {children}
             <ToastContainer
                 position="bottom-left"
@@ -20,7 +20,7 @@ const StoreProvider = ({ children }) => {
                 draggable
                 pauseOnHover
                 theme="colored" />
-        </div>
+        </>
 
     )
 }

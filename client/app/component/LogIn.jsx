@@ -2,8 +2,12 @@
 import React, { useState } from "react";
 import Container from "./layers/Container";
 import Link from "next/link";
+import axios from "axios";
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation'
 
 const Login = () => {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,8 +21,42 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add logic to handle login
-    console.log("Login Submitted", formData);
-  };
+    // console.log("Login Submitted", formData);
+    axios.post('https://billmanagement-server.vercel.app/login', formData)
+      .then(function (response) {
+        if(response.data.result) {
+          router.push('/profile')
+          toast.success('Login Success!', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false, 
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          }
+          );
+        } else {
+          console.log("fail");
+          toast.success('Email Or Password Wrong !!', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">

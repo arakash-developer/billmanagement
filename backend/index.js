@@ -1,12 +1,12 @@
 const express = require('express')
-let cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser')
 const bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const cors = require('cors')
-let app = express();
+const app = express();
 app.use(express.json())
-app.use(cors())
 app.use(cookieParser())
+app.use(cors())
 let UserModel = require("./models/user")
 
 
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 
 app.post('/create', (req, res) => {
-  let { name, password,companyName,phone,address, username, email } = req.body;
+  let { name, password, companyName, phone, address, username, email } = req.body;
   const saltRounds = 10;
   bcrypt.genSalt(saltRounds, function (err, salt) {
     bcrypt.hash(password, salt, async (err, hash) => {
@@ -45,28 +45,29 @@ app.post('/login', async (req, res) => {
     // result == true
     if (result) {
       let token = jwt.sign({ email }, 'Akash');
-      res.cookie("token", token);
-      res.json({ result });
+      res.cookie('token', token);
+      return res.json({ result });
     } else {
-      res.json({ result: false });
+      return res.json({ result: false });
     }
   });
 
 })
 
 app.get('/logout', (req, res) => {
-  res.cookie("token", "");
-  res.json("Log out")
+  // res.clearCookie("token");
+  res.cookie("token","Akash");
+  return res.json({ status: "success" });
 })
 
 let isLoggedIn = (req, res, next) => {
   if (req.cookies.token === "") {
     res.json({
-      result:false,
-      content:"You Must Be Loged In First",
+      result: false,
+      content: "You Must Be Loged In First",
     })
   } else {
-    let data = jwt.verify(req.cookies.token , 'Akash')
+    let data = jwt.verify(req.cookies.token, 'Akash')
     req.userdata = data;
   }
   // console.log(req.cookies);
@@ -75,8 +76,8 @@ let isLoggedIn = (req, res, next) => {
 
 app.get('/profile', isLoggedIn, (req, res) => {
   res.json({
-    result:true,
-    content:"Yes You Can See",
+    result: true,
+    content: "Yes You Can See",
     data: req.userdata,
   })
 })

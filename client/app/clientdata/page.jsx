@@ -3,8 +3,8 @@ import Container from '../component/layers/Container'
 
 const page = async () => {
   let blobs = await fetch("https://billmanagement-server.vercel.app/clientdata")
-  let response = await blobs.json()
-  let clients = await response.clientdata;
+  let response = await blobs.json();
+  let clients =  await response.clientdata;
   // console.log(clients);
   clients.reverse();
 
@@ -16,7 +16,7 @@ const page = async () => {
             Clients Information :
             <p className="mt-1 text-sm font-normal bg-orange-500 text-[#FFF]">Browse a list of Flowbite products designed to help you work and play, stay organized, get answers, keep in touch, grow your business, and more.</p>
           </caption>
-          <thead className="text-xs text-[#FFFF] uppercase bg-orange-500 ">
+          <thead className="text-xs text-[#FFFF] uppercase bg-orange-500 border-b">
             <tr>
               <th scope="col" className="px-6 py-3">
                 Company Name

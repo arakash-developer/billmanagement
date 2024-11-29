@@ -19,3 +19,6 @@
   font-style: italic;
   font-weight: 600;
 }
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  @apply bg-orange-500 text-[#fff]
+}
