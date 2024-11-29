@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Container from './layers/Container';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -21,12 +22,13 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match!');
       return;
     }
     // Further form submission logic
-    // console.log(formData);
+    console.log(formData);
     savedata()
 
   };
@@ -35,6 +37,16 @@ const SignUp = () => {
     axios.post('https://billmanagement-server.vercel.app/create', formData)
       .then(function (response) {
         console.log(response);
+        toast.success('SignUp Success!', {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -43,6 +55,7 @@ const SignUp = () => {
 
   return (
     <div className='flex justify-center items-center h-screen bg-gray-100'>
+
       <Container className="w-full md:w-[700px]  p-8 bg-white shadow-lg rounded-lg">
         <h1 className="text-3xl font-bold text-center text-[#FFA500] mb-6">Sign Up</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
