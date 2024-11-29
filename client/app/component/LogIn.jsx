@@ -18,6 +18,7 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  axios.defaults.withCredentials = true;
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add logic to handle login
