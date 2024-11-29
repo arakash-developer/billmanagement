@@ -78,6 +78,15 @@ app.get('/profile', isLoggedIn, (req, res) => {
   })
 })
 
+app.get('/clientdata',(req,res)=>{
+  let clients= []
+  res.json(
+    {
+      clients
+    }
+  )
+})
+
 app.listen(4000, () => {
   console.log("Server Start");
 
