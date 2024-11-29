@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Container from "./layers/Container";
 import Link from "next/link";
+import axios from "axios";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -17,8 +18,27 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add logic to handle login
-    console.log("Login Submitted", formData);
-  };
+    // console.log("Login Submitted", formData);
+    axios.post('https://billmanagement-server.vercel.app/login', formData)
+      .then(function (response) {
+        console.log(response.data.result);
+        
+        // toast.success('SignUp Success!', {
+        //   position: "bottom-left",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        //   theme: "colored",
+        // });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
