@@ -1,7 +1,11 @@
 "use client";
 import React, { useState } from 'react';
 import Container from './layers/Container';
+<<<<<<< HEAD
 import Link from 'next/link';
+=======
+import axios from 'axios';
+>>>>>>> a5ab88c41ad02a8a7b53a5cd7dae989f6fef2961
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -26,8 +30,20 @@ const SignUp = () => {
       return;
     }
     // Further form submission logic
-    console.log('Form Submitted', formData);
+    // console.log(formData);
+    savedata()
+
   };
+
+  let savedata = () => {
+    axios.post('https://billmanagement-server.vercel.app/create', formData)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   return (
     <div className='flex justify-center items-center h-screen bg-gray-100'>
@@ -104,7 +120,7 @@ const SignUp = () => {
               * Enter your phone number:
             </label>
             <input
-              type="tel"
+              type="number"
               id="phone"
               name="phone"
               value={formData.phone}
