@@ -18,19 +18,19 @@ const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  axios.defaults.withCredentials = true;
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add logic to handle login
     // console.log("Login Submitted", formData);
+    axios.defaults.withCredentials = true;
     axios.post('https://billmanagement-server.vercel.app/login', formData)
       .then(function (response) {
-        if(response.data.result) {
+        if (response.data.result) {
           router.push('/profile')
           toast.success('Login Success!', {
             position: "bottom-left",
             autoClose: 5000,
-            hideProgressBar: false, 
+            hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
