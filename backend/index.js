@@ -56,7 +56,7 @@ app.get('/logout', (req, res) => {
   res.json("Log out")
 })
 
-function isLoggedIn(req, res, next) {
+let isLoggedIn = (req, res, next) => {
   if (req.cookies.token === "") {
     res.json({
       result:false,
@@ -77,6 +77,13 @@ app.get('/profile', isLoggedIn, (req, res) => {
     data: req.userdata,
   })
 })
+
+app.get('/clientdata', async (req, res) => {
+  let clientdata = await UserModel.find();
+  res.json({
+    clientdata
+  });
+});
 
 app.listen(4000, () => {
   console.log("Server Start");
