@@ -26,7 +26,7 @@ const SignUp = () => {
       return;
     }
     // Further form submission logic
-    // console.log('Form Submitted', formData);
+    // console.log(formData);
     savedata()
 
   };
