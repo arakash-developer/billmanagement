@@ -8,11 +8,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 let UserModel = require("./models/user");
-app.use(cors({
-  origin:["http://localhost:3000/"],
-  methods:["POST","GET"],
-  credentials:true,
-}));
+app.use(cors());
 
 
 app.get('/', (req, res) => {
