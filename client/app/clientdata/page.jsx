@@ -6,6 +6,7 @@ const page = async () => {
   let response = await blobs.json()
   let clients = await response.clientdata;
   // console.log(clients);
+  clients.reverse();
 
   return (
     <Container className='mt-5'>
@@ -42,7 +43,7 @@ const page = async () => {
               clients?.map((client) => (
                 <tr key={client._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  comming
+                  {client.companyName}
                   </th>
                   <td className="px-6 py-4">
                     {client.name}
@@ -51,10 +52,10 @@ const page = async () => {
                     {client.email}
                   </td>
                   <td className="px-6 py-4">
-                    comming
+                    {client.address}
                   </td>
                   <td className="px-6 py-4">
-                    comming
+                    {client.phone}
                   </td>
                   <td className="px-6 py-4">
                     comming
