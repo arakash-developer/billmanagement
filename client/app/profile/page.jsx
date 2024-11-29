@@ -8,7 +8,7 @@ const page = () => {
     console.log("AKASH");
     axios.get('https://billmanagement-server.vercel.app/logout')
       .then(function (response) {
-        console.log(response);
+        console.log(response.data.status);
       })
       .catch(function (error) {
         console.log(error);
