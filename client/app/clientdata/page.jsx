@@ -3,8 +3,8 @@ import Container from '../component/layers/Container'
 
 const page = async () => {
   let blobs = await fetch("https://billmanagement-server.vercel.app/clientdata")
-  let response = await blobs.json()
-  let clients = await response.clientdata;
+  let response = await blobs.json();
+  let clients =  await response.clientdata;
   // console.log(clients);
   clients.reverse();
 
