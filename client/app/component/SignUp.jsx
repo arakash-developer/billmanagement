@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Container from './layers/Container';
+import axios from 'axios';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -25,8 +26,20 @@ const SignUp = () => {
       return;
     }
     // Further form submission logic
-    console.log('Form Submitted', formData);
+    // console.log('Form Submitted', formData);
+    savedata()
+
   };
+
+  let savedata = () =>{
+    axios.post('http://localhost:3000/create', formData)
+      .then(function (response) {
+          console.log(response);
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
+  }
 
   return (
     <div className='flex justify-center items-center h-screen bg-gray-100'>
