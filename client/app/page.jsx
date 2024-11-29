@@ -4,7 +4,7 @@ import CashMemo from './component/CashMemo'
 const Home = () => {
   return (
     <div>
-      <CashMemo/>
+      Home Page
     </div>
   )
 }

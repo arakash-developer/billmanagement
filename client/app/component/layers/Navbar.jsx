@@ -9,6 +9,7 @@ const Navbar = () => {
             <div className="logo">Logo</div>
             <ul className='flex items-center gap-x-3'>
                 <li><Link href='/'>Home</Link></li>
+                <li><Link href='/cash'>Cash</Link></li>
                 <li><Link href='/'>Service</Link></li>
                 <li><Link href='/'>History</Link></li>
                 <li><Link href='/clientdata'>Client Data</Link></li>
