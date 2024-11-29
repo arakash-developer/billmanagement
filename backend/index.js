@@ -55,6 +55,29 @@ app.get('/logout', (req, res) => {
   res.cookie("token", "");
   res.json("Log out")
 })
+
+function isLoggedIn(req, res, next) {
+  if (req.cookies.token === "") {
+    res.json({
+      result:false,
+      content:"You Must Be Loged In First",
+    })
+  } else {
+    let data = jwt.verify(req.cookies.token , 'Akash')
+    req.userdata = data;
+  }
+  // console.log(req.cookies);
+  next();
+}
+
+app.get('/profile', isLoggedIn, (req, res) => {
+  res.json({
+    result:true,
+    content:"Yes You Can See",
+    data: req.userdata,
+  })
+})
+
 app.listen(4000, () => {
   console.log("Server Start");
 
