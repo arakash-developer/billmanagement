@@ -39,9 +39,9 @@ const Header = () => {
                 </div>
                 <div className='w-80 text-end'>
                     <p className='font-semibold text-blue-600 text-[12px] md:text-lg '>House # 01, Road # 01, Block # 01, Sector # 01, Uttara, Dhaka</p>
+                    <p className='md:font-bold text-[10px] md:text-lg text-blue-400'>Proprietor: your name</p>
                     <p className='md:font-bold text-sm md:text-lg text-blue-400'>Phone: 01xxxxxxxxx</p>
                     <p className='md:font-bold text-sm md:text-lg text-blue-400'>Fax: 01xxxxxxxxx</p>
-                    <p className='md:font-bold text-[10px] md:text-sm text-blue-400'>Website: www.example.com</p>
                 </div>
             </div>
             <div className='flex justify-between items-center py-1 px-3'>
