@@ -7,8 +7,12 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 let UserModel = require("./models/user");
+app.use(cors({
+  origin:"*",
+  methods:['POST','GET'],
+  credentials:true,
+}));
 
 
 app.get('/', (req, res) => {
