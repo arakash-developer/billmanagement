@@ -31,13 +31,13 @@ const SignUp = () => {
 
   };
 
-  let savedata = () =>{
-    axios.post('http://localhost:3000/create', formData)
+  let savedata = () => {
+    axios.post('https://billmanagement-server.vercel.app/create', formData)
       .then(function (response) {
-          console.log(response);
+        console.log(response);
       })
       .catch(function (error) {
-          console.log(error);
+        console.log(error);
       });
   }
 
