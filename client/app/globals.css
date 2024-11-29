@@ -6,3 +6,16 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+
+
+
+.placeholder-light::placeholder {
+  color: #d3d3d3; 
+  opacity: 1; 
+}
+
+.placeholder-light {
+  color: #0a0a0a;
+  font-style: italic;
+  font-weight: 600;
+}

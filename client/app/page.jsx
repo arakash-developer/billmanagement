@@ -1,9 +1,12 @@
 import React from 'react'
+import CashMemo from './component/CashMemo'
 
-const page = () => {
+const Home = () => {
   return (
-    <div>page</div>
+    <div>
+      <CashMemo/>
+    </div>
   )
 }
 
-export default page
+export default Home
