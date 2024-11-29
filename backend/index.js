@@ -48,7 +48,8 @@ app.post('/login', async (req, res) => {
       res.cookie("token", token);
       res.json({ result });
     } else {
-      res.json({ result: false });
+      // res.json({  result: false });
+      res.send(404);
     }
   });
 
