@@ -3,9 +3,11 @@ mongoose.connect("mongodb+srv://arakashdeveloper:LlmmKsEH1MNpF2R8@akash.f7phc.mo
 
 let userSchema = mongoose.Schema ({
     username:String,
-    name:String,
     email:String,
     password:String,
+    name:String,
+    companyName:String,
+    address:String,
+    phone:String,
 })
-
 module.exports = mongoose.model('user',userSchema)

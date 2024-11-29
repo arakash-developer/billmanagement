@@ -16,16 +16,19 @@ app.get('/', (req, res) => {
 
 
 app.post('/create', (req, res) => {
-  let { name, password, username, email } = req.body;
+  let { name, password,companyName,phone,address, username, email } = req.body;
   const saltRounds = 10;
   bcrypt.genSalt(saltRounds, function (err, salt) {
     bcrypt.hash(password, salt, async (err, hash) => {
       // Store hash in your password DB.
       let userCreated = await UserModel.create({
         username,
-        name,
         email,
         password: hash,
+        name,
+        companyName,
+        address,
+        phone,
       })
       let token = jwt.sign({ email }, 'Akash');
       res.cookie("token", token);
