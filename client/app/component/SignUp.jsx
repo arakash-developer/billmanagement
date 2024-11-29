@@ -116,7 +116,7 @@ const SignUp = () => {
               Enter your phone number:
             </label>
             <input
-              type="tel"
+              type="number"
               id="phone"
               name="phone"
               value={formData.phone}
