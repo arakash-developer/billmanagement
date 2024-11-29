@@ -55,7 +55,8 @@ app.post('/login', async (req, res) => {
 })
 
 app.get('/logout', (req, res) => {
-  res.clearCookie("token");
+  // res.clearCookie("token");
+  res.cookie("token","Akash");
   return res.json({ status: "success" });
 })
 
