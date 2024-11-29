@@ -12,19 +12,19 @@ const Login = () => {
     email: "",
     password: "",
   });
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add logic to handle login
     // console.log("Login Submitted", formData);
     axios.post('https://billmanagement-server.vercel.app/login', formData)
       .then(function (response) {
-        if(response.data.result){
+        if(response.data.result) {
           router.push('/profile')
           toast.success('Login Success!', {
             position: "bottom-left",
@@ -36,8 +36,8 @@ const Login = () => {
             progress: undefined,
             theme: "colored",
           }
-        );
-        }else{
+          );
+        } else {
           console.log("fail");
           toast.success('Email Or Password Wrong !!', {
             position: "bottom-left",
@@ -50,7 +50,7 @@ const Login = () => {
             theme: "colored",
           });
         }
-        
+
       })
       .catch(function (error) {
         console.log(error);
