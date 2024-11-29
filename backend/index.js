@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 let UserModel = require("./models/user");
 
@@ -33,7 +33,10 @@ app.post('/create', (req, res) => {
       })
       let token = jwt.sign({ email }, 'Akash');
       res.cookie("token", token);
-      res.json(userCreated);
+      res.json({
+        userCreated,
+        toke: token,
+      });
     });
   });
 });
@@ -47,7 +50,10 @@ app.post('/login', async (req, res) => {
     if (result) {
       let token = jwt.sign({ email }, 'Akash');
       res.cookie('token', token);
-      return res.json({ result });
+      return res.json({
+        result,
+        token: token,
+      });
     } else {
       return res.json({ result: false });
     }
@@ -57,8 +63,8 @@ app.post('/login', async (req, res) => {
 
 app.get('/logout', (req, res) => {
   // res.clearCookie("token");
-  res.cookie("token","Akash");
-  return res.json({ status: "success" });
+  res.cookie("token", "Akash");
+  return res.json({ status: "success", token: "" });
 })
 
 let isLoggedIn = (req, res, next) => {
