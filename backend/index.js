@@ -56,7 +56,7 @@ app.get('/logout', (req, res) => {
   res.json("Log out")
 })
 
-function isLoggedIn(req, res, next) {
+let isLoggedIn = (req, res, next) => {
   if (req.cookies.token === "") {
     res.json({
       result:false,
