@@ -10,10 +10,10 @@ import { ImProfile } from "react-icons/im";
 
 
 const Navbar = () => {
-  let router 
-  try{
+  let router
+  try {
     router = useRouter();
-  }catch(error){
+  } catch (error) {
     router = null
   }
 
@@ -21,14 +21,16 @@ const Navbar = () => {
     { href: '/cash', label: "Home", icon: <TbHomeFilled /> },
     { href: '/history', label: 'History', icon: <MdHistoryEdu /> },
     { href: '/clientdata', label: 'Your Store', icon: <FaStoreAlt /> },
-    { href: '/about', label: 'Profile', icon: <ImProfile /> },
+    { href: '/profile', label: 'Profile', icon: <ImProfile /> },
   ];
 
   return (
     <div className="relative py-2 bg-gray-100 shadow-md">
       <Container className="flex justify-between items-center">
         {/* Logo Section */}
-        <div className="logo font-bold text-xl text-gray-700">Logo</div>
+        <div className="logo font-bold text-xl text-gray-700">
+          <Link href='/'>Logo</Link>
+        </div>
 
         {/* Navigation Links */}
         <ul
@@ -40,13 +42,12 @@ const Navbar = () => {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`${
-                  router?.pathname === link.href // Safe access to pathname
-                    ? 'text-orange-500 underline'
-                    : 'text-gray-700 font-medium'
-                } hover:text-orange-400 transition duration-300 flex items-center gap-x-2`}
+                className={`${router?.pathname === link.href // Safe access to pathname
+                  ? 'text-orange-500 underline'
+                  : 'text-gray-700 font-medium'
+                  } hover:text-orange-400 transition duration-300 flex items-center gap-x-2`}
               >
-                 {link.icon}
+                {link.icon}
                 {link.label}
               </Link>
             </li>
