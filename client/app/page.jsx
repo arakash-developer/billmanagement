@@ -1,12 +1,15 @@
-"use client"
 import React from 'react'
-import Container from './component/layers/Container'
+
+import Login from './component/LogIn'
 import SignUp from './component/SignUp'
 
-const Home = () => {
+const page = () => {
   return (
-      <SignUp />
+    <div>
+      <Login/>
+    </div>
+
   )
 }
 
-export default Home
+export default page

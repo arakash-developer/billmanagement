@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Container from './layers/Container';
+import Link from 'next/link';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -126,7 +127,7 @@ const SignUp = () => {
           {/* Phone */}
           <div>
             <label className="block text-lg font-medium text-gray-700" htmlFor="phone">
-              Enter your phone number:
+              * Enter your phone number:
             </label>
             <input
               type="number"
@@ -136,6 +137,21 @@ const SignUp = () => {
               onChange={handleChange}
               className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
               placeholder="Enter your phone number"
+            />
+          </div>
+          {/* Fax */}
+          <div>
+            <label className="block text-lg font-medium text-gray-700" htmlFor="fax">
+              Enter your fax number:
+            </label>
+            <input
+              type="tel"
+              id="fax"
+              name="fax"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+              placeholder="Enter your fax number"
             />
           </div>
           {/* Password */}
@@ -178,6 +194,14 @@ const SignUp = () => {
             Sign Up
           </button>
         </form>
+        <div className="text-center mt-4">
+          <p className="text-gray-600">
+            Already have an account?{" "}
+            <Link href='/' className="text-orange-500 hover:underline">
+             Log in
+            </Link>
+          </p>
+        </div>
       </Container>
     </div>
   );
