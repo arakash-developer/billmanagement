@@ -5,8 +5,8 @@ var jwt = require('jsonwebtoken');
 const cors = require('cors')
 let app = express();
 app.use(express.json())
-app.use(cors())
 app.use(cookieParser())
+app.use(cors())
 let UserModel = require("./models/user")
 
 
@@ -44,7 +44,7 @@ app.post('/login', async (req, res) => {
   bcrypt.compare(password, user.password, function (err, result) {
     // result == true
     if (result) {
-      let token = jwt.sign({ email }, 'Akash');
+      let token = jwt.sign({email}, 'Akash');
       res.cookie("token", token);
       res.json({ result });
     } else {
@@ -55,8 +55,8 @@ app.post('/login', async (req, res) => {
 })
 
 app.get('/logout', (req, res) => {
-  res.cookie("token", "");
-  res.json("Log out")
+  res.clearCookie("token");
+  return res.json({status:"success"});
 })
 
 let isLoggedIn = (req, res, next) => {
