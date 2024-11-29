@@ -1,11 +1,8 @@
 "use client";
 import React, { useState } from 'react';
 import Container from './layers/Container';
-<<<<<<< HEAD
 import Link from 'next/link';
-=======
 import axios from 'axios';
->>>>>>> a5ab88c41ad02a8a7b53a5cd7dae989f6fef2961
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
