@@ -9,9 +9,9 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 let UserModel = require("./models/user");
 app.use(cors({
-  origin:['https://billmanagements.vercel.app','http://localhost:3000'],
-  methods:['GET','POST'],
-  credentials:true,
+  origin: ['https://billmanagements.vercel.app', 'http://localhost:3000'],
+  methods: ['GET', 'POST'],
+  credentials: true,
 }));
 
 
@@ -73,7 +73,7 @@ app.get('/logout', (req, res) => {
 
 let isLoggedIn = (req, res, next) => {
   if (req.cookies.token === "") {
-    return res.json({
+    res.json({
       result: false,
       content: "You Must Be Loged In First",
     })
@@ -93,7 +93,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
   })
 })
 
-app.get('/clientdata', isLoggedIn ,async (req, res) => {
+app.get('/clientdata', isLoggedIn, async (req, res) => {
   let clientdata = await UserModel.find();
   res.json({
     clientdata
