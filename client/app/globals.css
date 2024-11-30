@@ -7,7 +7,10 @@
   --foreground: #171717;
 }
 
-
+.cashbox{
+  backdrop-filter: blur(50.89714431762695px);
+  background: rgba(255, 255, 255, 0.2);
+}
 
 .placeholder-light::placeholder {
   color: #d3d3d3; 
@@ -21,4 +24,13 @@
 }
 .Toastify__toast-theme--colored.Toastify__toast--success {
   @apply bg-orange-500 text-[#fff]
+}
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
 }

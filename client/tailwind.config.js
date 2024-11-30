@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage:{
+        'cash':"url('/cover.jpg')"
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
