@@ -1,19 +1,15 @@
 import React from 'react'
 
-const Header = () => {
-
-
+const Header = ({company,adress,phone,fax,Proprietor}) => {
     const day = new Date().toLocaleDateString("en-BG" , {
         day: "2-digit",
     });
-
     const month = new Date().toLocaleDateString("en-BG" , {
         month: "2-digit",
     })
     const year = new Date().toLocaleDateString("en-BG" , {
         year: "numeric",
     })
-
     return (
         <div className='pb-7 md:pb-8'>
             <div className='flex justify-between pt-2.5 px-3'>

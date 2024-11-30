@@ -92,25 +92,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
   })
 })
 
-let isLoggedInn = (req, res, next) => {
-  let token = req.headers.token
-  if (token) {
-    if (token === "Akash") {
-      //  res.json({
-      //   result: true
-      // })
-      next();
-    } else {
-      return res.json({
-        result: false
-      })
-    }
-  } else {
-    return res.json({
-      result: false
-    })
-  }
-}
+
 
 let isLoggedInP = (req, res, next) => {
   let token = req.headers.token
@@ -136,6 +118,15 @@ app.get('/clientdata', isLoggedInP, async (req, res) => {
   let clientdata = await UserModel.find();
   // console.log(req.headers.token);
   // res.setHeader('token',"AKASH")
+  res.json({
+    clientdata
+  });
+});
+
+app.get('/singleclient', isLoggedInP, async (req, res) => {
+  let singleemail = req.userdata.email
+  let clientdata = await UserModel.findOne({ email: singleemail })
+  console.log(singleemail);
   res.json({
     clientdata
   });
