@@ -9,13 +9,13 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 let UserModel = require("./models/user");
 app.use(cors({
-  origin:['https://billmanagements.vercel.app/'],
+  origin:['https://billmanagements.vercel.app'],
   methods:['GET','POST'],
 }));
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow6f")
+  res.send("Helllow6")
 });
 
 
