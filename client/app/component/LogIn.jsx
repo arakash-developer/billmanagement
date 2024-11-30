@@ -26,7 +26,8 @@ const Login = () => {
       withCredentials:true
     })
       .then(function (response) {
-        console.log(response.data);
+        let token = response.data.token
+        localStorage.setItem("token", token)
         if (response.data.result) {
           router.push('/profile')
           toast.success('Login Success!', {

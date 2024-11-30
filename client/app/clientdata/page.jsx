@@ -1,17 +1,25 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import Container from '../component/layers/Container'
 
-const page = async () => {
-  let blobs = await fetch("https://billmanagement-server.vercel.app/clientdata",{
-    headers:{
-      "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiZHVsa2FkaXIxMTJrQGdtYWlsLmNvbSIsImlhdCI6MTczMjk2NjYyMH0.YEZFvQZFMtv7jv4UJ88k7XFmQ50C168QB8iFWXzEZSk",
+const page = () => {
+  let [clients, setData] = useState([])
+  useEffect(() => {
+    let token = localStorage.getItem("token")
+    let getdata = async () => {
+      let blobs = await fetch("https://billmanagement-server.vercel.app/clientdata", {
+        headers: {
+          "token": token,
+        }
+      })
+      let response = await blobs.json();
+      let clients = response.clientdata;
+      // console.log(clients);
+      clients?.reverse();
+      setData(clients)
     }
-  })
-  let response = await blobs.json();
-  let clients =  response.clientdata;
-  // console.log(clients);
-  clients?.reverse();
-
+    getdata()
+  }, [])
   return (
     <Container className='mt-5'>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -47,7 +55,7 @@ const page = async () => {
               clients?.map((client) => (
                 <tr key={client._id} className="bg-orange-500 text-[#FFF] border-b">
                   <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  {client.companyName}
+                    {client.companyName}
                   </th>
                   <td className="px-6 py-4">
                     {client.name}
