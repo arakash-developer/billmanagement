@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
@@ -285,7 +284,7 @@ function AccountSetting() {
                                 </label>
                                 <input
                                     type="file"
-                                    id="profilePicture"
+                                    id="profilePicture2"
                                     className="hidden"
                                     onChange={(e) => console.log(e.target.files)}
                                 />

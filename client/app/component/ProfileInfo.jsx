@@ -1,12 +1,8 @@
 "use client";
-
 import Link from "next/link";
 import AccountSetting from "./AccountSetting";
-
-
 const ProfileInfo = () => {
- 
-let id = 10;
+
     return (
         <div className="h-[60%] overflow-hidden bg-gray-100 flex">
             {/* Sidebar */}
