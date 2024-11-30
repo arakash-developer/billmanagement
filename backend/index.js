@@ -93,7 +93,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
   })
 })
 
-app.get('/clientdata', isLoggedIn, async (req, res) => {
+app.get('/clientdata', async (req, res) => {
   let clientdata = await UserModel.find();
   res.json({
     clientdata
