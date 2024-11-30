@@ -38,8 +38,10 @@ const Navbar = () => {
   return (
     <div className="relative py-5 bg-gray-100 shadow-md">
       <Container className="flex justify-between items-center">
-        {/* Logo Section */}
-        <div className="relative flex items-center space-x-4">
+        {/* Profile and Search Section */}
+         {
+           validated &&
+           <div className="relative flex items-center space-x-4">
           <Link
             href="/profile"
             className="w-10 h-10 border-2 border-orange-200 rounded-full overflow-hidden"
@@ -59,15 +61,20 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+         }
+         {
+           !validated &&
+           <div className="logo font-bold text-xl text-gray-700">
+           <Link href="/">Logo</Link>
+         </div>
+         }
         {/* Logo Section */}
-        <div className="logo font-bold text-xl text-gray-700">
-          <Link href={validated ? "/profile" : "/"}>Logo</Link>
-        </div>
+       
 
         {
           validated &&
           <ul
-            className="flex space-x-10 items-center"
+            className="absolute left-1/2 -translate-x-1/2 flex space-x-10 items-center"
             role="navigation"
             aria-label="Main Navigation"
           >
@@ -111,20 +118,30 @@ const Navbar = () => {
         }
 
         {/* Button */}
+        {
+          validated &&
+          <div className='flex items-center gap-x-2'>
+            <h2 className='font-bold text-lg text-orange-500 capitalize'>your Stor/Company Name</h2>
+            <h1 className='font-bold text-xl w-12 h-12 rounded-full border-2 border-orange-500 p-2 bg-black text-white flex items-center justify-center'>Logo</h1>
+          </div>
+        }
+       {
+        !validated &&
         <div className="flex items-center space-x-2 group">
-          <Link
-            href="/"
-            className="bg-blue-600 text-white py-2 px-6 rounded-lg group-hover:bg-orange-500 transition duration-300"
-          >
-            Log In
-          </Link>
-          <Link
-            href="/"
-            className="bg-orange-500 text-white py-2 px-6 rounded-lg group-hover:bg-blue-600 transition duration-300"
-          >
-            Sign Up
-          </Link>
-        </div>
+        <Link
+          href="/"
+          className="bg-blue-600 text-white py-2 px-6 rounded-lg group-hover:bg-orange-500 transition duration-300"
+        >
+          Log In
+        </Link>
+        <Link
+          href="/"
+          className="bg-orange-500 text-white py-2 px-6 rounded-lg group-hover:bg-blue-600 transition duration-300"
+        >
+          Sign Up
+        </Link>
+      </div>
+       }
 
       </Container>
     </div>
