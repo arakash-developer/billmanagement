@@ -26,7 +26,7 @@ app.post('/create', (req, res) => {
   bcrypt.genSalt(saltRounds, function (err, salt) {
     bcrypt.hash(password, salt, async (err, hash) => {
       // Store hash in your password DB.
-      const token = jwt.sign({ email }, 'Akash');
+      let token = jwt.sign({ email }, 'Akash');
       let userCreated = await UserModel.create({
         username,
         email,
@@ -38,7 +38,7 @@ app.post('/create', (req, res) => {
         token,
       })
       res.json({
-        result:true,
+        result: true,
         token: token,
       });
     });
@@ -113,8 +113,27 @@ let isLoggedInn = (req, res, next) => {
   }
 }
 
+let isLoggedInP = (req, res, next) => {
+  let token = req.headers.token
+  if (token) {
+    if (token === '') {
+      res.json({
+        result: false,
+      })
+    } else {
+      let data = jwt.verify(token, 'Akash')
+      req.userdata = data;
+      next()
+    }
+  } else {
+    res.json({
+      result: false,
+    })
+  }
+}
 
-app.get('/clientdata', isLoggedInn, async (req, res) => {
+
+app.get('/clientdata', isLoggedInP, async (req, res) => {
   let clientdata = await UserModel.find();
   // console.log(req.headers.token);
   // res.setHeader('token',"AKASH")
