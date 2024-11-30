@@ -8,7 +8,7 @@ const ProfileInfo = () => {
  
 let id = 10;
     return (
-        <div className="h-[610px] overflow-hidden bg-gray-100 flex">
+        <div className="h-[60%] overflow-hidden bg-gray-100 flex">
             {/* Sidebar */}
             <aside className="w-64 bg-white shadow-md ">
                 <div className="p-6">
