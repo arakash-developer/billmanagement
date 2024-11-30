@@ -17,21 +17,25 @@ const ProfileInfo = () => {
                                 Dashboard
                             </Link>
                         </li>
+
                         <li>
                             <Link href="#" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
                                 Transactions
                             </Link>
                         </li>
+
                         <li>
                             <Link href="#" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
-                               Your Profile
+                                Your Profile
                             </Link>
+                        </li>
+
                         <li>
                             <Link href="#" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
-                              Notifications
+                                Notifications
                             </Link>
                         </li>
-                        </li>
+
                         <li>
                             <Link
                                 href='#second'
@@ -40,6 +44,7 @@ const ProfileInfo = () => {
                                 Settings
                             </Link>
                         </li>
+
                         <li>
                             <a href="#" className="flex items-center p-3 text-gray-700 hover:bg-red-500 hover:text-white transition-all duration-300">
                                 Log Out
@@ -49,8 +54,8 @@ const ProfileInfo = () => {
                 </nav>
             </aside>
 
-            <AccountSetting/>
-           
+            <AccountSetting />
+
         </div>
     );
 };
