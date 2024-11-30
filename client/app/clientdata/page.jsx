@@ -4,7 +4,7 @@ import Container from '../component/layers/Container'
 const page = async () => {
   let blobs = await fetch("https://billmanagement-server.vercel.app/clientdata",{
     headers:{
-      "token":"Akashx",
+      "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiZHVsa2FkaXIxMTJrQGdtYWlsLmNvbSIsImlhdCI6MTczMjk2NjYyMH0.YEZFvQZFMtv7jv4UJ88k7XFmQ50C168QB8iFWXzEZSk",
     }
   })
   let response = await blobs.json();
