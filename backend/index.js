@@ -11,11 +11,12 @@ let UserModel = require("./models/user");
 app.use(cors({
   origin:['https://billmanagements.vercel.app'],
   methods:['GET','POST'],
+  credentials:true,
 }));
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow6")
+  res.send("Helllow69")
 });
 
 

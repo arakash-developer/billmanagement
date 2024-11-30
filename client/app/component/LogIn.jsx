@@ -22,7 +22,9 @@ const Login = () => {
     e.preventDefault();
     // Add logic to handle login
     // console.log("Login Submitted", formData);
-    axios.post('https://billmanagement-server.vercel.app/login', formData)
+    axios.post('https://billmanagement-server.vercel.app/login', formData,{
+      withCredentials:true
+    })
       .then(function (response) {
         console.log(response.data);
         if (response.data.result) {
