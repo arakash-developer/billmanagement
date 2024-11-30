@@ -25,3 +25,12 @@
 .Toastify__toast-theme--colored.Toastify__toast--success {
   @apply bg-orange-500 text-[#fff]
 }
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}

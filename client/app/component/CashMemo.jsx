@@ -152,9 +152,9 @@ const CashMemo = ({ className }) => {
                             </button>
                         </div>
 
-                        <ol ref={olRef} className=" flex flex-col gap-y-4 pb-5">
+                        <ol ref={olRef} className=" flex flex-col gap-y-4">
                             <Header />
-                            <div className="overflow-y-scroll h-[300px]">
+                            <div className="overflow-y-scroll h-[200px] scrollbar-hidden">
                                 {items.map((row, index) => (
                                     <li key={index} className=''>
                                         <div className="md:w-full flex justify-between border-transparent shadow-md rounded-md px-2">
@@ -192,7 +192,7 @@ const CashMemo = ({ className }) => {
                             </div>
 
                             <div className=''>
-                                <ul className='flex justify-end md:justify-between md:items-center pl-16 pr-2'>
+                                <ul className='flex justify-end md:justify-between md:items-center px-2'>
                                     <div className='hidden  md:w-40 md:h-20 border border-dashed border-[#7c7c7c7c] md:flex justify-center items-center '>
                                         <p className='text-sm text-[#7c7c7c7c]'>Seal and signature</p>
                                     </div>
