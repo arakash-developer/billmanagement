@@ -16,7 +16,7 @@ app.use(cors({
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow69")
+  res.send("Helllow9")
 });
 
 
@@ -93,7 +93,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
   })
 })
 
-app.get('/clientdata', async (req, res) => {
+app.get('/clientdata', isLoggedIn ,async (req, res) => {
   let clientdata = await UserModel.find();
   res.json({
     clientdata
