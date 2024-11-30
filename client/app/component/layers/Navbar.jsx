@@ -36,7 +36,7 @@ const Navbar = () => {
       <Container className="flex justify-between items-center">
         {/* Logo Section */}
         <div className="logo font-bold text-xl text-gray-700">
-          <Link href='/'>Logo</Link>
+          <Link href={validated ? "/profile" :"/"}>Logo</Link>
         </div>
 
         {

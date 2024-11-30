@@ -67,7 +67,7 @@ const Login = () => {
 
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className={`${validated?"hidden":"flex"} justify-center items-center h-screen bg-gray-100`}>
       <Container className="w-full md:w-[700px] px-10 py-12 bg-white shadow-lg rounded-lg">
         <h1 className="text-3xl font-bold text-center text-[#FFA500] mb-6">Login</h1>
         <form onSubmit={handleSubmit} className="space-y-6">

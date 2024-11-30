@@ -11,6 +11,7 @@ const page = () => {
   let { validated,setValidated} = useContext(Contex)
   let handlerlogOut = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('login');
     setValidated(false);
     router.push('/')
   }
