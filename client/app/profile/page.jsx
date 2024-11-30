@@ -22,7 +22,7 @@ const page = () => {
   return (
     <div>
       <Container>
-        <div> 
+        <div className='w-96 h-[600px] bg-orange-200'> 
           <div className='w-[100px] h-[100px] border-2 rounded-full overflow-hidden'>
             <Image src={kadir} alt='kadir'/>
           </div>
