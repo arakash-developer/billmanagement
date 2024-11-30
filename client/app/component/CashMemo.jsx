@@ -140,8 +140,8 @@ const CashMemo = ({ className }) => {
     return (
         <div className={`${className} bg-cash bg-no-repeat bg-cover h-screen`}>
 
-            <Container className='flex justify-center items-center pt-10'>
-                <div className="rounded-[30px] w-[211.81rem] h-[800px] cashbox">
+            <Container className='flex justify-center items-center pt-5'>
+                <div className="rounded-[30px] w-[211.81rem] cashbox">
                     <div className="flex flex-col justify-center">
                         <div className="flex justify-end ">
                             <button
@@ -154,40 +154,42 @@ const CashMemo = ({ className }) => {
 
                         <ol ref={olRef} className=" flex flex-col gap-y-4 pb-5">
                             <Header />
-                            {items.map((row, index) => (
-                                <li key={index}>
-                                    <div className="md:w-full flex justify-between border-transparent shadow-md rounded-md px-2">
-                                        <div className="w-4 text-center font-bold">{index + 1}.</div>
-                                        {['item', 'quantity', 'rate', 'taka'].map((field, i) => (
-                                            <div
-                                                key={i}
-                                                className={`relative flex flex-col ${field === 'item' ? 'md:w-56 w-28' : field === 'quantity' ? 'md:w-28 w-16' : 'md:w-36 w-16'
-                                                    } gap-y-0.5`}
-                                            >
-                                                {index === 0 && (
-                                                    <div className='absolute -top-9 md:-top-10 border-blue-600 border-b-2 bg-blue-100 h-7 md:h-9 w-full text-center items-center'>
-                                                        <label htmlFor={field} className="font-bold text-[12px] md:text-base capitalize text-blue-600 ">
-                                                            {language === 'bn'
-                                                                ? (field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
-                                                                : field.charAt(0).toUpperCase() + field.slice(1)}
-                                                        </label>
-                                                    </div>
-                                                )}
-                                                <input
-                                                    name={field}
-                                                    type="text"
-                                                    placeholder={language === 'bn'
-                                                        ? (field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
-                                                        : field.charAt(0).toUpperCase() + field.slice(1)}
-                                                    value={formatValue(row[field])}
-                                                    onChange={(e) => handleInputChange(index, field, e.target.value)}
-                                                    className="bg-[#f5f5f533] outline-none md:py-2 rounded-sm md:px-3 md:rounded-md md:text-base text-sm placeholder:text-sm"
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                </li>
-                            ))}
+                            <div className="overflow-y-scroll h-[300px]">
+                                {items.map((row, index) => (
+                                    <li key={index} className=''>
+                                        <div className="md:w-full flex justify-between border-transparent shadow-md rounded-md px-2">
+                                            <div className="w-4 text-center font-bold">{index + 1}.</div>
+                                            {['item', 'quantity', 'rate', 'taka'].map((field, i) => (
+                                                <div
+                                                    key={i}
+                                                    className={`relative flex flex-col ${field === 'item' ? 'md:w-56 w-28' : field === 'quantity' ? 'md:w-28 w-16' : 'md:w-36 w-16'
+                                                        } gap-y-0.5`}
+                                                >
+                                                    {index === 0 && (
+                                                        <div className='absolute -top-9 md:-top-10 border-blue-600 border-b-2 bg-blue-100 h-7 md:h-9 w-full text-center items-center'>
+                                                            <label htmlFor={field} className="font-bold text-[12px] md:text-base capitalize text-blue-600 ">
+                                                                {language === 'bn'
+                                                                    ? (field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
+                                                                    : field.charAt(0).toUpperCase() + field.slice(1)}
+                                                            </label>
+                                                        </div>
+                                                    )}
+                                                    <input
+                                                        name={field}
+                                                        type="text"
+                                                        placeholder={language === 'bn'
+                                                            ? (field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
+                                                            : field.charAt(0).toUpperCase() + field.slice(1)}
+                                                        value={formatValue(row[field])}
+                                                        onChange={(e) => handleInputChange(index, field, e.target.value)}
+                                                        className="bg-[#f5f5f533] outline-none md:py-2 rounded-sm md:px-3 md:rounded-md md:text-base text-sm placeholder:text-sm"
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </li>
+                                ))}
+                            </div>
 
                             <div className=''>
                                 <ul className='flex justify-end md:justify-between md:items-center pl-16 pr-2'>
