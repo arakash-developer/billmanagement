@@ -73,7 +73,7 @@ app.get('/logout', (req, res) => {
 
 let isLoggedIn = (req, res, next) => {
   if (req.cookies.token === "") {
-    res.json({
+    return res.json({
       result: false,
       content: "You Must Be Loged In First",
     })
