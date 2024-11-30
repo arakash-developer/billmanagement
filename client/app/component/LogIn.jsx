@@ -29,10 +29,10 @@ const Login = () => {
       withCredentials:true
     })
       .then(function (response) {
-        let token = response.data.token
-        localStorage.setItem("token", token)
-        setValidated(true)
         if (response.data.result) {
+          let token = response.data.token
+          localStorage.setItem("token", token)
+          setValidated(true)
           router.push('/profile')
           toast.success('Login Success!', {
             position: "bottom-left",
