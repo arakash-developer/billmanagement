@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
 import Link from "next/link";
-import kadir from "../../public/320431773_512500314189000_5607681979314737853_n (1).jpg";
+import kadir from "@/public/kadir.jpg";
 
 function AccountSetting() {
 
@@ -37,7 +37,7 @@ function AccountSetting() {
                     <div className="flex items-center">
                         <Image
                             src={kadir}
-                            alt="Profile"
+                            alt={kadir}
                             width={40}
                             height={40}
                             className="rounded-full"
@@ -73,7 +73,7 @@ function AccountSetting() {
                             <div className="relative w-20 h-20 rounded-full overflow-hidden bg-gray-200">
                                 <Image
                                     src={kadir}
-                                    alt="Profile"
+                                    alt={kadir}
                                     layout="fill"
                                     objectFit="cover"
                                 />
@@ -236,7 +236,7 @@ function AccountSetting() {
                     <div className="flex items-center">
                         <Image
                             src={kadir}
-                            alt="Profile"
+                            alt={kadir}
                             width={40}
                             height={40}
                             className="rounded-full"
@@ -272,7 +272,7 @@ function AccountSetting() {
                             <div className="relative w-20 h-20 rounded-full overflow-hidden bg-gray-200">
                                 <Image
                                     src={kadir}
-                                    alt="Profile"
+                                    alt={kadir}
                                     layout="fill"
                                     objectFit="cover"
                                 />
