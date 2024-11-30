@@ -6,9 +6,9 @@ import AccountSetting from "./AccountSetting";
 
 const ProfileInfo = () => {
  
-
+let id = 10;
     return (
-        <div className="min-h-screen bg-gray-100 flex">
+        <div className="h-[610px] overflow-hidden bg-gray-100 flex">
             {/* Sidebar */}
             <aside className="w-64 bg-white shadow-md ">
                 <div className="p-6">
@@ -38,7 +38,7 @@ const ProfileInfo = () => {
                         </li>
                         <li>
                             <Link
-                                href={""}
+                                href='#second'
                                 className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300"
                             >
                                 Settings

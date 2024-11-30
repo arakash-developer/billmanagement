@@ -1,5 +1,4 @@
-import { useRouter } from "next/router";
-import AccountSetting from "./component/AccountSetting";
+
 
 const ProfilePage = ({params}) => {
     const {id}  = params
