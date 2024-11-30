@@ -2,7 +2,6 @@ import React from 'react'
 
 const Header = ({data}) => {
     const {name,email,phone,companyName,address,fax} = data;
-    console.log(name);
     
     const day = new Date().toLocaleDateString("en-BG" , {
         day: "2-digit",

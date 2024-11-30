@@ -29,6 +29,7 @@ const CashMemo = ({ className }) => {
     let [clients, setData] = useState([])
     const router = useRouter();
     let { validated, setValidated } = useContext(Contex)
+    let {com,setCom} = useContext(Contex)
     useLayoutEffect(() => {
         if (!validated) {
             router.push('/')
@@ -44,11 +45,10 @@ const CashMemo = ({ className }) => {
             })
             let response = await blobs.json();
             let clients = response.clientdata;
-            // console.log(clients);
             setData(clients)
+            setCom(clients)
         }
         getdata()
-
     }, [])
 
     const [items, setItems] = useState(

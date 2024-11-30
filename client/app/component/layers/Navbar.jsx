@@ -15,6 +15,7 @@ import { LuSearch } from "react-icons/lu";
 
 const Navbar = () => {
   let { validated } = useContext(Contex)
+  let {com} = useContext(Contex)
   let router
   try {
     router = useRouter();
@@ -121,7 +122,7 @@ const Navbar = () => {
         {
           validated &&
           <div className='flex items-center gap-x-2'>
-            <h2 className='font-bold text-lg text-orange-500 capitalize'>your Stor/Company Name</h2>
+            <h2 className='font-bold text-lg text-orange-500 capitalize'>{com?com:"COMPANY"}</h2>
             <h1 className='font-bold text-xl w-12 h-12 rounded-full border-2 border-orange-500 p-2 bg-black text-white flex items-center justify-center'>Logo</h1>
           </div>
         }
