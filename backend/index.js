@@ -35,7 +35,6 @@ app.post('/create', (req, res) => {
         companyName,
         address,
         phone,
-        token,
       })
       res.json({
         result: true,
