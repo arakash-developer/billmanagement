@@ -93,12 +93,39 @@ app.get('/profile', isLoggedIn, (req, res) => {
   })
 })
 
-app.get('/clientdata', async (req, res) => {
+let isLoggedInn = (req, res, next) => {
+  let token = req.headers.token
+  if (token) {
+    if (token === "Akash") {
+      //  res.json({
+      //   result: true
+      // })
+      next();
+    } else {
+      return res.json({
+        result: false
+      })
+    }
+  } else {
+    return res.json({
+      result: false
+    })
+  }
+}
+
+
+app.get('/clientdata', isLoggedInn, async (req, res) => {
   let clientdata = await UserModel.find();
+  // console.log(req.headers.token);
+  // res.setHeader('token',"AKASH")
   res.json({
     clientdata
   });
 });
+
+
+
+
 
 app.listen(4000, () => {
   console.log("Server Start");
