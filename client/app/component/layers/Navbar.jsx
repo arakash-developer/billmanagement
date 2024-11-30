@@ -25,10 +25,10 @@ const Navbar = () => {
     { href: '/profile', label: 'Profile', icon: <ImProfile /> },
   ];
   const pubnavLinks = [
-    { href: '/', label: "Home", icon: <TbHomeFilled /> },
-    { href: '/', label: 'Offers', icon: <MdHistoryEdu /> },
-    { href: '/', label: 'Services', icon: <FaStoreAlt /> },
-    { href: '/', label: 'About Us', icon: <ImProfile /> },
+    { href: '/home', label: "Home", icon: <TbHomeFilled /> },
+    { href: '/offers', label: 'Offers', icon: <MdHistoryEdu /> },
+    { href: '/services', label: 'Services', icon: <FaStoreAlt /> },
+    { href: '/aboutus', label: 'About Us', icon: <ImProfile /> },
   ];
 
   return (
