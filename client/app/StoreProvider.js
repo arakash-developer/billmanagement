@@ -2,13 +2,16 @@
 import React from 'react'
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Rights from './contexapi/Rights';
 
 
 
 const StoreProvider = ({ children }) => {
     return (
         <>
-            {children}
+            <Rights>
+                {children}
+            </Rights>
             <ToastContainer
                 position="bottom-left"
                 autoClose={5000}

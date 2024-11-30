@@ -1,11 +1,15 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Container from './layers/Container';
 import Link from 'next/link';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Contex } from '@/app/contexapi/Rights'
+import { useRouter } from 'next/navigation'
 
 const SignUp = () => {
+  const router = useRouter()
+  let {setValidated} = useContext(Contex)
   const [formData, setFormData] = useState({
     name: '',
     companyName: '',
@@ -41,6 +45,8 @@ const SignUp = () => {
       .then(function (response) {
         let token = response.data.token
         localStorage.setItem("token", token)
+        setValidated(true)
+        router.push('/profile')
         toast.success('SignUp Success!', {
           position: "bottom-left",
           autoClose: 5000,

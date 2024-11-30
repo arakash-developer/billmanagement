@@ -1,15 +1,24 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import Container from '../component/layers/Container'
+import { Contex } from '@/app/contexapi/Rights'
+import { useRouter } from 'next/navigation'
 
 const page = () => {
   let [clients, setData] = useState([])
+  const router = useRouter();
+  let { validated, setValidated } = useContext(Contex)
+  useLayoutEffect(() => {
+    if (!validated) {
+      router.push('/')
+    }
+  }, [])
   useEffect(() => {
     let token = localStorage.getItem("token")
     let getdata = async () => {
       let blobs = await fetch("https://billmanagement-server.vercel.app/clientdata", {
         headers: {
-          "token": token?token:"",
+          "token": token ? token : "",
         }
       })
       let response = await blobs.json();
@@ -21,6 +30,7 @@ const page = () => {
     getdata()
   }, [])
   return (
+    validated &&
     <Container className='mt-5'>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

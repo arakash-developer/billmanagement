@@ -41,3 +41,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 tomar oi new design ta er vitore kore feliom....
 assa ami oi design ta thik kortaci 
+
+import { Contex } from '@/app/contexapi/Rights'
+let {validated,setValidated} = useContext(Contex)
