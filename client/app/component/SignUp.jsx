@@ -56,76 +56,80 @@ const SignUp = () => {
 
   return (
     <div className='flex justify-center items-center h-screen bg-gray-100'>
-
       <Container className="w-full md:w-[700px]  p-8 bg-white shadow-lg rounded-lg">
         <h1 className="text-3xl font-bold text-center text-[#FFA500] mb-6">Sign Up</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Name Field */}
-          <div>
-            <label className="block text-lg font-medium text-gray-700" htmlFor="name">
-              * Enter your name:
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-              placeholder="Enter your name"
-            />
-          </div>
-          {/* Company Name */}
-          <div>
-            <label className="block text-lg font-medium text-gray-700" htmlFor="companyName">
-              * Enter your Company/Store name:
-            </label>
-            <input
-              type="text"
-              id="companyName"
-              name="companyName"
-              value={formData.companyName}
-              onChange={handleChange}
-              required
-              className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-              placeholder="Enter your company/store name"
-            />
+          <div className="flex justify-between gap-x-3 items-center">
+            {/* Name Field */}
+            <div className='w-1/2'>
+              <label className="block text-lg font-medium text-gray-700" htmlFor="name">
+                * Enter your name:
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                placeholder="Enter your name"
+              />
+            </div>
+            {/* Company Name */}
+            <div className='w-1/2'>
+              <label className="block text-lg font-medium text-gray-700" htmlFor="companyName">
+                * Enter your Company/Store name:
+              </label>
+              <input
+                type="text"
+                id="companyName"
+                name="companyName"
+                value={formData.companyName}
+                onChange={handleChange}
+                required
+                className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                placeholder="Enter your company/store name"
+              />
+            </div>
           </div>
           {/* Address */}
-          <div>
-            <label className="block text-lg font-medium text-gray-700" htmlFor="address">
-              * Enter your company/store address:
-            </label>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              required
-              className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-              placeholder="Enter your address"
-            />
+          <div className="flex justify-between items-center gap-x-3">
+            <div className='w-1/2'>
+              <label className="block text-lg font-medium text-gray-700" htmlFor="address">
+                * Enter your company/store address:
+              </label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                required
+                className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                placeholder="Enter your address"
+              />
+            </div>
+            {/* Email */}
+            <div className='w-1/2'>
+              <label className="block text-lg font-medium text-gray-700" htmlFor="email">
+                * Enter your email:
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                placeholder="Enter your email"
+              />
+            </div>
           </div>
-          {/* Email */}
-          <div>
-            <label className="block text-lg font-medium text-gray-700" htmlFor="email">
-              * Enter your email:
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-              placeholder="Enter your email"
-            />
-          </div>
+          <div className="flex justify-between items-center gap-x-3">
           {/* Phone */}
-          <div>
+          <div className='w-1/2'>
             <label className="block text-lg font-medium text-gray-700" htmlFor="phone">
               * Enter your phone number:
             </label>
@@ -137,10 +141,10 @@ const SignUp = () => {
               onChange={handleChange}
               className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
               placeholder="Enter your phone number"
-            />
+              />
           </div>
           {/* Fax */}
-          <div>
+          <div className='w-1/2'>
             <label className="block text-lg font-medium text-gray-700" htmlFor="fax">
               Enter your fax number:
             </label>
@@ -152,8 +156,9 @@ const SignUp = () => {
               onChange={handleChange}
               className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
               placeholder="Enter your fax number"
-            />
+              />
           </div>
+              </div>
           {/* Password */}
           <div>
             <label className="block text-lg font-medium text-gray-700" htmlFor="password">
@@ -198,7 +203,7 @@ const SignUp = () => {
           <p className="text-gray-600">
             Already have an account?{" "}
             <Link href='/' className="text-orange-500 hover:underline">
-             Log in
+              Log in
             </Link>
           </p>
         </div>
