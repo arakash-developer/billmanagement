@@ -1,14 +1,10 @@
 "use client"
 import React, { useContext, useLayoutEffect } from 'react'
 import Container from '../component/layers/Container';
-<<<<<<< Updated upstream
 import { Contex } from '@/app/contexapi/Rights'
 import { useRouter } from 'next/navigation'
-=======
-import axios from 'axios';
 import Image from 'next/image';
 import kadir from '../../public/320431773_512500314189000_5607681979314737853_n (1).jpg'
->>>>>>> Stashed changes
 
 const page = () => {
   const router = useRouter();
