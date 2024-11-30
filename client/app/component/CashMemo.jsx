@@ -29,7 +29,6 @@ const CashMemo = ({ className }) => {
     let [clients, setData] = useState([])
     const router = useRouter();
     let { validated, setValidated } = useContext(Contex)
-    let {com,setCom} = useContext(Contex)
     useLayoutEffect(() => {
         if (!validated) {
             router.push('/')
@@ -46,11 +45,10 @@ const CashMemo = ({ className }) => {
             let response = await blobs.json();
             let clients = response.clientdata;
             setData(clients)
-            setCom(clients)
         }
         getdata()
     }, [])
-
+    let {name,phone,companyName,address} = clients;
     const [items, setItems] = useState(
         Array.from({ length: 5 }, () => ({ item: '', quantity: '', rate: '', taka: '' }))
     );
@@ -179,7 +177,7 @@ const CashMemo = ({ className }) => {
                         </div>
 
                         <ol ref={olRef} className=" flex flex-col gap-y-4">
-                            <Header data={clients}/>
+                            <Header name={name} phone={phone} companyName={companyName} address={address}/>
                             <div className="overflow-y-scroll h-[200px] scrollbar-hidden">
                                 {items.map((row, index) => (
                                     <li key={index} className=''>

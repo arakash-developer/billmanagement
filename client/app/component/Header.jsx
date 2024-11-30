@@ -1,8 +1,5 @@
 import React from 'react'
-
-const Header = ({data}) => {
-    const {name,email,phone,companyName,address,fax} = data;
-    
+const Header = ({name,phone,companyName,address}) => {
     const day = new Date().toLocaleDateString("en-BG" , {
         day: "2-digit",
     });
@@ -39,7 +36,7 @@ const Header = ({data}) => {
                     <p className='font-semibold text-blue-600 text-[12px] md:text-lg '>{address}</p>
                     <p className='md:font-bold text-[10px] md:text-lg text-blue-400'>Proprietor: {name}</p>
                     <p className='md:font-bold text-sm md:text-lg text-blue-400'>Phone: {phone?phone:"00000000000"}</p>
-                    <p className='md:font-bold text-sm md:text-lg text-blue-400'>Fax: {fax?fax:"xxxx0000"}</p>
+                    <p className='md:font-bold text-sm md:text-lg text-blue-400'>Fax: xxxx0000</p>
                 </div>
             </div>
             <div className='flex justify-between items-center py-1 px-3'>
