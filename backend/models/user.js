@@ -9,5 +9,6 @@ let userSchema = mongoose.Schema ({
     companyName:String,
     address:String,
     phone:String,
+    token:String,
 })
 module.exports = mongoose.model('user',userSchema)
