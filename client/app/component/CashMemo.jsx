@@ -24,7 +24,7 @@ const convertToEnglish = (num) => {
         .join('');
 };
 
-const CashMemo = ( {className}) => {
+const CashMemo = ({ className }) => {
     const [items, setItems] = useState(
         Array.from({ length: 5 }, () => ({ item: '', quantity: '', rate: '', taka: '' }))
     );
@@ -71,11 +71,11 @@ const CashMemo = ( {className}) => {
     const addNewRow = () => {
         setItems([...items, { item: '', quantity: '', rate: '', taka: '' }]);
 
-        if(olRef.current){
-            olRef.current.scrollIntoView({ 
+        if (olRef.current) {
+            olRef.current.scrollIntoView({
                 behavior: 'smooth',
                 block: 'end',
-            
+
             });
         }
     };
@@ -93,8 +93,8 @@ const CashMemo = ( {className}) => {
         const totalPrice = parseFloat(calculateTotalPrice()) || 0;
         const taxValue = parseFloat(tax) || 0;
         const netPrice = totalPrice - taxValue;
-        
-        
+
+
         return netPrice > 0 || netPrice < 0 ? netPrice.toFixed(2) : '0.00';
     };
 
@@ -138,112 +138,115 @@ const CashMemo = ( {className}) => {
 
 
     return (
-        <div className={`${className}`}>
-            <Container className="md:w-[700px] flex flex-col justify-center">
-                <div className="flex justify-end ">
-                    <button
-                        onClick={toggleLanguage}
-                        className="md:absolute top-4 text-[12px] md:text-base right-4 bg-gray-500 text-white px-4 py-1 md:py-2 rounded-md"
-                    >
-                        {language === 'bn' ? 'English' : 'বাংলা'}
-                    </button>
-                </div>
+        <div className={`${className} bg-cash bg-no-repeat bg-cover h-screen`}>
 
-                <ol ref={olRef} className=" flex flex-col gap-y-4 pb-5 bg-orange-200 ">
-                    <Header />
-                    {items.map((row, index) => (
-                        <li key={index}>
-                            <div className="md:w-full flex justify-between border-transparent shadow-md rounded-md px-2">
-                                <div className="w-4 text-center font-bold">{index + 1}.</div>
-                                {['item', 'quantity', 'rate', 'taka'].map((field, i) => (
-                                    <div
-                                        key={i}
-                                        className={`relative flex flex-col ${field === 'item' ? 'md:w-56 w-28' : field === 'quantity' ? 'md:w-28 w-16' : 'md:w-36 w-16'
-                                            } gap-y-0.5`}
-                                    >
-                                        {index === 0 && (
-                                            <div className='absolute -top-9 md:-top-10 border-blue-600 border-b-2 bg-blue-100 h-7 md:h-9 w-full text-center items-center'>
-                                                <label htmlFor={field} className="font-bold text-[12px] md:text-base capitalize text-blue-600 ">
-                                                    {language === 'bn'
-                                                        ?(field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
+            <Container className='flex justify-center items-center pt-10'>
+                <div className="rounded-[30px] w-[211.81rem] h-[800px] cashbox">
+                    <div className="flex flex-col justify-center">
+                        <div className="flex justify-end ">
+                            <button
+                                onClick={toggleLanguage}
+                                className="md:absolute top-4 text-[12px] md:text-base right-4 bg-gray-500 text-white px-4 py-1 md:py-2 rounded-md"
+                            >
+                                {language === 'bn' ? 'English' : 'বাংলা'}
+                            </button>
+                        </div>
+
+                        <ol ref={olRef} className=" flex flex-col gap-y-4 pb-5">
+                            <Header />
+                            {items.map((row, index) => (
+                                <li key={index}>
+                                    <div className="md:w-full flex justify-between border-transparent shadow-md rounded-md px-2">
+                                        <div className="w-4 text-center font-bold">{index + 1}.</div>
+                                        {['item', 'quantity', 'rate', 'taka'].map((field, i) => (
+                                            <div
+                                                key={i}
+                                                className={`relative flex flex-col ${field === 'item' ? 'md:w-56 w-28' : field === 'quantity' ? 'md:w-28 w-16' : 'md:w-36 w-16'
+                                                    } gap-y-0.5`}
+                                            >
+                                                {index === 0 && (
+                                                    <div className='absolute -top-9 md:-top-10 border-blue-600 border-b-2 bg-blue-100 h-7 md:h-9 w-full text-center items-center'>
+                                                        <label htmlFor={field} className="font-bold text-[12px] md:text-base capitalize text-blue-600 ">
+                                                            {language === 'bn'
+                                                                ? (field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
+                                                                : field.charAt(0).toUpperCase() + field.slice(1)}
+                                                        </label>
+                                                    </div>
+                                                )}
+                                                <input
+                                                    name={field}
+                                                    type="text"
+                                                    placeholder={language === 'bn'
+                                                        ? (field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
                                                         : field.charAt(0).toUpperCase() + field.slice(1)}
-                                                </label>
+                                                    value={formatValue(row[field])}
+                                                    onChange={(e) => handleInputChange(index, field, e.target.value)}
+                                                    className="bg-[#f5f5f533] outline-none md:py-2 rounded-sm md:px-3 md:rounded-md md:text-base text-sm placeholder:text-sm"
+                                                />
                                             </div>
-                                        )}
-                                        <input
-                                            name={field}
-                                            type="text"
-                                            placeholder={language === 'bn'
-                                                ? (field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
-                                                : field.charAt(0).toUpperCase() + field.slice(1)}
-                                            value={formatValue(row[field])}
-                                            onChange={(e) => handleInputChange(index, field, e.target.value)}
-                                            className="bg-[#f5f5f533] outline-none md:py-2 rounded-sm md:px-3 md:rounded-md md:text-base text-sm placeholder:text-sm"
-                                        />
+                                        ))}
                                     </div>
-                                ))}
+                                </li>
+                            ))}
+
+                            <div className=''>
+                                <ul className='flex justify-end md:justify-between md:items-center pl-16 pr-2'>
+                                    <div className='hidden  md:w-40 md:h-20 border border-dashed border-[#7c7c7c7c] md:flex justify-center items-center '>
+                                        <p className='text-sm text-[#7c7c7c7c]'>Seal and signature</p>
+                                    </div>
+                                    <div className='flex items-center gap-x-3 md:gap-x-6'>
+                                        <div className='flex flex-col gap-y-2 md:gap-y-4'>
+                                            <label htmlFor="tax" className='font-bold text-[12px] md:text-base text-black'>{language === 'bn' ? 'ট্যাক্স / জমা' : 'Tax / Deduction'}:</label>
+                                            <label htmlFor="#" className='font-bold text-[12px] md:text-base text-green-600'>{language === 'bn' ? 'মোট মূল্য' : 'Total Price'}:</label>
+                                            <label htmlFor="#" className='font-bold text-[12px] md:text-base text-blue-600'>{language === 'bn' ? 'নেট মূল্য' : 'Net Price'}:</label>
+                                        </div>
+                                        <div className='w-28 md:w-36 flex flex-col gap-y-1'>
+                                            <input
+                                                type="text"
+                                                value={formatValue(tax)}
+                                                onChange={(e) => handleTaxChange(e.target.value)}
+                                                className="md:w-36 outline-none bg-gray-100 px-4 md:py-2 rounded-md md:text-lg font-bold"
+                                            />
+                                            <li className="bg-gray-200 pl-4  md:py-2 rounded-md shadow-md">
+                                                <span className="text-green-600 font-bold">{formatValue(calculateTotalPrice())} ৳</span>
+                                            </li>
+                                            <li className={`items-center bg-gray-200 pl-4 md:py-2 rounded-md shadow-md text-blue-600 font-bold ${calculateNetPrice() < 0 ? 'text-red-600' : ''}`}>
+                                                {formatValue(calculateNetPrice())} ৳
+                                            </li>
+                                        </div>
+                                    </div>
+                                </ul>
                             </div>
-                        </li>
-                    ))}
 
-                    <div className=''>
-                        <ul className='flex justify-end md:justify-between md:items-center pl-16 pr-2'>
-                            <div className='hidden  md:w-40 md:h-20 border border-dashed border-[#7c7c7c7c] md:flex justify-center items-center '>
-                                <p className='text-sm text-[#7c7c7c7c]'>Seal and signature</p>
+                        </ol>
+
+                        <div className=''>
+                            <button
+                                onClick={addNewRow}
+                                className="w-full  bg-blue-500 text-white px-4 py-1 md:py-4  hover:bg-blue-600"
+                            >
+                                {language === 'bn' ? 'রো যোগ করুন' : 'Add Row'}
+                            </button>
+
+                            <div className=" pb-3 mt-2 md:mt-2 w-full flex justify-between">
+                                <button
+                                    onClick={downloadOlAsImage}
+                                    className="w-full bg-green-500 text-white py-1 md:py-3  hover:bg-green-600"
+                                >
+                                    {language === 'bn' ? 'ডাউনলোড করুন' : 'Download'}
+                                </button>
+                                <button
+                                    onClick={() => downloadOlAsImage().then(() => {
+                                        const imageUrl = 'data:image/png;base64,...'; // toPng থেকে জেনারেট হওয়া ডেটা URL
+                                        shareOnWhatsApp(imageUrl);
+                                    })}
+                                    className="w-full border-l-2 bg-green-500 text-white  py-1 md:py-3 hover:bg-green-600"
+                                >
+                                    {language === 'bn' ? 'শেয়ার করুন' : 'Share'}
+                                </button>
+
                             </div>
-                            <div className='flex items-center gap-x-3 md:gap-x-6'>
-                                <div className='flex flex-col gap-y-2 md:gap-y-4'>
-                                    <label htmlFor="tax" className='font-bold text-[12px] md:text-base text-black'>{language === 'bn' ? 'ট্যাক্স / জমা' : 'Tax / Deduction'}:</label>
-                                    <label htmlFor="#" className='font-bold text-[12px] md:text-base text-green-600'>{language === 'bn' ? 'মোট মূল্য' : 'Total Price'}:</label>
-                                    <label htmlFor="#" className='font-bold text-[12px] md:text-base text-blue-600'>{language === 'bn' ? 'নেট মূল্য' : 'Net Price'}:</label>
-                                </div>
-                                <div className='w-28 md:w-36 flex flex-col gap-y-1'>
-                                <input
-                                    type="text"
-                                    value={formatValue(tax)}
-                                    onChange={(e) => handleTaxChange(e.target.value)}
-                                    className="md:w-36 outline-none bg-gray-100 px-4 md:py-2 rounded-md md:text-lg font-bold"
-                                />
-                                    <li className="bg-gray-200 pl-4  md:py-2 rounded-md shadow-md">
-                                        {/* <span className="font-semibold">{language === 'bn' ? 'মোট মূল্য' : 'Total Price'}:</span> */}
-                                        <span className="text-green-600 font-bold">{formatValue(calculateTotalPrice())} ৳</span>
-                                    </li>
-                                    <li className={`items-center bg-gray-200 pl-4 md:py-2 rounded-md shadow-md text-blue-600 font-bold ${calculateNetPrice() < 0 ? 'text-red-600' : ''}`}>
-                                        {/* <span className="font-semibold">{language === 'bn' ? 'নেট মূল্য' : 'Net Price'}:</span> */}
-                                        {formatValue(calculateNetPrice())} ৳
-                                    </li>
-                                </div>
-                            </div>
-                        </ul>
-                    </div>
-
-                </ol>
-
-                <div className=''>
-                    <button
-                        onClick={addNewRow}
-                        className="w-full  bg-blue-500 text-white px-4 py-1 md:py-4  hover:bg-blue-600"
-                    >
-                        {language === 'bn' ? 'রো যোগ করুন' : 'Add Row'}
-                    </button>
-
-                    <div className=" pb-3 mt-2 md:mt-2 w-full flex justify-between">
-                        <button
-                            onClick={downloadOlAsImage}
-                            className="w-full bg-green-500 text-white py-1 md:py-3  hover:bg-green-600"
-                        >
-                            {language === 'bn' ? 'ডাউনলোড করুন' : 'Download'}
-                        </button>
-                        <button
-                            onClick={() => downloadOlAsImage().then(() => {
-                                const imageUrl = 'data:image/png;base64,...'; // toPng থেকে জেনারেট হওয়া ডেটা URL
-                                shareOnWhatsApp(imageUrl);
-                            })}
-                            className="w-full border-l-2 bg-green-500 text-white  py-1 md:py-3 hover:bg-green-600"
-                        >
-                            {language === 'bn' ? 'শেয়ার করুন' : 'Share'}
-                        </button>
-
+                        </div>
                     </div>
                 </div>
             </Container>
