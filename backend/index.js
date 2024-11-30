@@ -82,6 +82,7 @@ let isLoggedIn = (req, res, next) => {
 }
 
 app.get('/profile', isLoggedIn, (req, res) => {
+  res.cookie('token','AKASH')
   res.json({
     result: true,
     content: "Yes You Can See",
