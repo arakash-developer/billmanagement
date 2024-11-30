@@ -9,7 +9,7 @@ import { Contex } from '@/app/contexapi/Rights'
 
 
 const Login = () => {
-  let {validated,setValidated} = useContext(Contex)
+  let { validated, setValidated } = useContext(Contex)
   const router = useRouter()
   const [formData, setFormData] = useState({
     email: "",
@@ -25,8 +25,8 @@ const Login = () => {
     e.preventDefault();
     // Add logic to handle login
     // console.log("Login Submitted", formData);
-    axios.post('https://billmanagement-server.vercel.app/login', formData,{
-      withCredentials:true
+    axios.post('https://billmanagement-server.vercel.app/login', formData, {
+      withCredentials: true
     })
       .then(function (response) {
         if (response.data.result) {
@@ -67,7 +67,7 @@ const Login = () => {
 
 
   return (
-    <div className={`${validated?"hidden":"flex"} justify-center items-center h-screen bg-gray-100`}>
+    <div className={`${validated ? "hidden" : "flex"} justify-center items-center h-screen bg-gray-100`}>
       <Container className="w-full md:w-[700px] px-10 py-12 bg-white shadow-lg rounded-lg">
         <h1 className="text-3xl font-bold text-center text-[#FFA500] mb-6">Login</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
