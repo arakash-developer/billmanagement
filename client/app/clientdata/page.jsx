@@ -9,7 +9,7 @@ const page = () => {
     let getdata = async () => {
       let blobs = await fetch("https://billmanagement-server.vercel.app/clientdata", {
         headers: {
-          "token": token,
+          "token": token?token:"",
         }
       })
       let response = await blobs.json();

@@ -39,7 +39,8 @@ const SignUp = () => {
       withCredentials: true
     })
       .then(function (response) {
-        console.log(response);
+        let token = response.data.token
+        localStorage.setItem("token", token)
         toast.success('SignUp Success!', {
           position: "bottom-left",
           autoClose: 5000,
