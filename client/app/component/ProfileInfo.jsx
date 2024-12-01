@@ -2,11 +2,15 @@
 import Link from "next/link";
 import AccountSetting from "./AccountSetting";
 import { useRouter } from "next/navigation";
+import { Contex } from '@/app/contexapi/Rights'
+import { useContext } from "react";
 const ProfileInfo = () => {
+    let {validated,setValidated} = useContext(Contex)
     const router = useRouter();
     let handlerlogOut = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('login');
+        setValidated(false)
         router.push('/')
     }
     return (
