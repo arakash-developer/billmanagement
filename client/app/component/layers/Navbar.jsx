@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useLayoutEffect, useState } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import Container from './Container';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -8,22 +8,14 @@ import { MdHistoryEdu, MdToken } from "react-icons/md";
 import { FaStoreAlt } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
 import { AiFillNotification } from "react-icons/ai";
-import { Contex } from '@/app/contexapi/Rights'
 import kadir from '@/public/kadir.jpg'
 import Image from 'next/image';
 import { LuSearch } from "react-icons/lu";
-
+import { Contex } from '@/app/contexapi/Rights'
 const Navbar = () => {
-  let [validated,setValidated] = useState(false)
+  let { validated,setValidated }= useContext(Contex)
   let  router = useRouter()
   let {com} = useContext(Contex)
-  useLayoutEffect(()=>{
-    let token = localStorage.getItem('login');
-    if(token === 'true'){
-      setValidated(!validated)
-    }
-  },[])
-
   const navLinks = [
     { href: '/cash', label: "Cash", icon: <TbHomeFilled /> },
     { href: '/history', label: 'History', icon: <MdHistoryEdu /> },
