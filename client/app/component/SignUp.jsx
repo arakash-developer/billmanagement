@@ -6,10 +6,11 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Contex } from '@/app/contexapi/Rights'
 import { useRouter } from 'next/navigation'
-
+import { BarLoader } from "react-spinners";
 const SignUp = () => {
+  let [loading, setLoading] = useState(false)
   const router = useRouter()
-  let {setValidated} = useContext(Contex)
+  let { setValidated } = useContext(Contex)
   const [formData, setFormData] = useState({
     name: '',
     companyName: '',
@@ -27,7 +28,6 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match!');
       return;
@@ -35,10 +35,11 @@ const SignUp = () => {
     // Further form submission logic
     console.log(formData);
     savedata()
-
+    
   };
-
+  
   let savedata = () => {
+    setLoading(true)
     axios.post('https://billmanagement-server.vercel.app/create', formData, {
       withCredentials: true
     })
@@ -58,6 +59,7 @@ const SignUp = () => {
           progress: undefined,
           theme: "colored",
         });
+        setLoading(false)
       })
       .catch(function (error) {
         console.log(error);
@@ -67,7 +69,7 @@ const SignUp = () => {
   return (
     <div className='flex justify-center items-center h-screen bg-gray-100'>
       <Container className="w-full md:w-[700px]  p-8 bg-white shadow-lg rounded-lg">
-        <h1 className="text-3xl font-bold text-center text-[#FFA500] mb-6">Sign Up</h1>
+        <h1 className="text-3xl font-bold text-center text-[#FFA500] mb-6 uppercase">Estore SignUp</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex justify-between gap-x-3 items-center">
             {/* Name Field */}
@@ -204,8 +206,11 @@ const SignUp = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 px-6 text-white bg-orange-500 rounded-md shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
+            className="w-full py-3 px-6 relative text-white bg-orange-400 overflow-hidden z-10 rounded-md shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
           >
+            <div className="absolute left-0 top-0 w-full h-full z-[-1]">
+              <BarLoader height={50} width={700} color="#F97316" loading={loading ? true : false} />
+            </div>
             Sign Up
           </button>
         </form>
