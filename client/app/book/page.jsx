@@ -3,9 +3,10 @@ import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import withAuth from '../auth/withAuth'
 import { useRouter } from 'next/navigation'
 import { Contex } from '../contexapi/Rights'
+import Image from 'next/image'
 
 const page = () => {
-  let [clients, setData] = useState([])
+  let [data, setData] = useState([])
   const router = useRouter();
   let { validated, setValidated } = useContext(Contex)
   useLayoutEffect(() => {
@@ -14,7 +15,7 @@ const page = () => {
       setValidated(true)
     }
   }, [])
-  useEffect(() => {
+  useLayoutEffect(() => {
     let token = localStorage.getItem("token")
     let getdata = async () => {
       let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
@@ -23,17 +24,17 @@ const page = () => {
         }
       })
       let response = await blobs.json();
-      // let clients = response;
-      console.log(response.profileset);
-      // clients?.reverse();
-      // setData(clients)
-      // console.log(clients);
+      setData(response.profileset)
     }
     
     getdata()
+    
   }, [])
+  console.log(data.profileimage);
   return (
-    <div className='bg-red-700'>Book page</div>
+    <div className='bg-red-700'>Book page
+    <Image src={data.profileimage} alt="cc" width={100} height={100}/>
+    </div>
   )
 }
 
