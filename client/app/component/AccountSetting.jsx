@@ -4,24 +4,23 @@ import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
 
 function AccountSetting() {
+    let [loading, setLoading] = useState(false)
     let [data, setData] = useState([])
     useEffect(() => {
         let token = localStorage.getItem("token")
         let getdata = async () => {
-          let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
-            headers: {
-              "token": token ? token : "",
-            }
-          })
-          let response = await blobs.json();
-          setData(response.profileset)
+            setLoading(true)
+            let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
+                headers: {
+                    "token": token ? token : "",
+                }
+            })
+            let response = await blobs.json();
+            setData(response.profileset)
+            setLoading(false)
         }
         getdata()
-      }, [])
-      console.log(data.profileimage);
-      
-
-
+    }, [])
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -35,16 +34,16 @@ function AccountSetting() {
         currentPassword: "",
     });
 
-    const [profilePicture, setProfilePicture] = useState(null); 
+    const [profilePicture, setProfilePicture] = useState(null);
 
     const handleProfilePictureChange = (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setProfilePicture(reader.result); 
+                setProfilePicture(reader.result);
             };
-            reader.readAsDataURL(file); 
+            reader.readAsDataURL(file);
         }
     };
 
@@ -60,7 +59,9 @@ function AccountSetting() {
         console.log("Form Data Submitted:", formData);
         console.log("Uploaded Profile Picture:", profilePicture);
     };
-
+    if(loading){
+        return null;
+    }
     return (
         <div className="w-full h-screen overflow-y-auto bg-gray-50">
             <main className="flex-1 p-6 w-full max-w-5xl mx-auto">
@@ -69,7 +70,7 @@ function AccountSetting() {
                     <h1 className="text-2xl font-bold text-gray-800">Account Settings</h1>
                     <div className="flex items-center space-x-2">
                         <Image
-                            src={data.profileimage} 
+                            src={data.profileimage}
                             alt="Profile Picture"
                             width={40}
                             height={40}
@@ -87,7 +88,7 @@ function AccountSetting() {
                             <div className="flex items-center mb-6">
                                 <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200">
                                     <Image
-                                        src={data.profileimage} 
+                                        src={data.profileimage}
                                         alt="Profile Picture"
                                         layout="fill"
                                         objectFit="cover"
@@ -108,12 +109,12 @@ function AccountSetting() {
                                 </div>
                             </div>
                             <div>
-                            <button
-                                type="submit"
-                                className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 transition"
-                            >
-                                Save Changes
-                            </button>
+                                <button
+                                    type="submit"
+                                    className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 transition"
+                                >
+                                    Save Changes
+                                </button>
                             </div>
                         </div>
 

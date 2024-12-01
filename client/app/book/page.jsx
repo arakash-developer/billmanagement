@@ -6,6 +6,7 @@ import { Contex } from '../contexapi/Rights'
 import Image from 'next/image'
 
 const page = () => {
+  let [loading, setLoading] = useState(false)
   let [data, setData] = useState([])
   const router = useRouter();
   let { validated, setValidated } = useContext(Contex)
@@ -18,6 +19,7 @@ const page = () => {
   useLayoutEffect(() => {
     let token = localStorage.getItem("token")
     let getdata = async () => {
+      setLoading(true)
       let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
         headers: {
           "token": token ? token : "",
@@ -25,12 +27,15 @@ const page = () => {
       })
       let response = await blobs.json();
       setData(response.profileset)
+      setLoading(false)
     }
-    
     getdata()
     
   }, [])
-  console.log(data.profileimage);
+
+  if(loading) {
+    return null
+  }
   return (
     <div className='bg-red-700'>Book page
     <Image src={data.profileimage} alt="cc" width={100} height={100}/>
