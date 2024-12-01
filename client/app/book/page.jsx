@@ -17,17 +17,19 @@ const page = () => {
   useEffect(() => {
     let token = localStorage.getItem("token")
     let getdata = async () => {
-      let blobs = await fetch("https://billmanagement-server.vercel.app/clientdata", {
+      let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
         headers: {
           "token": token ? token : "",
         }
       })
       let response = await blobs.json();
-      let clients = response.clientdata;
+      // let clients = response.clientdata;
       // console.log(clients);
-      clients?.reverse();
+      // clients?.reverse();
       setData(clients)
+      console.log(clients);
     }
+    
     getdata()
   }, [])
   return (
