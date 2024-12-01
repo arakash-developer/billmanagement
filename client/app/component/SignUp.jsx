@@ -67,7 +67,7 @@ const SignUp = () => {
   return (
     <div className='flex justify-center items-center h-screen bg-gray-100'>
       <Container className="w-full md:w-[700px]  p-8 bg-white shadow-lg rounded-lg">
-        <h1 className="text-3xl font-bold text-center text-[#FFA500] mb-6">Sign Up</h1>
+        <h1 className="text-3xl font-bold text-center text-[#FFA500] mb-6 uppercase">Estore SignUp</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex justify-between gap-x-3 items-center">
             {/* Name Field */}
