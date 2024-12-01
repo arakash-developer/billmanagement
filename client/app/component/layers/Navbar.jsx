@@ -12,6 +12,8 @@ import kadir from '@/public/kadir.jpg'
 import Image from 'next/image';
 import { LuSearch } from "react-icons/lu";
 import { Contex } from '@/app/contexapi/Rights'
+import mainLogo from '@/public/e-store.png'
+
 const Navbar = () => {
   let { validated,setValidated }= useContext(Contex)
   let  router = useRouter()
@@ -23,7 +25,7 @@ const Navbar = () => {
     { href: '/notification', label: 'Notification', icon: <AiFillNotification /> },
   ];
   const pubnavLinks = [
-    { href: '/home', label: "Home", icon: <TbHomeFilled /> },
+    { href: '/', label: "Home", icon: <TbHomeFilled /> },
     { href: '/offers', label: 'Offers', icon: <MdHistoryEdu /> },
     { href: '/services', label: 'Services', icon: <FaStoreAlt /> },
     { href: '/aboutus', label: 'About Us', icon: <ImProfile /> },
@@ -58,8 +60,10 @@ const Navbar = () => {
          }
          {
            !validated &&
-           <div className="logo font-bold text-xl text-gray-700">
-           <Link href="/">Logo</Link>
+           <div className="w-14 logo font-bold text-xl text-gray-700">
+           <Link href="/">
+           <Image src={mainLogo} alt="Logo" className="w-full h-full object-center" />
+           </Link>
          </div>
          }
         {/* Logo Section */}
