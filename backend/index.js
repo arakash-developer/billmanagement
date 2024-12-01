@@ -22,7 +22,7 @@ app.use(cors({
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow100")
+  res.send("Helllow1001")
 });
 
 
@@ -44,7 +44,6 @@ app.post('/create', (req, res) => {
       })
       let profile = await ProfileModel.create({
         email,
-        profileimage: "https://billmanagement-server.vercel.app/images/default.jpg",
       })
       res.json({
         result: true,
