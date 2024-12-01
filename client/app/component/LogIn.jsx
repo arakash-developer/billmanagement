@@ -5,11 +5,10 @@ import Link from "next/link";
 import axios from "axios";
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation'
-import { Contex } from '@/app/contexapi/Rights'
+// import { Contex } from '@/app/contexapi/Rights'
 
 
 const Login = () => {
-  let { validated, setValidated } = useContext(Contex)
   const router = useRouter()
   const [formData, setFormData] = useState({
     email: "",
@@ -32,7 +31,7 @@ const Login = () => {
         if (response.data.result) {
           let token = response.data.token
           localStorage.setItem("token", token)
-          setValidated(true)
+          localStorage.setItem("login", 'true')
           router.push('/profile')
           toast.success('Login Success!', {
             position: "bottom-left",
@@ -67,7 +66,7 @@ const Login = () => {
 
 
   return (
-    <div className={`${validated ? "hidden" : "flex"} justify-center items-center h-screen bg-gray-100`}>
+    <div className={`flex justify-center items-center h-screen bg-gray-100`}>
       <Container className="w-full md:w-[700px] px-10 py-12 bg-white shadow-lg rounded-lg">
         <h1 className="text-3xl font-bold text-center text-[#FFA500] mb-6">Login</h1>
         <form onSubmit={handleSubmit} className="space-y-6">

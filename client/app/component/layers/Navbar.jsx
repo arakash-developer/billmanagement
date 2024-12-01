@@ -1,10 +1,10 @@
 "use client";
-import React, { useContext } from 'react';
+import React, { useContext, useLayoutEffect, useState } from 'react';
 import Container from './Container';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { TbHomeFilled } from "react-icons/tb";
-import { MdHistoryEdu } from "react-icons/md";
+import { MdHistoryEdu, MdToken } from "react-icons/md";
 import { FaStoreAlt } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
 import { AiFillNotification } from "react-icons/ai";
@@ -14,17 +14,18 @@ import Image from 'next/image';
 import { LuSearch } from "react-icons/lu";
 
 const Navbar = () => {
-  let { validated } = useContext(Contex)
+  let [validated,setValidated] = useState(false)
+  let  router = useRouter()
   let {com} = useContext(Contex)
-  let router
-  try {
-    router = useRouter();
-  } catch (error) {
-    router = null
-  }
+  useLayoutEffect(()=>{
+    let token = localStorage.getItem('login');
+    if(token === 'true'){
+      setValidated(!validated)
+    }
+  },[])
 
   const navLinks = [
-    { href: '/cash', label: "Home", icon: <TbHomeFilled /> },
+    { href: '/cash', label: "Cash", icon: <TbHomeFilled /> },
     { href: '/history', label: 'History', icon: <MdHistoryEdu /> },
     { href: '/clientdata', label: 'Your Store', icon: <FaStoreAlt /> },
     { href: '/profile', label: 'Notification', icon: <AiFillNotification /> },

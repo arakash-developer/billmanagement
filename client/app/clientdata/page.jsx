@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import Container from '../component/layers/Container'
 import { Contex } from '@/app/contexapi/Rights'
 import { useRouter } from 'next/navigation'
+import withAuth from '../auth/withAuth'
 
 const page = () => {
   let [clients, setData] = useState([])
@@ -94,4 +95,4 @@ const page = () => {
   )
 }
 
-export default page
+export default withAuth(page)

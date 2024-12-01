@@ -6,6 +6,7 @@ import Container from './layers/Container';
 import Header from './Header';
 import { Contex } from '@/app/contexapi/Rights'
 import { useRouter } from 'next/navigation'
+import withAuth from '../auth/withAuth';
 
 const convertToBangla = (num) => {
     const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
@@ -27,13 +28,6 @@ const convertToEnglish = (num) => {
 
 const CashMemo = ({ className }) => {
     let [clients, setData] = useState([])
-    const router = useRouter();
-    let { validated, setValidated } = useContext(Contex)
-    useLayoutEffect(() => {
-        if (!validated) {
-            router.push('/')
-        }
-    }, [])
     useEffect(() => {
         let token = localStorage.getItem("token")
         let getdata = async () => {
@@ -48,7 +42,9 @@ const CashMemo = ({ className }) => {
         }
         getdata()
     }, [])
-    let {name,phone,companyName,address} = clients;
+    console.log(clients);
+    
+    // let {name,phone,companyName,address} = clients;
     const [items, setItems] = useState(
         Array.from({ length: 5 }, () => ({ item: '', quantity: '', rate: '', taka: '' }))
     );
@@ -177,7 +173,7 @@ const CashMemo = ({ className }) => {
                         </div>
 
                         <ol ref={olRef} className=" flex flex-col gap-y-4">
-                            <Header name={name} phone={phone} companyName={companyName} address={address}/>
+                            {/* <Header name={name?name:""} phone={phone} companyName={companyName} address={address}/> */}
                             <div className="overflow-y-scroll h-[200px] scrollbar-hidden">
                                 {items.map((row, index) => (
                                     <li key={index} className=''>
@@ -280,4 +276,4 @@ const CashMemo = ({ className }) => {
     );
 };
 
-export default CashMemo;
+export default withAuth(CashMemo);

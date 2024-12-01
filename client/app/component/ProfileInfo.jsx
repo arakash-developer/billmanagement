@@ -1,8 +1,14 @@
 "use client";
 import Link from "next/link";
 import AccountSetting from "./AccountSetting";
+import { useRouter } from "next/navigation";
 const ProfileInfo = () => {
-
+    const router = useRouter();
+    let handlerlogOut = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('login');
+        router.push('/')
+    }
     return (
         <div className="h-[60%] overflow-hidden bg-gray-100 flex">
             {/* Sidebar */}
@@ -46,9 +52,9 @@ const ProfileInfo = () => {
                         </li>
 
                         <li>
-                            <a href="#" className="flex items-center p-3 text-gray-700 hover:bg-red-500 hover:text-white transition-all duration-300">
+                            <button onClick={handlerlogOut} className="flex items-center w-full p-3 text-gray-700 hover:bg-red-500 hover:text-white transition-all duration-300">
                                 Log Out
-                            </a>
+                            </button>
                         </li>
                     </ul>
                 </nav>
