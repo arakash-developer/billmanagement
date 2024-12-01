@@ -1,20 +1,20 @@
 "use client"
-import { redirect } from 'next/dist/server/api-utils'
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+// import localStorage from 'localstorage-polyfill';
 
 export default function withAuth(Component){
     return function withAuth(props){
-        let valid = localStorage.getItem('login');
         const router = useRouter()
         useEffect(()=>{
+            let valid = localStorage.getItem('login');
             if(!valid){
                 router.push('/')
             }
+            if(!valid){
+                return null;
+            }
         },[])
-        if(!valid){
-            return null;
-        }
         return <Component {...props} />
 
     }

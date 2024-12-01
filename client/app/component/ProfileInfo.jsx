@@ -7,8 +7,8 @@ import { useContext, useEffect, useLayoutEffect } from "react";
 const ProfileInfo = () => {
     let { validated, setValidated } = useContext(Contex)
     const router = useRouter();
-    let valid = localStorage.getItem('login');
     useLayoutEffect(() => {
+        let valid = localStorage.getItem('login');
         if (valid) {
             setValidated(true)
         }
