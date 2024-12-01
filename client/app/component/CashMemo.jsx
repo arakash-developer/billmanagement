@@ -141,7 +141,7 @@ const CashMemo = ({ className }) => {
                     input.classList.add('placeholder-light');
                 });
 
-                const options = { quality: 2, backgroundColor: '' };
+                const options = { quality: 2, backgroundColor: '#fff' , width: 700 };
                 const dataUrl = await toPng(olRef.current, options);
 
                 saveAs(dataUrl, 'cash-memo.png');
@@ -167,7 +167,7 @@ const CashMemo = ({ className }) => {
     return (
         <div className={`${className} bg-cash bg-no-repeat bg-cover h-screen`}>
 
-            <Container className='w-[700px] flex justify-center items-center pt-5'>
+            <Container className=' flex justify-center items-center pt-5'>
                 <div className="rounded-[30px] w-[211.81rem] cashbox">
                     <div className="flex flex-col justify-center">
                         <div className="flex justify-end ">

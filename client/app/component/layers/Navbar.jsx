@@ -123,7 +123,7 @@ const Navbar = () => {
         !validated &&
         <div className="flex items-center space-x-2 group">
         <Link
-          href="/"
+          href="/login"
           className="bg-blue-600 text-white py-2 px-6 rounded-lg group-hover:bg-orange-500 transition duration-300"
         >
           Log In

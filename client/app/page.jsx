@@ -3,7 +3,7 @@ import Login from './component/LogIn'
 const page = () => {
   return (
     <div>
-      <Login />
+      Home
     </div>
 
   )
