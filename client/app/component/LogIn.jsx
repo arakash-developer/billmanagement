@@ -6,10 +6,12 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation'
 import { Contex } from '@/app/contexapi/Rights'
+import { BarLoader } from "react-spinners";
 
 
 const Login = () => {
-  let { validated,setValidated }= useContext(Contex)
+  let [loading, setLoading] = useState(false)
+  let { validated, setValidated } = useContext(Contex)
   const router = useRouter()
   const [formData, setFormData] = useState({
     email: "",
@@ -23,6 +25,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true)
     // Add logic to handle login
     // console.log("Login Submitted", formData);
     axios.post('https://billmanagement-server.vercel.app/login', formData, {
@@ -46,6 +49,7 @@ const Login = () => {
             theme: "colored",
           }
           );
+          setLoading(false)
         } else {
           console.log("fail");
           toast.success('Email Or Password Wrong !!', {
@@ -113,9 +117,12 @@ const Login = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 px-6 text-white bg-orange-500 rounded-md shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
+            className="w-full py-3 z-20 px-6 relative overflow-hidden text-white bg-orange-400 rounded-md shadow-md hover:bg-orange-600 focus:outline-none"
           >
             Login
+            <div className="absolute left-0 top-0 w-full h-full z-[-1]">
+              <BarLoader height={50} width={700} color="#F97316" loading={loading ? true : false} />
+            </div>
           </button>
         </form>
         <div className="text-center mt-4">
