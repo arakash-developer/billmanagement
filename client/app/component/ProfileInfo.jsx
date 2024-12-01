@@ -3,10 +3,16 @@ import Link from "next/link";
 import AccountSetting from "./AccountSetting";
 import { useRouter } from "next/navigation";
 import { Contex } from '@/app/contexapi/Rights'
-import { useContext } from "react";
+import { useContext, useEffect, useLayoutEffect } from "react";
 const ProfileInfo = () => {
-    let {validated,setValidated} = useContext(Contex)
+    let { validated, setValidated } = useContext(Contex)
     const router = useRouter();
+    let valid = localStorage.getItem('login');
+    useLayoutEffect(() => {
+        if (valid) {
+            setValidated(true)
+        }
+    }, [])
     let handlerlogOut = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('login');
