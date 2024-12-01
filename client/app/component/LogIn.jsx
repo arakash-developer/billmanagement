@@ -26,8 +26,6 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true)
-    // Add logic to handle login
-    // console.log("Login Submitted", formData);
     axios.post('https://billmanagement-server.vercel.app/login', formData, {
       withCredentials: true
     })
