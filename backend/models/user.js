@@ -9,5 +9,9 @@ let userSchema = mongoose.Schema ({
     companyName:String,
     address:String,
     phone:String,
+    profileimage:{
+        type: String,
+        default: "default.jpg"
+    },
 })
 module.exports = mongoose.model('user',userSchema)

@@ -4,10 +4,12 @@ import withAuth from '../auth/withAuth'
 import { useRouter } from 'next/navigation'
 import { Contex } from '../contexapi/Rights'
 import Image from 'next/image'
+import axios from 'axios'
 
 const page = () => {
   let [loading, setLoading] = useState(false)
   let [data, setData] = useState([])
+  let [tok, setTok] = useState()
   const router = useRouter();
   let { validated, setValidated } = useContext(Contex)
   useLayoutEffect(() => {
@@ -18,6 +20,7 @@ const page = () => {
   }, [])
   useLayoutEffect(() => {
     let token = localStorage.getItem("token")
+    setTok(token)
     let getdata = async () => {
       setLoading(true)
       let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
@@ -30,15 +33,37 @@ const page = () => {
       setLoading(false)
     }
     getdata()
-    
+
   }, [])
 
-  if(loading) {
+  const [file, setfile] = useState()
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append("file", file);
+    axios.post("https://billmanagement-server.vercel.app/profileupload", formData, {
+      headers: {
+        "token": tok ? tok : "",
+      }
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  if (loading) {
     return null
   }
   return (
     <div className='bg-red-700'>Book page
-    <Image src={data.profileimage} alt="cc" width={100} height={100}/>
+      <Image src={data.profileimage} alt="cc" width={100} height={100} />
+
+      <div className="">
+        <input type="file" onChange={(e) => setfile(e.target.files[0])} />
+        <button onClick={handleUpload}>Upload</button>
+      </div>
     </div>
   )
 }

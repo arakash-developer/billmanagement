@@ -11,8 +11,7 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 let UserModel = require("./models/user");
 const ProfileModel = require("./models/profilesetting");
-const e = require('express');
-
+const multer = require('./utils/multer');
 
 app.use(cors({
   origin: ['https://billmanagements.vercel.app', 'http://localhost:3000'],
@@ -22,7 +21,7 @@ app.use(cors({
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow1001")
+  res.send("Helllow10012")
 });
 
 
@@ -176,6 +175,16 @@ app.get('/profilesetting', isLoggedInP, async (req, res) => {
 });
 
 
+
+app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req, res) => {
+  let loginemail = req.userdata.email
+  let user = await UserModel.findOne({ email: loginemail });
+  user.profileimage = req.file.filename
+  await user.save()
+  res.json({
+    result: true
+  })
+});
 
 
 
