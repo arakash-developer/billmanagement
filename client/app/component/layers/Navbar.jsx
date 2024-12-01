@@ -15,6 +15,20 @@ import { Contex } from '@/app/contexapi/Rights'
 import mainLogo from '@/public/e-store.png'
 
 const Navbar = () => {
+  let [data, setData] = useState([])
+  useEffect(() => {
+      let token = localStorage.getItem("token")
+      let getdata = async () => {
+        let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
+          headers: {
+            "token": token ? token : "",
+          }
+        })
+        let response = await blobs.json();
+        setData(response.profileset)
+      }
+      getdata()
+    }, [])
   let { validated,setValidated }= useContext(Contex)
   let  router = useRouter()
   let {com} = useContext(Contex)
@@ -42,7 +56,7 @@ const Navbar = () => {
             href="/profile"
             className="w-10 h-10 border-2 border-orange-200 rounded-full overflow-hidden"
           >
-            <Image src={kadir} alt={kadir} className="w-full h-full object-center" />
+            <Image src={data.profileimage} width={200} height={200} alt={kadir} className="w-full h-full object-center" />
           </Link>
           <div className='absolute left-full -right-3 top-1/2 -translate-y-1/2'>
             <div className="relative w-72">

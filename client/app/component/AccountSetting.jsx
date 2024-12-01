@@ -1,9 +1,28 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
 
 function AccountSetting() {
+    let [data, setData] = useState([])
+    useEffect(() => {
+        let token = localStorage.getItem("token")
+        let getdata = async () => {
+          let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
+            headers: {
+              "token": token ? token : "",
+            }
+          })
+          let response = await blobs.json();
+          setData(response.profileset)
+        }
+        getdata()
+      }, [])
+      console.log(data.profileimage);
+      
+
+
+
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -50,7 +69,7 @@ function AccountSetting() {
                     <h1 className="text-2xl font-bold text-gray-800">Account Settings</h1>
                     <div className="flex items-center space-x-2">
                         <Image
-                            src={profilePicture || "/default-profile.jpg"} 
+                            src={data.profileimage} 
                             alt="Profile Picture"
                             width={40}
                             height={40}
@@ -68,7 +87,7 @@ function AccountSetting() {
                             <div className="flex items-center mb-6">
                                 <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200">
                                     <Image
-                                        src={profilePicture || "/default-profile.jpg"} 
+                                        src={data.profileimage} 
                                         alt="Profile Picture"
                                         layout="fill"
                                         objectFit="cover"

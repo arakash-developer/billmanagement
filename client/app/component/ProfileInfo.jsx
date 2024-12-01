@@ -3,7 +3,7 @@ import Link from "next/link";
 import AccountSetting from "./AccountSetting";
 import { useRouter } from "next/navigation";
 import { Contex } from '@/app/contexapi/Rights'
-import { useContext, useEffect, useLayoutEffect } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 const ProfileInfo = () => {
     let { validated, setValidated } = useContext(Contex)
     const router = useRouter();
