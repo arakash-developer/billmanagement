@@ -7,7 +7,12 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
 let UserModel = require("./models/user");
+const ProfileModel = require("./models/profilesetting");
+
+
 app.use(cors({
   origin: ['https://billmanagements.vercel.app', 'http://localhost:3000'],
   methods: ['GET', 'POST'],
@@ -16,7 +21,7 @@ app.use(cors({
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow90f")
+  res.send("Helllow900")
 });
 
 
@@ -130,6 +135,21 @@ app.get('/singleclient', isLoggedInP, async (req, res) => {
   res.json({
     clientdata
   });
+});
+
+app.post('/profilesetting', isLoggedInP, async (req, res) => {
+  let singleemail = req.userdata.email
+  let profile = await ProfileModel.create({
+    email: singleemail,
+    profileimage: req.body.profileimage
+  })
+  res.json(profile)
+});
+
+app.get('/profilesetting', isLoggedInP, async (req, res) => {
+  let singleemail = req.userdata.email
+  let profileset = await ProfileModel.findOne({ email: singleemail })
+  res.json(profileset)
 });
 
 
