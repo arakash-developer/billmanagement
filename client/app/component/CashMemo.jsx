@@ -27,6 +27,14 @@ const convertToEnglish = (num) => {
 };
 
 const CashMemo = ({ className }) => {
+    let { validated, setValidated } = useContext(Contex)
+    useLayoutEffect(() => {
+      let valid = localStorage.getItem('login');
+      if (valid) {
+        setValidated(true)
+      }
+    }, [])
+
     let [clients, setData] = useState([])
     useEffect(() => {
         let token = localStorage.getItem("token")
