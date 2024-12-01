@@ -23,11 +23,11 @@ const page = () => {
         }
       })
       let response = await blobs.json();
-      // let clients = response.clientdata;
-      // console.log(clients);
+      // let clients = response;
+      console.log(blobs);
       // clients?.reverse();
-      setData(clients)
-      console.log(clients);
+      // setData(clients)
+      // console.log(clients);
     }
     
     getdata()
