@@ -20,7 +20,7 @@ const Navbar = () => {
     { href: '/cash', label: "Cash", icon: <TbHomeFilled /> },
     { href: '/history', label: 'History', icon: <MdHistoryEdu /> },
     { href: '/clientdata', label: 'Your Store', icon: <FaStoreAlt /> },
-    { href: '/profile', label: 'Notification', icon: <AiFillNotification /> },
+    { href: '/notification', label: 'Notification', icon: <AiFillNotification /> },
   ];
   const pubnavLinks = [
     { href: '/home', label: "Home", icon: <TbHomeFilled /> },
