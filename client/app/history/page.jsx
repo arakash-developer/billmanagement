@@ -1,11 +1,22 @@
-import React from 'react'
+"use client"
+import React, { useContext, useLayoutEffect } from 'react'
 import Container from '../component/layers/Container'
 import Link from 'next/link'
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { MdLocationCity } from "react-icons/md";
+import withAuth from '../auth/withAuth';
+import { useRouter } from 'next/navigation';
+import { Contex } from '../contexapi/Rights';
 
 const page = () => {
-
+  let { validated, setValidated } = useContext(Contex)
+  const router = useRouter();
+  useLayoutEffect(() => {
+      let valid = localStorage.getItem('login');
+      if (valid) {
+          setValidated(true)
+      }
+  }, [])
   const transition = [
     {
       id: 1,
@@ -68,4 +79,4 @@ const page = () => {
   )
 }
 
-export default page
+export default withAuth(page)

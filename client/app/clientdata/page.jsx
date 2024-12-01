@@ -10,9 +10,10 @@ const page = () => {
   const router = useRouter();
   let { validated, setValidated } = useContext(Contex)
   useLayoutEffect(() => {
-    if (!validated) {
-      router.push('/')
-    }
+      let valid = localStorage.getItem('login');
+      if (valid) {
+          setValidated(true)
+      }
   }, [])
   useEffect(() => {
     let token = localStorage.getItem("token")
