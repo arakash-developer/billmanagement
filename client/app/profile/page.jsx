@@ -3,7 +3,7 @@ import React, { useContext, useLayoutEffect } from 'react'
 import Container from '../component/layers/Container';
 import { Contex } from '@/app/contexapi/Rights'
 import { useRouter } from 'next/navigation'
-import AccountSettings from '../component/ProfileInfo';
+import ProfileInfo from '../component/ProfileInfo';
 
 const page = () => {
   const router = useRouter();
@@ -22,7 +22,7 @@ const page = () => {
   return (
     <div>
       <Container>
-        <AccountSettings/>
+        <ProfileInfo/>
         <button onClick={handlerlogOut}>LogOut</button>
       </Container>
     </div>
