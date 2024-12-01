@@ -9,7 +9,7 @@ import { FaStoreAlt } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
 import { AiFillNotification } from "react-icons/ai";
 import { Contex } from '@/app/contexapi/Rights'
-import kadir from '../../../public/320431773_512500314189000_5607681979314737853_n (1).jpg'
+import kadir from '@/public/kadir.jpg'
 import Image from 'next/image';
 import { LuSearch } from "react-icons/lu";
 
@@ -47,7 +47,7 @@ const Navbar = () => {
             href="/profile"
             className="w-10 h-10 border-2 border-orange-200 rounded-full overflow-hidden"
           >
-            <Image src={kadir} alt="Profile Picture" className="w-full h-full object-center" />
+            <Image src={kadir} alt={kadir} className="w-full h-full object-center" />
           </Link>
           <div className='absolute left-full -right-3 top-1/2 -translate-y-1/2'>
             <div className="relative w-72">
