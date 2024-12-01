@@ -2,11 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
-import Link from "next/link";
-import kadir from "@/public/kadir.jpg";
 
 function AccountSetting() {
-
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -14,85 +11,94 @@ function AccountSetting() {
         mobileNumber: "",
         gender: "",
         taxId: "",
-        Country: "Bangladesh",
+        country: "Bangladesh",
         address: "",
+        currentPassword: "",
     });
 
+    const [profilePicture, setProfilePicture] = useState(null); 
+
+    const handleProfilePictureChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setProfilePicture(reader.result); 
+            };
+            reader.readAsDataURL(file); 
+        }
+    };
+
+    // Handle form inputs
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
+    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Submitted Data:", formData);
-        // Add form submission logic here
+        console.log("Form Data Submitted:", formData);
+        console.log("Uploaded Profile Picture:", profilePicture);
     };
 
-  return (
-    <div className="w-full h-screen overflow-y-auto">
-         <main className="flex-1 p-8 w-full">
-                <header className="flex justify-between items-center mb-8">
-                    <h1 className="text-2xl font-semibold text-gray-800">Account Settings</h1>
-                    <div className="flex items-center">
+    return (
+        <div className="w-full h-screen overflow-y-auto bg-gray-50">
+            <main className="flex-1 p-6 w-full max-w-5xl mx-auto">
+                {/* Header */}
+                <header className="flex justify-between items-center mb-6 px-10">
+                    <h1 className="text-2xl font-bold text-gray-800">Account Settings</h1>
+                    <div className="flex items-center space-x-2">
                         <Image
-                            src={kadir}
-                            alt={kadir}
+                            src={profilePicture || "/default-profile.jpg"} 
+                            alt="Profile Picture"
                             width={40}
                             height={40}
                             className="rounded-full"
                         />
-                        <span className="ml-2 text-gray-800">Abdul Kadir</span>
+                        <span className="ml-2 text-gray-800">Your Name</span>
                     </div>
                 </header>
 
+                {/* Form Section */}
                 <section className="bg-white rounded-lg shadow p-6">
-                    <nav className="mb-6">
-                        <ul className="flex space-x-6 text-gray-600 border-b">
-                            <li>
-                                <Link href="#" className="pb-2 font-medium text-lg text-orange-500">
-                                    Edit Profile
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="pb-2 font-medium text-lg hover:text-orange-500">
-                                    Edit your Stor
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="pb-2 font-medium text-lg hover:text-orange-500">
-                                    Change Password
-                                </Link>
-                            </li>
-                        </ul>
-                    </nav>
-
                     <form onSubmit={handleSubmit}>
                         {/* Profile Picture Upload */}
-                        <div className="flex items-center mb-6">
-                            <div className="relative w-20 h-20 rounded-full overflow-hidden bg-gray-200">
-                                <Image
-                                    src={kadir}
-                                    alt={kadir}
-                                    layout="fill"
-                                    objectFit="cover"
-                                />
-                                <label
-                                    htmlFor="profilePicture"
-                                    className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white cursor-pointer"
-                                >
-                                    <FiCamera />
-                                </label>
-                                <input
-                                    type="file"
-                                    id="profilePicture"
-                                    className="hidden"
-                                    onChange={(e) => console.log(e.target.files)}
-                                />
+                        <div className="flex justify-between px-10">
+                            <div className="flex items-center mb-6">
+                                <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200">
+                                    <Image
+                                        src={profilePicture || "/default-profile.jpg"} 
+                                        alt="Profile Picture"
+                                        layout="fill"
+                                        objectFit="cover"
+                                    />
+                                    <label
+                                        htmlFor="profilePicture"
+                                        className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white cursor-pointer"
+                                    >
+                                        <FiCamera size={20} />
+                                    </label>
+                                    <input
+                                        type="file"
+                                        id="profilePicture"
+                                        className="hidden"
+                                        accept="image/*"
+                                        onChange={handleProfilePictureChange}
+                                    />
+                                </div>
+                            </div>
+                            <div>
+                            <button
+                                type="submit"
+                                className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 transition"
+                            >
+                                Save Changes
+                            </button>
                             </div>
                         </div>
 
-                        {/* Form Inputs */}
+                        {/* Input Fields */}
                         <div className="grid grid-cols-2 gap-6">
                             <div>
                                 <label className="block text-gray-600 mb-2">First Name</label>
@@ -102,7 +108,7 @@ function AccountSetting() {
                                     value={formData.firstName}
                                     onChange={handleInputChange}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
-                                    placeholder="First name"
+                                    placeholder="First Name"
                                     required
                                 />
                             </div>
@@ -114,7 +120,7 @@ function AccountSetting() {
                                     value={formData.lastName}
                                     onChange={handleInputChange}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
-                                    placeholder="Last name"
+                                    placeholder="Last Name"
                                     required
                                 />
                             </div>
@@ -142,295 +148,57 @@ function AccountSetting() {
                                     required
                                 />
                             </div>
-                            <div className="flex items-center space-x-4">
-                                <label className="text-gray-600">Gender:</label>
-                                <div>
-                                    <label className="inline-flex items-center">
-                                        <input
-                                            type="radio"
-                                            name="gender"
-                                            value="Male"
-                                            checked={formData.gender === "Male"}
-                                            onChange={handleInputChange}
-                                            className="form-radio"
-                                        />
-                                        <span className="ml-2">Male</span>
-                                    </label>
-                                </div>
-                                <div>
-                                    <label className="inline-flex items-center">
-                                        <input
-                                            type="radio"
-                                            name="gender"
-                                            value="Female"
-                                            checked={formData.gender === "Female"}
-                                            onChange={handleInputChange}
-                                            className="form-radio"
-                                        />
-                                        <span className="ml-2">Female</span>
-                                    </label>
-                                </div>
+                            <div className="col-span-2">
+                                <label className="block text-gray-600 mb-2">Address</label>
+                                <input
+                                    type="text"
+                                    name="address"
+                                    value={formData.address}
+                                    onChange={handleInputChange}
+                                    className="w-full border border-gray-300 rounded px-4 py-2"
+                                    placeholder="Primary Address"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-gray-600 mb-2">Country</label>
+                                <input
+                                    type="text"
+                                    name="country"
+                                    value={formData.country}
+                                    onChange={handleInputChange}
+                                    className="w-full border border-gray-300 rounded px-4 py-2"
+                                    placeholder="Country"
+                                />
                             </div>
                             <div>
                                 <label className="block text-gray-600 mb-2">Post Code</label>
                                 <input
                                     type="text"
-                                    name="PostCode"
+                                    name="taxId"
                                     value={formData.taxId}
                                     onChange={handleInputChange}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Post Code"
                                 />
                             </div>
-                            <div>
-                                <label className="block text-gray-600 mb-2">Your Country</label>
-                                <input
-                                    type="text"
-                                    name="taxCountry"
-                                    value={formData.taxCountry}
-                                    onChange={handleInputChange}
-                                    className="w-full border border-gray-300 rounded px-4 py-2"
-                                    placeholder="Country"
-                                />
-                            </div>
                             <div className="col-span-2">
-                                <label className="block text-gray-600 mb-2">Primari Address</label>
-                                <input
-                                    type="text"
-                                    name="address"
-                                    value={formData.address}
-                                    onChange={handleInputChange}
-                                    className="w-full border border-gray-300 rounded px-4 py-2"
-                                    placeholder="entet primari address"
-                                />
-                            </div>
-                        </div>
-                        <div className="flex justify-end items-center gap-8 mt-5">
-                        <div className="col-span-2">
-                                <label className="block text-gray-600 mb-2">curent Password</label>
+                                <label className="block text-gray-600 mb-2">Current Password</label>
                                 <input
                                     type="password"
-                                    name="address"
-                                    value={formData.address}
+                                    name="currentPassword"
+                                    value={formData.currentPassword}
                                     onChange={handleInputChange}
-                                    className="w-72 border border-gray-300 rounded px-4 py-2"
-                                    placeholder="curent password"
+                                    className="w-full border border-gray-300 rounded px-4 py-2"
+                                    placeholder="Current Password"
+                                    required
                                 />
                             </div>
-                          <div className="">
-                          <button
-                                type="submit"
-                                className=" bg-orange-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300 ease-in-out"
-                            >
-                                Save Changes
-                            </button>
-                          </div>
                         </div>
-
                     </form>
                 </section>
             </main>
-         <main id='second' className="flex-1 p-8 w-full">
-                <header className="flex justify-between items-center mb-8">
-                    <h1 className="text-2xl font-semibold text-gray-800">second Settings</h1>
-                    <div className="flex items-center">
-                        <Image
-                            src={kadir}
-                            alt={kadir}
-                            width={40}
-                            height={40}
-                            className="rounded-full"
-                        />
-                        <span className="ml-2 text-gray-800">Abdul Kadir</span>
-                    </div>
-                </header>
-
-                <section className="bg-white rounded-lg shadow p-6">
-                    <nav className="mb-6">
-                        <ul className="flex space-x-6 text-gray-600 border-b">
-                            <li>
-                                <Link href="#" className="pb-2 font-medium text-lg text-orange-500">
-                                    Edit Profile
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="pb-2 font-medium text-lg hover:text-orange-500">
-                                    Edit your Stor
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="pb-2 font-medium text-lg hover:text-orange-500">
-                                    Change Password
-                                </Link>
-                            </li>
-                        </ul>
-                    </nav>
-
-                    <form onSubmit={handleSubmit}>
-                        {/* Profile Picture Upload */}
-                        <div className="flex items-center mb-6">
-                            <div className="relative w-20 h-20 rounded-full overflow-hidden bg-gray-200">
-                                <Image
-                                    src={kadir}
-                                    alt={kadir}
-                                    layout="fill"
-                                    objectFit="cover"
-                                />
-                                <label
-                                    htmlFor="profilePicture"
-                                    className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white cursor-pointer"
-                                >
-                                    <FiCamera />
-                                </label>
-                                <input
-                                    type="file"
-                                    id="profilePicture2"
-                                    className="hidden"
-                                    onChange={(e) => console.log(e.target.files)}
-                                />
-                            </div>
-                        </div>
-
-                        {/* Form Inputs */}
-                        <div className="grid grid-cols-2 gap-6">
-                            <div>
-                                <label className="block text-gray-600 mb-2">First Name</label>
-                                <input
-                                    type="text"
-                                    name="firstName"
-                                    value={formData.firstName}
-                                    onChange={handleInputChange}
-                                    className="w-full border border-gray-300 rounded px-4 py-2"
-                                    placeholder="First name"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-gray-600 mb-2">Last Name</label>
-                                <input
-                                    type="text"
-                                    name="lastName"
-                                    value={formData.lastName}
-                                    onChange={handleInputChange}
-                                    className="w-full border border-gray-300 rounded px-4 py-2"
-                                    placeholder="Last name"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-gray-600 mb-2">Email</label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleInputChange}
-                                    className="w-full border border-gray-300 rounded px-4 py-2"
-                                    placeholder="example@gmail.com"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-gray-600 mb-2">Mobile Number</label>
-                                <input
-                                    type="tel"
-                                    name="mobileNumber"
-                                    value={formData.mobileNumber}
-                                    onChange={handleInputChange}
-                                    className="w-full border border-gray-300 rounded px-4 py-2"
-                                    placeholder="0806 123 7890"
-                                    required
-                                />
-                            </div>
-                            <div className="flex items-center space-x-4">
-                                <label className="text-gray-600">Gender:</label>
-                                <div>
-                                    <label className="inline-flex items-center">
-                                        <input
-                                            type="radio"
-                                            name="gender"
-                                            value="Male"
-                                            checked={formData.gender === "Male"}
-                                            onChange={handleInputChange}
-                                            className="form-radio"
-                                        />
-                                        <span className="ml-2">Male</span>
-                                    </label>
-                                </div>
-                                <div>
-                                    <label className="inline-flex items-center">
-                                        <input
-                                            type="radio"
-                                            name="gender"
-                                            value="Female"
-                                            checked={formData.gender === "Female"}
-                                            onChange={handleInputChange}
-                                            className="form-radio"
-                                        />
-                                        <span className="ml-2">Female</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div>
-                                <label className="block text-gray-600 mb-2">Post Code</label>
-                                <input
-                                    type="text"
-                                    name="PostCode"
-                                    value={formData.taxId}
-                                    onChange={handleInputChange}
-                                    className="w-full border border-gray-300 rounded px-4 py-2"
-                                    placeholder="Post Code"
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-gray-600 mb-2">Your Country</label>
-                                <input
-                                    type="text"
-                                    name="taxCountry"
-                                    value={formData.taxCountry}
-                                    onChange={handleInputChange}
-                                    className="w-full border border-gray-300 rounded px-4 py-2"
-                                    placeholder="Country"
-                                />
-                            </div>
-                            <div className="col-span-2">
-                                <label className="block text-gray-600 mb-2">Primari Address</label>
-                                <input
-                                    type="text"
-                                    name="address"
-                                    value={formData.address}
-                                    onChange={handleInputChange}
-                                    className="w-full border border-gray-300 rounded px-4 py-2"
-                                    placeholder="entet primari address"
-                                />
-                            </div>
-                        </div>
-                        <div className="flex justify-end items-center gap-8 mt-5">
-                        <div className="col-span-2">
-                                <label className="block text-gray-600 mb-2">curent Password</label>
-                                <input
-                                    type="password"
-                                    name="address"
-                                    value={formData.address}
-                                    onChange={handleInputChange}
-                                    className="w-72 border border-gray-300 rounded px-4 py-2"
-                                    placeholder="curent password"
-                                />
-                            </div>
-                          <div className="">
-                          <button
-                                type="submit"
-                                className=" bg-orange-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300 ease-in-out"
-                            >
-                                Save Changes
-                            </button>
-                          </div>
-                        </div>
-
-                    </form>
-                </section>
-            </main>
-    </div>
-  )
+        </div>
+    );
 }
 
-export default AccountSetting
+export default AccountSetting;
