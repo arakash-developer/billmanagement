@@ -45,6 +45,7 @@ const SignUp = () => {
       .then(function (response) {
         let token = response.data.token
         localStorage.setItem("token", token)
+        localStorage.setItem("login", 'true')
         setValidated(true)
         router.push('/profile')
         toast.success('SignUp Success!', {
