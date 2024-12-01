@@ -42,9 +42,8 @@ const CashMemo = ({ className }) => {
         }
         getdata()
     }, [])
-    console.log(clients);
     
-    // let {name,phone,companyName,address} = clients;
+    let {name,phone,companyName,address} = clients;
     const [items, setItems] = useState(
         Array.from({ length: 5 }, () => ({ item: '', quantity: '', rate: '', taka: '' }))
     );
@@ -173,7 +172,7 @@ const CashMemo = ({ className }) => {
                         </div>
 
                         <ol ref={olRef} className=" flex flex-col gap-y-4">
-                            {/* <Header name={name?name:""} phone={phone} companyName={companyName} address={address}/> */}
+                            <Header name={name?name:""} phone={phone} companyName={companyName} address={address}/>
                             <div className="overflow-y-scroll h-[200px] scrollbar-hidden">
                                 {items.map((row, index) => (
                                     <li key={index} className=''>
