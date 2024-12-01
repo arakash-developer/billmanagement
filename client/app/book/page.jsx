@@ -24,7 +24,7 @@ const page = () => {
       })
       let response = await blobs.json();
       // let clients = response;
-      console.log(blobs);
+      console.log(response.profileset);
       // clients?.reverse();
       // setData(clients)
       // console.log(clients);

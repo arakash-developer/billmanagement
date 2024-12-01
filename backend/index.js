@@ -11,6 +11,7 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 let UserModel = require("./models/user");
 const ProfileModel = require("./models/profilesetting");
+const e = require('express');
 
 
 app.use(cors({
@@ -21,7 +22,7 @@ app.use(cors({
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow900")
+  res.send("Helllow100")
 });
 
 
@@ -40,6 +41,10 @@ app.post('/create', (req, res) => {
         companyName,
         address,
         phone,
+      })
+      let profile = await ProfileModel.create({
+        email,
+        profileimage: "https://billmanagement-server.vercel.app/images/default.jpg",
       })
       res.json({
         result: true,
@@ -139,6 +144,8 @@ app.get('/singleclient', isLoggedInP, async (req, res) => {
 
 app.post('/profilesetting', isLoggedInP, async (req, res) => {
   let singleemail = req.userdata.email
+  let singleclient = await ProfileModel.findOne({ email: singleemail })
+  // console.log(singleclient);
   let profile = await ProfileModel.create({
     email: singleemail,
     profileimage: req.body.profileimage
@@ -146,11 +153,26 @@ app.post('/profilesetting', isLoggedInP, async (req, res) => {
   res.json(profile)
 });
 
+app.post('/profilesettingupdate', isLoggedInP, async (req, res) => {
+  let singleemail = req.userdata.email
+  let singleclient = await ProfileModel.findOneAndUpdate({ email: singleemail }, {
+    profileimage: req.body.profileimage
+  }, { new: true })
+  res.json(
+    {
+      profileset: singleclient
+    })
+});
+
 app.get('/profilesetting', isLoggedInP, async (req, res) => {
   let singleemail = req.userdata.email
   let profileset = await ProfileModel.findOne({ email: singleemail })
+  let { email, profileimage } = profileset
   res.json({
-    profileset  
+    profileset: {
+      email,
+      profileimage: "https://billmanagement-server.vercel.app/images/" + profileimage
+    }
   })
 });
 
