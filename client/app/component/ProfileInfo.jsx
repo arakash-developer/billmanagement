@@ -30,6 +30,11 @@ const ProfileInfo = () => {
                     <ul className="space-y-2">
                         <li>
                             <Link href="#" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
+                                Your Profile
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="#" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
                                 Dashboard
                             </Link>
                         </li>
@@ -40,11 +45,6 @@ const ProfileInfo = () => {
                             </Link>
                         </li>
 
-                        <li>
-                            <Link href="#" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
-                                Your Profile
-                            </Link>
-                        </li>
 
                         <li>
                             <Link href="#" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
