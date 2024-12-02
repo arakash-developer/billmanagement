@@ -15,18 +15,18 @@ const multer = require('./utils/multer');
 
 app.use(cors({
   origin: ['https://billmanagements.vercel.app', 'http://localhost:3000'],
-  methods: ['GET','POST'],
+  methods: ['GET', 'POST'],
   credentials: true,
 }));
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow200")
+  res.send("Helllow500")
 });
 
 
 app.post('/create', (req, res) => {
-  let { name, password, companyName, phone, address, username, email } = req.body;
+  let { name, password, companyName, phone,firstName,lastName, address,zipcode, country,username, email } = req.body;
   const saltRounds = 10;
   bcrypt.genSalt(saltRounds, function (err, salt) {
     bcrypt.hash(password, salt, async (err, hash) => {
@@ -40,9 +40,10 @@ app.post('/create', (req, res) => {
         companyName,
         address,
         phone,
-      })
-      let profile = await ProfileModel.create({
-        email,
+        country,
+        zipcode,
+        firstName,
+        lastName,
       })
       res.json({
         result: true,
@@ -179,11 +180,22 @@ app.get('/profilesetting', isLoggedInP, async (req, res) => {
 app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req, res) => {
   let loginemail = req.userdata.email
   let user = await UserModel.findOne({ email: loginemail });
+  let { name, email, phone, address, firstName, lastName, country, zipcode } = req.body
   user.profileimage = req.file.filename
+  user.name = name
+  user.email = email
+  user.phone = phone
+  user.address = address
+  user.firstName = firstName
+  user.lastName = lastName
+  user.country = country
+  user.zipcode = zipcode
   await user.save()
   res.json({
     file: req.file.filename,
-    result: true
+    result: true,
+    name,
+    user,
   })
 });
 

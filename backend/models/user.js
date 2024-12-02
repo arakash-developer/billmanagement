@@ -8,6 +8,10 @@ let userSchema = mongoose.Schema ({
     name:String,
     companyName:String,
     address:String,
+    firstName:String,
+    lastName:String,
+    country:String,
+    zipcode:String,
     phone:String,
     profileimage:{
         type: String,

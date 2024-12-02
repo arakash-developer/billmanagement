@@ -37,9 +37,11 @@ const page = () => {
   }, [])
 
   const [file, setfile] = useState()
+  const [name, setName] = useState()
   const handleUpload = async () => {
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("name", name);
     await axios.post("http://localhost:4000/profileuploadupdate", formData, {
       headers: {
         "Content-Type": "multipart/form-data",  
@@ -63,6 +65,7 @@ const page = () => {
 
       <div className="">
         <input type="file" onChange={(e) => setfile(e.target.files[0])} />
+        <input type="text" onChange={(e) => setName(e.target.value)} />
         <button onClick={handleUpload}>Upload</button>
       </div>
     </div>
