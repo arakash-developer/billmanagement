@@ -39,14 +39,12 @@ function AccountSetting() {
         e.preventDefault();
         const formData = new FormData();
         formData.append("file", file);
-        // formData.append("firstName", firstName);
-        // formData.append("lastName", lastName);
-        // formData.append("lastName", lastName);
-        // formData.append("country", country);
-        // formData.append("email", email);
-        // formData.append("phone", phone);
-        // formData.append("address", address);
-        // formData.append("zipcode", zipcode);
+        formData.append("firstName", firstName);
+        formData.append("lastName", lastName);
+        formData.append("country", country);
+        formData.append("phone", phone);
+        formData.append("address", address);
+        formData.append("zipcode", zipcode);
         await axios.post("https://billmanagement-server.vercel.app/profileuploadupdate", formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
