@@ -34,19 +34,6 @@ function AccountSetting() {
         getdata()
     }, [])
 
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        mobileNumber: "",
-        gender: "",
-        taxId: "",
-        country: "Bangladesh",
-        address: "",
-        currentPassword: "",
-    });
-
-
     const handleUpload = () => {
         const formData = new FormData();
         formData.append("file", file);
