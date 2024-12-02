@@ -23,7 +23,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="w-full bg-gray-50  items-center p-6">
+    <div id="profile" className="w-full bg-gray-50  items-center p-6">
            <h1 className="text-3xl font-semibold text-gray-800 py-4">Profile</h1>
       <div className=" w-full grid grid-cols-1 md:grid-cols-2 gap-6 bg-white rounded-lg shadow-md p-6">
         {/* Left Profile Card */}

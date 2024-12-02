@@ -63,7 +63,7 @@ function AccountSetting() {
     }
     return (
         <div className="w-full h-screen overflow-y-auto bg-gray-50">
-            <main className="flex-1 p-6 w-full max-w-5xl mx-auto">
+            <main id="store" className="flex-1 p-6 w-full max-w-5xl mx-auto">
                 {/* Header */}
                 <header className="flex justify-between items-center mb-6 px-10">
                     <h1 className="text-2xl font-bold text-gray-800">Account Settings</h1>
