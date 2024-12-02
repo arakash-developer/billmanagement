@@ -12,9 +12,10 @@ import kadir from '@/public/kadir.jpg'
 import Image from 'next/image';
 import { LuSearch } from "react-icons/lu";
 import { Contex } from '@/app/contexapi/Rights'
-import mainLogo from '@/public/e-store.png'
+import eStoreLogo from '@/public/e-store.png'
 
 const Navbar = () => {
+  let [show , setShow] = useState()
   let [data, setData] = useState([])
   useEffect(() => {
       let token = localStorage.getItem("token")
@@ -46,7 +47,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="relative py-5 bg-gray-100 shadow-md">
+    <div className="relative pb-5 md:py-5 bg-gray-100 shadow-md">
       <Container className="flex justify-between items-center">
         {/* Profile and Search Section */}
          {
@@ -58,14 +59,14 @@ const Navbar = () => {
           >
             <Image src={data.profileimage} width={200} height={200} alt={kadir} className="w-full h-full object-center" />
           </Link>
-          <div className='absolute left-full -right-3 top-1/2 -translate-y-1/2'>
-            <div className="relative w-72">
+          <div className='absolute md:left-full md:-right-3 top-full -right-[265px] md:top-1/2 -translate-y-1/2'>
+            <div className="relative w-64 md:w-72">
               <input
                 type="text"
                 placeholder="Search your client"
-                className="py-2 pl-4 pr-12 border border-gray-300 rounded-full w-full focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className={`py-1 md:py-2 pl-4 pr-12 border text-sm md:text-base border-gray-300 rounded-full w-full focus:outline-none focus:ring-2 focus:ring-orange-400 ${show ? 'block' : 'hidden md:block'}`}
               />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-orange-500 p-2 rounded-full">
+              <button onClick={() => setShow(!show)} className="absolute right-2 top-1/2 -translate-y-1/2 bg-orange-500 p-1.5 md:p-2 rounded-full">
                 <LuSearch className="text-white" />
               </button>
             </div>
@@ -74,9 +75,9 @@ const Navbar = () => {
          }
          {
            !validated &&
-           <div className="w-14 logo font-bold text-xl text-gray-700">
+           <div className="md:w-14 logo font-bold text-xl text-gray-700">
            <Link href="/">
-           <Image src={mainLogo} alt="Logo" className="w-full h-full object-center" />
+           <Image src={eStoreLogo} alt="e-store" className="w-full h-full object-center" />
            </Link>
          </div>
          }
@@ -97,10 +98,10 @@ const Navbar = () => {
                   className={`${router?.pathname === link.href // Safe access to pathname
                     ? 'text-orange-500 underline'
                     : 'text-gray-700 font-medium'
-                    } hover:text-orange-400 transition duration-300 flex items-center gap-x-2`}
+                    } hover:text-orange-400 transition duration-300 flex items-center gap-x-2 pb-4 md:pb-0`}
                 >
-                  {link.icon}
-                  {link.label}
+                  <span>{link.icon} </span>
+                  <span className='hidden md:block'>{link.label}</span>
                 </Link>
               </li>
             ))}
@@ -122,7 +123,7 @@ const Navbar = () => {
                     } hover:text-orange-400 transition duration-300 flex items-center gap-x-2`}
                 >
                   {link.icon}
-                  {link.label}
+                  <span className='hidden md:block'>{link.label}</span>
                 </Link>
               </li>
             ))}
@@ -132,9 +133,8 @@ const Navbar = () => {
         {/* Button */}
         {
           validated &&
-          <div className='flex items-center gap-x-2'>
-            <h2 className='font-bold text-lg text-orange-500 capitalize'>{com?com:"COMPANY"}</h2>
-            <h1 className='font-bold text-xl w-12 h-12 rounded-full border-2 border-orange-500 p-2 bg-black text-white flex items-center justify-center'>Logo</h1>
+          <div className='w-10 md:w-14'>
+            <Image src={eStoreLogo} alt='estore' className='w-full h-full object-center' />
           </div>
         }
        {

@@ -30,7 +30,7 @@ export default function ProfilePage() {
         <div className="flex flex-col items-center">
           <div className="relative w-36 h-36 rounded-full overflow-hidden shadow-md">
             <Image
-              src={formData.profilePicture} 
+              src={kadir} 
               alt="Profile Picture"
               layout="fill"
               objectFit="cover"
