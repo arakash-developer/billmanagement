@@ -111,6 +111,7 @@ let isLoggedInP = (req, res, next) => {
     if (token === '') {
       res.json({
         result: false,
+        messege: "You Must Be Loged In First...Token Is Empty"
       })
     } else {
       let data = jwt.verify(token, 'Akash')
@@ -120,6 +121,7 @@ let isLoggedInP = (req, res, next) => {
   } else {
     res.json({
       result: false,
+      messege: "You Must Be Loged In First...Token Not Found"
     })
   }
 }
@@ -193,26 +195,27 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
     zipcode
   }, { new: true });
   res.json({
+    loginemail,
     result: true,
     user,
   })
 });
 
-app.post("/upload",multerCloudinary.single("file"),(req,res) => {
-    cloudinary.uploader.upload(req.file.path,(err,result) => {
-      if(err){
-        res.json({
-          result:false,
-          content:"Something Is Wrong"
-        })
-      }else{
-        res.json({
-          result:true,
-          content:result
-        })
-      }
-    })
-})
+// app.post("/upload",multerCloudinary.single("file"),(req,res) => {
+//     cloudinary.uploader.upload(req.file.path,(err,result) => {
+//       if(err){
+//         res.json({
+//           result:false,
+//           content:"Something Is Wrong"
+//         })
+//       }else{
+//         res.json({
+//           result:true,
+//           content:result
+//         })
+//       }
+//     })
+// })
 
 
 
