@@ -40,7 +40,7 @@ const page = () => {
   const handleUpload = async () => {
     const formData = new FormData();
     formData.append("file", file);
-    await axios.post("https://billmanagement-server.vercel.app/profileuploadupdate", formData, {
+    await axios.post("http://localhost:4000/profileuploadupdate", formData, {
       headers: {
         "Content-Type": "multipart/form-data",  
         "token": tok ? tok : "",

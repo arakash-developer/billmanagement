@@ -15,13 +15,13 @@ const multer = require('./utils/multer');
 
 app.use(cors({
   origin: ['https://billmanagements.vercel.app', 'http://localhost:3000'],
-  methods: ['GET', 'POST'],
+  methods: ['GET','POST'],
   credentials: true,
 }));
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow10012")
+  res.send("Helllow200")
 });
 
 
