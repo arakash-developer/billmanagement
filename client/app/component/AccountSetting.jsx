@@ -34,7 +34,9 @@ function AccountSetting() {
         getdata()
     }, [])
 
-    const handleUpload = () => {
+
+    const handleUpload = async (e) => {
+        e.preventDefault();
         const formData = new FormData();
         formData.append("file", file);
         formData.append("firstName", firstName);
@@ -45,7 +47,7 @@ function AccountSetting() {
         formData.append("phone", phone);
         formData.append("address", address);
         formData.append("zipcode", zipcode);
-        axios.post("http://localhost:4000/profileuploadupdate", formData, {
+        await axios.post("https://billmanagement-server.vercel.app/profileuploadupdate", formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
                 "token": tok ? tok : "",
