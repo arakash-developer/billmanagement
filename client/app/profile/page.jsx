@@ -1,15 +1,15 @@
 "use client"
 import React, { useContext, useLayoutEffect } from 'react'
 import Container from '../component/layers/Container';
-import ProfileInfo from '../component/ProfileInfo';
 import withAuth from '../auth/withAuth';
+import ProfileNavbar from '../component/ProfileNavbar';
 
 const page = () => {
 
   return (
     <div>
       <Container>
-        <ProfileInfo/>
+        <ProfileNavbar/>
       </Container>
     </div>
 

@@ -4,7 +4,8 @@ import AccountSetting from "./AccountSetting";
 import { useRouter } from "next/navigation";
 import { Contex } from '@/app/contexapi/Rights'
 import { useContext, useEffect, useLayoutEffect, useState } from "react";
-const ProfileInfo = () => {
+import ProfilePage from "./ProfilePage";
+const ProfileNavbar = () => {
     let { validated, setValidated } = useContext(Contex)
     const router = useRouter();
     useLayoutEffect(() => {
@@ -29,7 +30,7 @@ const ProfileInfo = () => {
                 <nav className="mt-6">
                     <ul className="space-y-2">
                         <li>
-                            <Link href="#" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
+                            <Link href="#profileId" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
                                 Your Profile
                             </Link>
                         </li>
@@ -54,7 +55,7 @@ const ProfileInfo = () => {
 
                         <li>
                             <Link
-                                href='#second'
+                                href='#'
                                 className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300"
                             >
                                 Settings
@@ -69,11 +70,12 @@ const ProfileInfo = () => {
                     </ul>
                 </nav>
             </aside>
+            <ProfilePage/>
+            {/* <AccountSetting /> */}
 
-            <AccountSetting />
 
         </div>
     );
 };
 
-export default ProfileInfo;
+export default ProfileNavbar;
