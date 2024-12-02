@@ -2,14 +2,16 @@
 import { useState } from "react";
 import Image from "next/image";
 import { FiEdit2 } from "react-icons/fi";
+import kadir from '../../public/kadir.jpg'
 
 export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    name: "Santi chai",
-    email: "dev@4takeaway.com",
-    phone: "+49735031450345",
-    address: "Hubertusstraße 149, 41239 Mönchengladbach",
+    name: "Abdul Kadir",
+    email: "abdulkadir112@me.com",
+    phone: "+88 01729628402",
+    address: "Hemayetpur, Damurhuda, Chuadanga",
+    profilePicture: {kadir},
   });
 
   const handleFieldEdit = (field, value) => {
@@ -21,13 +23,14 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 flex justify-center items-center p-6">
-      <div className="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-6 bg-white rounded-lg shadow-md p-6">
+    <div className="w-full bg-gray-50  items-center p-6">
+           <h1 className="text-3xl font-semibold text-gray-800 py-4">Profile</h1>
+      <div className=" w-full grid grid-cols-1 md:grid-cols-2 gap-6 bg-white rounded-lg shadow-md p-6">
         {/* Left Profile Card */}
         <div className="flex flex-col items-center">
           <div className="relative w-36 h-36 rounded-full overflow-hidden shadow-md">
             <Image
-              src="/profile-pic.jpg" 
+              src={formData.profilePicture} 
               alt="Profile Picture"
               layout="fill"
               objectFit="cover"
@@ -47,12 +50,18 @@ export default function ProfilePage() {
           </div>
 
           <h2 className="text-xl font-semibold mt-4 text-gray-800">
-            Esther Howard
+            {formData.name}
           </h2>
-          <p className="text-gray-600">{formData.address}</p>
-          <div className="flex items-center space-x-1 mt-2 text-yellow-500">
-            <span className="font-bold text-lg">5.0</span>
-            <span className="text-gray-600">(1)</span>
+          <p className="text-gray-600 w-72">{formData.address}</p>
+          <div className="flex items-center space-x-2 mt-3">
+           <div className="px-3 py-2 shadow-sm rounded-md border border-gray-300">
+           <span className="font-bold text-lg text-orange-500">5 </span>
+           <span className="text-gray-600">Trusted</span>
+           </div>
+            <div className="px-3 py-2 shadow-sm rounded-md border border-gray-300">
+            <span className="font-bold text-lg text-orange-500">10 </span>
+            <span className="text-gray-600">fevourit</span>
+            </div>
           </div>
         </div>
 
@@ -76,7 +85,7 @@ export default function ProfilePage() {
           <div className="space-y-4">
             {/* Name */}
             <div>
-              <label className="block text-sm text-gray-600 mb-1">Name</label>
+              <label className="block text-sm text-gray-600 mb-0.5">Full Name</label>
               <div
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
@@ -90,10 +99,26 @@ export default function ProfilePage() {
                 {formData.name}
               </div>
             </div>
+            {/* Address */}
+            <div>
+              <label className="block text-sm text-gray-600 mb-0.5">Address</label>
+              <div
+                contentEditable={isEditing}
+                suppressContentEditableWarning={true}
+                className={`w-full px-4 py-2 rounded ${
+                  isEditing
+                    ? "border border-gray-300 bg-gray-100"
+                    : "bg-transparent"
+                }`}
+                onBlur={(e) => handleFieldEdit("address", e.target.innerText)}
+              >
+                {formData.address}
+              </div>
+            </div>
 
             {/* Email */}
             <div>
-              <label className="block text-sm text-gray-600 mb-1">E-Mail</label>
+              <label className="block text-sm text-gray-600 mb-0.5">E-Mail</label>
               <div
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
@@ -110,7 +135,7 @@ export default function ProfilePage() {
 
             {/* Phone */}
             <div>
-              <label className="block text-sm text-gray-600 mb-1">Phone</label>
+              <label className="block text-sm text-gray-600 mb-0.5">Phone</label>
               <div
                 contentEditable={isEditing}
                 suppressContentEditableWarning={true}
@@ -128,12 +153,20 @@ export default function ProfilePage() {
             {/* Password */}
             <div>
               <label className="block text-sm text-gray-600 mb-1">
-                Password
+                 Current Password
               </label>
-              <p className="flex items-center space-x-2 text-green-500">
-                <span>✔</span>
-                <span>Password has been set</span>
-              </p>
+              <div
+                contentEditable={isEditing}
+                suppressContentEditableWarning={true}
+                className={`w-full px-4 py-2 rounded ${
+                  isEditing
+                    ? "border border-gray-300 bg-gray-100"
+                    : "bg-transparent"
+                }`}
+                onBlur={(e) => handleFieldEdit("password", e.target.innerText)}
+              >
+                ********
+              </div>
             </div>
           </div>
         </div>
