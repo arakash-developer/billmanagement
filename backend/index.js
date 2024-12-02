@@ -21,7 +21,7 @@ app.use(cors({
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow500")
+  res.send("Helllow200")
 });
 
 
