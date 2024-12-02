@@ -2,12 +2,24 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
+import axios from "axios";
 
 function AccountSetting() {
+    let [tok, setTok] = useState()
+    const [file, setfile] = useState()
+    const [name, setName] = useState()
+    const [firstName, setFirstName] = useState()
+    const [lastName, setLastName] = useState()
+    const [email, setEmail] = useState()
+    const [address, setAddress] = useState()
+    const [phone, setPhone] = useState()
+    const [country, setCountry] = useState()
+    const [zipcode, setZipcode] = useState()
     let [loading, setLoading] = useState(false)
     let [data, setData] = useState([])
     useEffect(() => {
         let token = localStorage.getItem("token")
+        setTok(token)
         let getdata = async () => {
             setLoading(true)
             let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
@@ -34,32 +46,32 @@ function AccountSetting() {
         currentPassword: "",
     });
 
-    const [profilePicture, setProfilePicture] = useState(null);
 
-    const handleProfilePictureChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setProfilePicture(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-    // Handle form inputs
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    // Handle form submission
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Form Data Submitted:", formData);
-        console.log("Uploaded Profile Picture:", profilePicture);
-    };
-    if(loading){
+    const handleUpload = () => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("firstName", firstName);
+        formData.append("lastName", lastName);
+        formData.append("lastName", lastName);
+        formData.append("country", country);
+        formData.append("email", email);
+        formData.append("phone", phone);
+        formData.append("address", address);
+        formData.append("zipcode", zipcode);
+        axios.post("http://localhost:4000/profileuploadupdate", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "token": tok ? tok : "",
+            },
+        })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+    if (loading) {
         return null;
     }
     return (
@@ -82,7 +94,7 @@ function AccountSetting() {
 
                 {/* Form Section */}
                 <section className="bg-white rounded-lg shadow p-6">
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         {/* Profile Picture Upload */}
                         <div className="flex justify-between px-10">
                             <div className="flex items-center mb-6">
@@ -104,13 +116,14 @@ function AccountSetting() {
                                         id="profilePicture"
                                         className="hidden"
                                         accept="image/*"
-                                        onChange={handleProfilePictureChange}
+                                        onChange={(e) => setfile(e.target.files[0])}
                                     />
                                 </div>
                             </div>
                             <div>
                                 <button
                                     type="submit"
+                                    onClick={handleUpload}
                                     className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600 transition"
                                 >
                                     Save Changes
@@ -125,8 +138,8 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="firstName"
-                                    value={formData.firstName}
-                                    onChange={handleInputChange}
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="First Name"
                                     required
@@ -137,8 +150,8 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="lastName"
-                                    value={formData.lastName}
-                                    onChange={handleInputChange}
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Last Name"
                                     required
@@ -149,8 +162,8 @@ function AccountSetting() {
                                 <input
                                     type="email"
                                     name="email"
-                                    value={formData.email}
-                                    onChange={handleInputChange}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="example@gmail.com"
                                     required
@@ -161,8 +174,8 @@ function AccountSetting() {
                                 <input
                                     type="tel"
                                     name="mobileNumber"
-                                    value={formData.mobileNumber}
-                                    onChange={handleInputChange}
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="0806 123 7890"
                                     required
@@ -173,8 +186,8 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="address"
-                                    value={formData.address}
-                                    onChange={handleInputChange}
+                                    value={address}
+                                    onChange={(e) => setAddress(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Primary Address"
                                 />
@@ -184,8 +197,8 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="country"
-                                    value={formData.country}
-                                    onChange={handleInputChange}
+                                    value={country}
+                                    onChange={(e) => setCountry(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Country"
                                 />
@@ -195,8 +208,8 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="taxId"
-                                    value={formData.taxId}
-                                    onChange={handleInputChange}
+                                    value={zipcode}
+                                    onChange={(e) => setZipcode(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Post Code"
                                 />
@@ -206,8 +219,7 @@ function AccountSetting() {
                                 <input
                                     type="password"
                                     name="currentPassword"
-                                    value={formData.currentPassword}
-                                    onChange={handleInputChange}
+                                    value={"Akash"}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Current Password"
                                     required
