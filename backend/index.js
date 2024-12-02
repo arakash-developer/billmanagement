@@ -182,6 +182,7 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
   user.profileimage = req.file.filename
   await user.save()
   res.json({
+    file: req.file.filename,
     result: true
   })
 });

@@ -37,11 +37,12 @@ const page = () => {
   }, [])
 
   const [file, setfile] = useState()
-  const handleUpload = () => {
+  const handleUpload = async () => {
     const formData = new FormData();
     formData.append("file", file);
-    axios.post("https://billmanagement-server.vercel.app/profileupload", formData, {
+    await axios.post("https://billmanagement-server.vercel.app/profileuploadupdate", formData, {
       headers: {
+        "Content-Type": "multipart/form-data",  
         "token": tok ? tok : "",
       }
     })
