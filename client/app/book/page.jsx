@@ -58,7 +58,7 @@ const page = () => {
     return null
   }
   return (
-    <div className='bg-red-700'>Book page
+    <div className='bg-red-700'>Book page 90
       <Image src={data.profileimage} alt="cc" width={100} height={100} />
 
       <div className="">
