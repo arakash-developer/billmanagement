@@ -12,6 +12,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 let UserModel = require("./models/user");
 const ProfileModel = require("./models/profilesetting");
 const multer = require('./utils/multer');
+const cloudinary = require('cloudinary').v2;
+const multerCloudinary = require('./utils/multerCloudinary');
 
 app.use(cors({
   origin: ['https://billmanagements.vercel.app', 'http://localhost:3000'],
@@ -195,6 +197,22 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
     user,
   })
 });
+
+app.post("/upload",multerCloudinary.single("file"),(req,res) => {
+    cloudinary.uploader.upload(req.file.path,(err,result) => {
+      if(err){
+        res.json({
+          result:false,
+          content:"Something Is Wrong"
+        })
+      }else{
+        res.json({
+          result:true,
+          content:result
+        })
+      }
+    })
+})
 
 
 
