@@ -163,17 +163,17 @@ app.get('/singleclient', isLoggedInP, async (req, res) => {
 //     })
 // });
 
-// app.get('/profilesetting', isLoggedInP, async (req, res) => {
-//   let singleemail = req.userdata.email
-//   let profileset = await ProfileModel.findOne({ email: singleemail })
-//   let { email, profileimage } = profileset
-//   res.json({
-//     profileset: {
-//       email,
-//       profileimage: "https://billmanagement-server.vercel.app/images/" + profileimage
-//     }
-//   })
-// });
+app.get('/profilesetting', isLoggedInP, async (req, res) => {
+  let singleemail = req.userdata.email
+  let profileset = await UserModel.findOne({ email: singleemail })
+  let { email, profileimage } = profileset
+  res.json({
+    profileset: {
+      email,
+      profileimage: "https://billmanagement-server.vercel.app/images/" + profileimage
+    }
+  })
+});
 
 
 
