@@ -141,46 +141,46 @@ app.get('/singleclient', isLoggedInP, async (req, res) => {
   });
 });
 
-app.post('/profilesetting', isLoggedInP, async (req, res) => {
-  let singleemail = req.userdata.email
-  let singleclient = await ProfileModel.findOne({ email: singleemail })
-  // console.log(singleclient);
-  let profile = await ProfileModel.create({
-    email: singleemail,
-    profileimage: req.body.profileimage
-  })
-  res.json(profile)
-});
+// app.post('/profilesetting', isLoggedInP, async (req, res) => {
+//   let singleemail = req.userdata.email
+//   let singleclient = await ProfileModel.findOne({ email: singleemail })
+//   // console.log(singleclient);
+//   let profile = await ProfileModel.create({
+//     email: singleemail,
+//     profileimage: req.body.profileimage
+//   })
+//   res.json(profile)
+// });
 
-app.post('/profilesettingupdate', isLoggedInP, async (req, res) => {
-  let singleemail = req.userdata.email
-  let singleclient = await ProfileModel.findOneAndUpdate({ email: singleemail }, {
-    profileimage: req.body.profileimage
-  }, { new: true })
-  res.json(
-    {
-      profileset: singleclient
-    })
-});
+// app.post('/profilesettingupdate', isLoggedInP, async (req, res) => {
+//   let singleemail = req.userdata.email
+//   let singleclient = await ProfileModel.findOneAndUpdate({ email: singleemail }, {
+//     profileimage: req.body.profileimage
+//   }, { new: true })
+//   res.json(
+//     {
+//       profileset: singleclient
+//     })
+// });
 
-app.get('/profilesetting', isLoggedInP, async (req, res) => {
-  let singleemail = req.userdata.email
-  let profileset = await ProfileModel.findOne({ email: singleemail })
-  let { email, profileimage } = profileset
-  res.json({
-    profileset: {
-      email,
-      profileimage: "https://billmanagement-server.vercel.app/images/" + profileimage
-    }
-  })
-});
+// app.get('/profilesetting', isLoggedInP, async (req, res) => {
+//   let singleemail = req.userdata.email
+//   let profileset = await ProfileModel.findOne({ email: singleemail })
+//   let { email, profileimage } = profileset
+//   res.json({
+//     profileset: {
+//       email,
+//       profileimage: "https://billmanagement-server.vercel.app/images/" + profileimage
+//     }
+//   })
+// });
 
 
 
 app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req, res) => {
+  let { name, email, phone, address, firstName, lastName, country, zipcode } = req.body
   let loginemail = req.userdata.email
   let user = await UserModel.findOne({ email: loginemail });
-  let { name, email, phone, address, firstName, lastName, country, zipcode } = req.body
   user.profileimage = req.file.filename
   user.name = name
   user.email = email
@@ -192,9 +192,8 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
   user.zipcode = zipcode
   await user.save()
   res.json({
-    file: req.file.filename,
+    file: req.file.fieldname,
     result: true,
-    name,
     user,
   })
 });
