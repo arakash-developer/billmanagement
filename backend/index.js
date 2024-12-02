@@ -21,12 +21,12 @@ app.use(cors({
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow500")
+  res.send("Helllow200")
 });
 
 
 app.post('/create', (req, res) => {
-  let { name, password, companyName, phone,firstName,lastName, address,zipcode, country,username, email } = req.body;
+  let { name, password, companyName, phone, firstName, lastName, address, zipcode, country, username, email } = req.body;
   const saltRounds = 10;
   bcrypt.genSalt(saltRounds, function (err, salt) {
     bcrypt.hash(password, salt, async (err, hash) => {
@@ -178,21 +178,19 @@ app.get('/profilesetting', isLoggedInP, async (req, res) => {
 
 
 app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req, res) => {
-  let { name, email, phone, address, firstName, lastName, country, zipcode } = req.body
+  let { name, phone, address, firstName, lastName, country, zipcode } = req.body
   let loginemail = req.userdata.email
-  let user = await UserModel.findOne({ email: loginemail });
-  user.profileimage = req.file.filename
-  user.name = name
-  user.email = email
-  user.phone = phone
-  user.address = address
-  user.firstName = firstName
-  user.lastName = lastName
-  user.country = country
-  user.zipcode = zipcode
-  await user.save()
+  let user = await UserModel.findOneAndUpdate({ email: loginemail }, {
+    profileimage: req.file.filename,
+    name,
+    phone,
+    address,
+    firstName,
+    lastName,
+    country,
+    zipcode
+  }, { new: true });
   res.json({
-    file: req.file.fieldname,
     result: true,
     user,
   })
