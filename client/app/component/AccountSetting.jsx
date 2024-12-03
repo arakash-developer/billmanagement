@@ -4,6 +4,18 @@ import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
 import axios from "axios";
 
+let Convertbase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+        };
+        fileReader.onerror = (error) => {
+            reject(error);
+        };
+    })
+}
 function AccountSetting() {
     let [tok, setTok] = useState()
     const [file, setfile] = useState()
@@ -23,7 +35,7 @@ function AccountSetting() {
         let getdata = async () => {
             setLoading(true)
             try {
-                let blobs = await fetch("https://billmanagement-server.vercel.app/profileSettingUpdate",{
+                let blobs = await fetch("https://billmanagement-server.vercel.app/profileSettingUpdate", {
                     headers: {
                         "token": token ? token : "",
                     }
@@ -39,20 +51,14 @@ function AccountSetting() {
         getdata()
     }, [])
 
-
+    let [image, setImage] = useState("");
     const handleUpload = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("firstName", firstName);
-        formData.append("lastName", lastName);
-        formData.append("country", country);
-        formData.append("phone", phone);
-        formData.append("address", address);
-        formData.append("zipcode", zipcode);
-        await axios.post("https://billmanagement-server.vercel.app/profileuploadupdate", formData, {
+        // console.log(image);
+        await axios.post("https://billmanagement-server.vercel.app/profileSettingUpdate", {
+            profileimage: image
+        }, {
             headers: {
-                "Content-Type": "multipart/form-data",
                 "token": tok ? tok : "",
             },
         })
@@ -63,6 +69,14 @@ function AccountSetting() {
                 console.log(error);
             });
     }
+
+    let handleImageChange = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await Convertbase64(file)
+        console.log(base64);
+        setImage(base64)
+    }
+
     if (loading) {
         return null;
     }
@@ -73,13 +87,13 @@ function AccountSetting() {
                 <header className="flex justify-between items-center mb-6 px-10">
                     <h1 className="text-2xl font-bold text-gray-800">Account Settings</h1>
                     <div className="flex items-center space-x-2">
-                        {/* <Image
-                            src={data.profileimage}
+                        <Image
+                            src={data.profileimage }
                             alt="Profile Picture"
                             width={40}
                             height={40}
                             className="rounded-full"
-                        /> */}
+                        />
                         <span className="ml-2 text-gray-800">Your Name</span>
                     </div>
                 </header>
@@ -91,24 +105,24 @@ function AccountSetting() {
                         <div className="flex justify-between px-10">
                             <div className="flex items-center mb-6">
                                 <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200">
-                                    {/* <Image
-                                        src={data.profileimage}
+                                    <Image
+                                        src={image}
                                         alt="Profile Picture"
                                         layout="fill"
                                         objectFit="cover"
-                                    /> */}
+                                        />
                                     <label
                                         htmlFor="profilePicture"
                                         className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white cursor-pointer"
-                                    >
+                                        >
                                         <FiCamera size={20} />
                                     </label>
                                     <input
+                                        onChange={(e) => handleImageChange(e)}
                                         type="file"
                                         id="profilePicture"
                                         className="hidden"
                                         accept="image/*"
-                                        onChange={(e) => setfile(e.target.files[0])}
                                     />
                                 </div>
                             </div>
