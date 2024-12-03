@@ -28,6 +28,7 @@ function AccountSetting() {
                 }
             })
             let response = await blobs.json();
+            console.log(response);
             setData(response.profileset)
             setLoading(false)
         }
