@@ -4,8 +4,23 @@ import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
 import axios from "axios";
 
+let convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+            resolve(fileReader.result);
+        };
+        fileReader.onerror = (error) => {
+            reject(error);
+        };
+    });
+};
+
 function AccountSetting() {
     let [tok, setTok] = useState()
+    let [update, setUpdate] = useState(false)
+    const [tempfile, setTempfile] = useState({myfile: ""})
     const [file, setfile] = useState()
     const [name, setName] = useState()
     const [firstName, setFirstName] = useState()
@@ -32,13 +47,20 @@ function AccountSetting() {
             setLoading(false)
         }
         getdata()
-    }, [])
+    },[update])
 
+    let onprofilechange = async(e) => {
+        e.preventDefault();
+        let newfile = e.target.files[0];
+        setfile(newfile)
+        let base64 = await convertToBase64(newfile);
+        setTempfile({...tempfile, myfile: base64})
+    }
 
     const handleUpload = async (e) => {
         e.preventDefault();
-            console.log(file);
-            
+        console.log(file);
+
         const formData = new FormData();
         formData.append("file", file);
         // formData.append("firstName", firstName);
@@ -59,6 +81,7 @@ function AccountSetting() {
             .catch((error) => {
                 console.log(error);
             });
+            setUpdate(!update)
     }
     if (loading) {
         return null;
@@ -70,16 +93,16 @@ function AccountSetting() {
                 <header className="flex justify-between items-center mb-6 px-10">
                     <h1 className="text-2xl font-bold text-gray-800">Account Settings</h1>
                     <div className="flex items-center space-x-2">
+                        <span className="ml-2 text-gray-800">{data.name}</span>
                         <div className="imagefield rounded-full w-10 h-10 overflow-hidden">
-                        <Image
-                            src={data.profileimage}
-                            alt="Profile Picture"
-                            width={40}
-                            height={40}
-                            className="object-cover w-full h-full"  
+                            <Image
+                                src={data.profileimage}
+                                alt="Profile Picture"
+                                width={40}
+                                height={40}
+                                className="object-cover w-full h-full"
                             />
-                            </div>
-                        <span className="ml-2 text-gray-800">Your Name</span>
+                        </div>
                     </div>
                 </header>
 
@@ -91,7 +114,7 @@ function AccountSetting() {
                             <div className="flex items-center mb-6">
                                 <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200">
                                     <Image
-                                        src={file}
+                                        src={tempfile.myfile || data.profileimage}
                                         alt="Profile Picture"
                                         layout="fill"
                                         objectFit="cover"
@@ -107,7 +130,7 @@ function AccountSetting() {
                                         id="profilePicture"
                                         className="hidden"
                                         accept="image/*"
-                                        onChange={(e) => setfile(e.target.files[0])}
+                                        onChange={(e) => onprofilechange(e)}
                                     />
                                 </div>
                             </div>
