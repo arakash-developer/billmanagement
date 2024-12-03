@@ -44,3 +44,8 @@ assa ami oi design ta thik kortaci
 
 import { Contex } from '@/app/contexapi/Rights'
 let {validated,setValidated} = useContext(Contex)
+
+multer cripto file 
+ profileimage: req.file.filename,
+
+  

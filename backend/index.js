@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true,parameterLimit: 999999999999999, limit: '5000mb' })); 
+app.use(bodyParser.urlencoded({ extended: true, parameterLimit: 999999999999999, limit: '5000mb' }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
@@ -17,9 +17,11 @@ const ProfileModel = require("./models/profilesetting");
 const multer = require('./utils/multer');
 const cloudinary = require('cloudinary').v2;
 const multerCloudinary = require('./utils/multerCloudinary');
+let fs = require('fs');
+const { log } = require('console');
 
 app.use(cors({
-  origin: ['https://billmanagements.vercel.app','http://localhost:3000','http://localhost:3000'],
+  origin: ['https://billmanagements.vercel.app', 'http://localhost:3000', 'http://localhost:3000'],
   methods: ['GET', 'POST'],
   credentials: true,
 }));
@@ -184,8 +186,8 @@ app.get('/profilesetting', isLoggedInP, async (req, res) => {
 
 
 
-app.post('/profileSetting', isLoggedInP,async (req, res) => {
-  let { name, phone, address, firstName, lastName, country, zipcode,profileimage } = req.body
+app.post('/profileSetting', isLoggedInP, async (req, res) => {
+  let { name, phone, address, firstName, lastName, country, zipcode, profileimage } = req.body
   let loginemail = req.userdata.email
   let user = await UserModel.findOneAndUpdate({ email: loginemail }, {
     name,
@@ -213,25 +215,39 @@ app.get('/profileSettingUpdate', isLoggedInP, async (req, res) => {
     user,
   })
 });
-// app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req, res) => {
-//   let { name, phone, address, firstName, lastName, country, zipcode } = req.body
-//   let loginemail = req.userdata.email
-//   let user = await UserModel.findOneAndUpdate({ email: loginemail }, {
-//     profileimage: req.file.filename,
-//     name,
-//     phone,
-//     address,
-//     firstName,
-//     lastName,
-//     country,
-//     zipcode
-//   }, { new: true });
-//   res.json({
-//     loginemail,
-//     result: true,
-//     user,
-//   })
-// });
+
+
+function toBase64(filePath) {
+  const img = fs.readFileSync(filePath);
+  return Buffer.from(img).toString('base64');
+}
+
+app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req, res) => {
+
+  
+  const base64String = toBase64(req.file.path);
+  // console.log(base64String);
+  const withPrefix = 'data:image/png;base64,' + base64String;
+  console.log(withPrefix);
+  
+  let { name, phone, address, firstName, lastName, country, zipcode } = req.body
+  let loginemail = req.userdata.email
+  let user = await UserModel.findOneAndUpdate({ email: loginemail }, {
+    profileimage: withPrefix,
+    name,
+    phone,
+    address,
+    firstName,
+    lastName,
+    country,
+    zipcode
+  }, { new: true });
+  res.json({
+    loginemail,
+    result: true,
+    user,
+  })
+});
 
 // app.post("/upload",multerCloudinary.single("file"),(req,res) => {
 //     cloudinary.uploader.upload(req.file.path,(err,result) => {
