@@ -30,12 +30,12 @@ function AccountSetting() {
                 })
                 let response = await blobs.json();
                 setData(response.user)
+                console.log(response.user);
                 setLoading(false)
             } catch (error) {
                 console.log(error);
             }
         }
-        console.log(data);
         getdata()
     }, [])
 
@@ -73,13 +73,13 @@ function AccountSetting() {
                 <header className="flex justify-between items-center mb-6 px-10">
                     <h1 className="text-2xl font-bold text-gray-800">Account Settings</h1>
                     <div className="flex items-center space-x-2">
-                        <Image
+                        {/* <Image
                             src={data.profileimage}
                             alt="Profile Picture"
                             width={40}
                             height={40}
                             className="rounded-full"
-                        />
+                        /> */}
                         <span className="ml-2 text-gray-800">Your Name</span>
                     </div>
                 </header>
@@ -91,12 +91,12 @@ function AccountSetting() {
                         <div className="flex justify-between px-10">
                             <div className="flex items-center mb-6">
                                 <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200">
-                                    <Image
+                                    {/* <Image
                                         src={data.profileimage}
                                         alt="Profile Picture"
                                         layout="fill"
                                         objectFit="cover"
-                                    />
+                                    /> */}
                                     <label
                                         htmlFor="profilePicture"
                                         className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white cursor-pointer"
