@@ -58,8 +58,9 @@ function AccountSetting() {
         await axios.post("https://billmanagement-server.vercel.app/profileSettingUpdate", {
             profileimage: image
         }, {
-            withCredentials:true,
             headers: {
+                "Access-Control-Allow-Origin": "https://billmanagements.vercel.app",
+                "Access-Control-Allow-Credentials": true,
                 "token": tok ? tok : "",
             },
         })
@@ -89,7 +90,7 @@ function AccountSetting() {
                     <h1 className="text-2xl font-bold text-gray-800">Account Settings</h1>
                     <div className="flex items-center space-x-2">
                         <Image
-                            src={data.profileimage }
+                            src={data.profileimage}
                             alt="Profile Picture"
                             width={40}
                             height={40}
@@ -111,11 +112,11 @@ function AccountSetting() {
                                         alt="Profile Picture"
                                         layout="fill"
                                         objectFit="cover"
-                                        />
+                                    />
                                     <label
                                         htmlFor="profilePicture"
                                         className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white cursor-pointer"
-                                        >
+                                    >
                                         <FiCamera size={20} />
                                     </label>
                                     <input
