@@ -22,14 +22,13 @@ function AccountSetting() {
         setTok(token)
         let getdata = async () => {
             setLoading(true)
-            let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
+            let blobs = await fetch("https://billmanagement-server.vercel.app/profileSettingUpdate", {
                 headers: {
                     "token": token ? token : "",
                 }
             })
             let response = await blobs.json();
-            console.log(response);
-            setData(response.profileset)
+            setData(response.user)
             setLoading(false)
         }
         getdata()
@@ -38,6 +37,8 @@ function AccountSetting() {
 
     const handleUpload = async (e) => {
         e.preventDefault();
+            console.log(file);
+            
         const formData = new FormData();
         formData.append("file", file);
         // formData.append("firstName", firstName);
@@ -69,13 +70,15 @@ function AccountSetting() {
                 <header className="flex justify-between items-center mb-6 px-10">
                     <h1 className="text-2xl font-bold text-gray-800">Account Settings</h1>
                     <div className="flex items-center space-x-2">
+                        <div className="imagefield rounded-full w-10 h-10 overflow-hidden">
                         <Image
                             src={data.profileimage}
                             alt="Profile Picture"
                             width={40}
                             height={40}
-                            className="rounded-full"
-                        />
+                            className="object-cover w-full h-full"  
+                            />
+                            </div>
                         <span className="ml-2 text-gray-800">Your Name</span>
                     </div>
                 </header>
@@ -88,7 +91,7 @@ function AccountSetting() {
                             <div className="flex items-center mb-6">
                                 <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200">
                                     <Image
-                                        src={data.profileimage}
+                                        src={file}
                                         alt="Profile Picture"
                                         layout="fill"
                                         objectFit="cover"
@@ -126,7 +129,7 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="firstName"
-                                    value={firstName}
+                                    value={data.name}
                                     onChange={(e) => setFirstName(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="First Name"
@@ -150,7 +153,7 @@ function AccountSetting() {
                                 <input
                                     type="email"
                                     name="email"
-                                    value={email}
+                                    value={data.email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="example@gmail.com"
@@ -162,7 +165,7 @@ function AccountSetting() {
                                 <input
                                     type="tel"
                                     name="mobileNumber"
-                                    value={phone}
+                                    value={data.phone}
                                     onChange={(e) => setPhone(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="0806 123 7890"
@@ -174,7 +177,7 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="address"
-                                    value={address}
+                                    value={data.address}
                                     onChange={(e) => setAddress(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Primary Address"
@@ -185,7 +188,7 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="country"
-                                    value={country}
+                                    value={data.country || "Country"}
                                     onChange={(e) => setCountry(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Country"
@@ -196,7 +199,7 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="taxId"
-                                    value={zipcode}
+                                    value={data.zipcode || "Post Code"}
                                     onChange={(e) => setZipcode(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Post Code"
