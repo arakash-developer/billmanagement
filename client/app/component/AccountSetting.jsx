@@ -4,18 +4,6 @@ import Image from "next/image";
 import { FiCamera } from "react-icons/fi";
 import axios from "axios";
 
-let Convertbase64 = (file) => {
-    return new Promise((resolve, reject) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(file);
-        fileReader.onload = () => {
-            resolve(fileReader.result);
-        };
-        fileReader.onerror = (error) => {
-            reject(error);
-        };
-    })
-}
 function AccountSetting() {
     let [tok, setTok] = useState()
     const [file, setfile] = useState()
@@ -34,31 +22,32 @@ function AccountSetting() {
         setTok(token)
         let getdata = async () => {
             setLoading(true)
-            try {
-                let blobs = await fetch("https://billmanagement-server.vercel.app/profileSettingUpdate", {
-                    headers: {
-                        "token": token ? token : "",
-                    }
-                })
-                let response = await blobs.json();
-                setData(response.user)
-                console.log(response.user);
-                setLoading(false)
-            } catch (error) {
-                console.log(error);
-            }
+            let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
+                headers: {
+                    "token": token ? token : "",
+                }
+            })
+            let response = await blobs.json();
+            setData(response.profileset)
+            setLoading(false)
         }
         getdata()
     }, [])
 
-    let [image, setImage] = useState("");
+
     const handleUpload = async (e) => {
         e.preventDefault();
-        console.log(image);
-        await axios.post("https://billmanagement-server.vercel.app/profileSettingUpdate", {
-            profileimage: image.toString(),
-        }, {
+        const formData = new FormData();
+        formData.append("file", file);
+        // formData.append("firstName", firstName);
+        // formData.append("lastName", lastName);
+        // formData.append("country", country);
+        // formData.append("phone", phone);
+        // formData.append("address", address);
+        // formData.append("zipcode", zipcode);
+        await axios.post("https://billmanagement-server.vercel.app/profileuploadupdate", formData, {
             headers: {
+                "Content-Type": "multipart/form-data",
                 "token": tok ? tok : "",
             },
         })
@@ -69,14 +58,6 @@ function AccountSetting() {
                 console.log(error);
             });
     }
-
-    let handleImageChange = async (e) => {
-        const file = e.target.files[0];
-        const base64 = await Convertbase64(file)
-        // console.log(base64);
-        setImage(base64)
-    }
-
     if (loading) {
         return null;
     }
@@ -106,7 +87,7 @@ function AccountSetting() {
                             <div className="flex items-center mb-6">
                                 <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200">
                                     <Image
-                                        src={image}
+                                        src={data.profileimage}
                                         alt="Profile Picture"
                                         layout="fill"
                                         objectFit="cover"
@@ -118,11 +99,11 @@ function AccountSetting() {
                                         <FiCamera size={20} />
                                     </label>
                                     <input
-                                        onChange={(e) => handleImageChange(e)}
                                         type="file"
                                         id="profilePicture"
                                         className="hidden"
                                         accept="image/*"
+                                        onChange={(e) => setfile(e.target.files[0])}
                                     />
                                 </div>
                             </div>
