@@ -181,18 +181,18 @@ app.get('/profilesetting', isLoggedInP, async (req, res) => {
 
 
 
-app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req, res) => {
-  let { name, phone, address, firstName, lastName, country, zipcode } = req.body
+app.post('/profileSetting', isLoggedInP,async (req, res) => {
+  let { name, phone, address, firstName, lastName, country, zipcode,profileimage } = req.body
   let loginemail = req.userdata.email
   let user = await UserModel.findOneAndUpdate({ email: loginemail }, {
-    profileimage: req.file.filename,
     name,
     phone,
     address,
     firstName,
     lastName,
     country,
-    zipcode
+    zipcode,
+    profileimage,
   }, { new: true });
   res.json({
     loginemail,
@@ -200,6 +200,25 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
     user,
   })
 });
+// app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req, res) => {
+//   let { name, phone, address, firstName, lastName, country, zipcode } = req.body
+//   let loginemail = req.userdata.email
+//   let user = await UserModel.findOneAndUpdate({ email: loginemail }, {
+//     profileimage: req.file.filename,
+//     name,
+//     phone,
+//     address,
+//     firstName,
+//     lastName,
+//     country,
+//     zipcode
+//   }, { new: true });
+//   res.json({
+//     loginemail,
+//     result: true,
+//     user,
+//   })
+// });
 
 // app.post("/upload",multerCloudinary.single("file"),(req,res) => {
 //     cloudinary.uploader.upload(req.file.path,(err,result) => {
