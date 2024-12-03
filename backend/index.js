@@ -200,6 +200,16 @@ app.post('/profileSetting', isLoggedInP,async (req, res) => {
     user,
   })
 });
+
+
+app.get('/profileSettingUpdate', isLoggedInP, async (req, res) => {
+  let loginemail = req.userdata.email
+  let user = await UserModel.findOne({ email: loginemail });
+  res.json({
+    result: true,
+    user,
+  })
+});
 // app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req, res) => {
 //   let { name, phone, address, firstName, lastName, country, zipcode } = req.body
 //   let loginemail = req.userdata.email

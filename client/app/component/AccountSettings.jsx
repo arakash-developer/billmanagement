@@ -22,20 +22,15 @@ function AccountSetting() {
         setTok(token)
         let getdata = async () => {
             setLoading(true)
-            try {
-                let blobs = await fetch("https://billmanagement-server.vercel.app/profileSettingUpdate",{
-                    headers: {
-                        "token": token ? token : "",
-                    }
-                })
-                let response = await blobs.json();
-                setData(response.user)
-                setLoading(false)
-            } catch (error) {
-                console.log(error);
-            }
+            let blobs = await fetch("https://billmanagement-server.vercel.app/profilesetting", {
+                headers: {
+                    "token": token ? token : "",
+                }
+            })
+            let response = await blobs.json();
+            setData(response.profileset)
+            setLoading(false)
         }
-        console.log(data);
         getdata()
     }, [])
 
