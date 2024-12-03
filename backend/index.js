@@ -15,21 +15,15 @@ const multer = require('./utils/multer');
 const cloudinary = require('cloudinary').v2;
 const multerCloudinary = require('./utils/multerCloudinary');
 
-const allowedOrigins = ['https://billmanagements.vercel.app'];
 app.use(cors({
-  origin: (origin, callback) => {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: ['https://billmanagements.vercel.app','http://localhost:3000','http://localhost:3000'],
+  methods: ['GET', 'POST'],
   credentials: true,
 }));
 
 
 app.get('/', (req, res) => {
-  res.send("Helllow2070")
+  res.send("Helllow200")
 });
 
 
@@ -187,8 +181,8 @@ app.get('/profilesetting', isLoggedInP, async (req, res) => {
 
 
 
-app.post('/profileSetting', isLoggedInP, async (req, res) => {
-  let { name, phone, address, firstName, lastName, country, zipcode, profileimage } = req.body
+app.post('/profileSetting', isLoggedInP,async (req, res) => {
+  let { name, phone, address, firstName, lastName, country, zipcode,profileimage } = req.body
   let loginemail = req.userdata.email
   let user = await UserModel.findOneAndUpdate({ email: loginemail }, {
     name,

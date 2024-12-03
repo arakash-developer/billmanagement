@@ -59,8 +59,6 @@ function AccountSetting() {
             profileimage: image
         }, {
             headers: {
-                "Access-Control-Allow-Origin": "https://billmanagements.vercel.app",
-                "Access-Control-Allow-Credentials": true,
                 "token": tok ? tok : "",
             },
         })
