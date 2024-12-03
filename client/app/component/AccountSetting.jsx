@@ -51,12 +51,12 @@ function AccountSetting() {
         getdata()
     }, [])
 
-    let [image, setImage] = useState({myfile: ""});
+    let [image, setImage] = useState("");
     const handleUpload = async (e) => {
         e.preventDefault();
-        // console.log(image);
+        console.log(image);
         await axios.post("https://billmanagement-server.vercel.app/profileSettingUpdate", {
-            profileimage: image.myfile
+            profileimage: image.toString(),
         }, {
             headers: {
                 "token": tok ? tok : "",
@@ -74,7 +74,7 @@ function AccountSetting() {
         const file = e.target.files[0];
         const base64 = await Convertbase64(file)
         // console.log(base64);
-        setImage({...image,myfile: base64})
+        setImage(base64)
     }
 
     if (loading) {
