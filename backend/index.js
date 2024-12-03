@@ -15,11 +15,9 @@ const multer = require('./utils/multer');
 const cloudinary = require('cloudinary').v2;
 const multerCloudinary = require('./utils/multerCloudinary');
 
-app.use(cors({
-  origin: ['https://billmanagements.vercel.app', 'http://localhost:3000'],
-  methods: ['GET', 'POST'],
-  credentials: true,
-}));
+app.use(cors());
+
+
 
 
 app.get('/', (req, res) => {

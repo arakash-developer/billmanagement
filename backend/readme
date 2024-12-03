@@ -1,2 +1,9 @@
 LlmmKsEH1MNpF2R8
 arakashdeveloper
+
+
+app.use(cors({
+  origin: ['https://billmanagements.vercel.app', 'http://localhost:3000'],
+  methods: ['GET', 'POST'],
+  credentials: true,
+}));

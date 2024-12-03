@@ -58,6 +58,7 @@ function AccountSetting() {
         await axios.post("https://billmanagement-server.vercel.app/profileSettingUpdate", {
             profileimage: image
         }, {
+            withCredentials:true,
             headers: {
                 "token": tok ? tok : "",
             },
@@ -73,7 +74,7 @@ function AccountSetting() {
     let handleImageChange = async (e) => {
         const file = e.target.files[0];
         const base64 = await Convertbase64(file)
-        console.log(base64);
+        // console.log(base64);
         setImage(base64)
     }
 
