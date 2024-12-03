@@ -63,12 +63,12 @@ function AccountSetting() {
 
         const formData = new FormData();
         formData.append("file", file);
-        // formData.append("firstName", firstName);
-        // formData.append("lastName", lastName);
-        // formData.append("country", country);
-        // formData.append("phone", phone);
-        // formData.append("address", address);
-        // formData.append("zipcode", zipcode);
+        formData.append("firstName", firstName);
+        formData.append("lastName", lastName);
+        formData.append("country", country);
+        formData.append("phone", phone);
+        formData.append("address", address);
+        formData.append("zipcode", zipcode);
         await axios.post("https://billmanagement-server.vercel.app/profileuploadupdate", formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
@@ -152,7 +152,7 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="firstName"
-                                    value={data.name}
+                                    value={firstName || data.name}
                                     onChange={(e) => setFirstName(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="First Name"
@@ -164,7 +164,7 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="lastName"
-                                    value={lastName}
+                                    value={lastName || data.lastName}
                                     onChange={(e) => setLastName(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Last Name"
@@ -176,7 +176,7 @@ function AccountSetting() {
                                 <input
                                     type="email"
                                     name="email"
-                                    value={data.email}
+                                    value={email ||data.email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="example@gmail.com"
@@ -188,7 +188,7 @@ function AccountSetting() {
                                 <input
                                     type="tel"
                                     name="mobileNumber"
-                                    value={data.phone}
+                                    value={phone ||data.phone}
                                     onChange={(e) => setPhone(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="0806 123 7890"
@@ -200,7 +200,7 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="address"
-                                    value={data.address}
+                                    value={address || data.address}
                                     onChange={(e) => setAddress(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Primary Address"
@@ -211,7 +211,7 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="country"
-                                    value={data.country || "Country"}
+                                    value={country ||data.country}
                                     onChange={(e) => setCountry(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Country"
@@ -222,7 +222,7 @@ function AccountSetting() {
                                 <input
                                     type="text"
                                     name="taxId"
-                                    value={data.zipcode || "Post Code"}
+                                    value={zipcode ||data.zipcode}
                                     onChange={(e) => setZipcode(e.target.value)}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Post Code"
@@ -233,7 +233,7 @@ function AccountSetting() {
                                 <input
                                     type="password"
                                     name="currentPassword"
-                                    value={"Akash"}
+                                    value={"aa"}
                                     className="w-full border border-gray-300 rounded px-4 py-2"
                                     placeholder="Current Password"
                                     required
