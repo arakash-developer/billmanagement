@@ -57,7 +57,7 @@ const Navbar = () => {
             href="/profile"
             className="w-10 h-10 border-2 border-orange-200 rounded-full overflow-hidden"
           >
-            <Image src={data.profileimage} width={200} height={200} alt={kadir} className="w-full h-full object-center" />
+            {/* <Image src={data.profileimage} width={200} height={200} alt={kadir} className="w-full h-full object-center" /> */}
           </Link>
           <div className='absolute md:left-full md:-right-3 top-full -right-[265px] md:top-1/2 -translate-y-1/2'>
             <div className="relative w-64 md:w-72">
