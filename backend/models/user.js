@@ -5,14 +5,26 @@ let userSchema = mongoose.Schema ({
     email:String,
     name:String,
     password:String,
-    firstName:String,
-    lastName:String,
+    firstName:{
+        type: String,
+        default: "First Name",
+    },
+    lastName:{
+        type: String,
+        default: "Last Name",
+    },
     companyName:{
         type: String,
         default: "Company Name",
     },
-    address:String,
-    country:String,
+    address:{
+        type: String,
+        default: "Address",
+    },
+    country:{
+        type: String,
+        default: "Country",
+    },
     zipcode:{
         type: String,
         default: "00000",
