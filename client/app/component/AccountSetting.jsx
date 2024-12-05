@@ -247,7 +247,7 @@ function AccountSetting() {
                     <section className="bg-white rounded-lg shadow p-6">
                         <form>
                             {/* Profile Picture Upload */}
-                            <div className="flex justify-between px-10">
+                            <div className="flex justify-between">
                                 <div className="flex items-center mb-6">
                                     <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200">
                                         <Image
