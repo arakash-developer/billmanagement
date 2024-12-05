@@ -88,7 +88,7 @@ function AccountSetting() {
     }
     return (
         <main className="h-full w-full bg-gray-50 overflow-y-scroll">
-                <section className=" bg-gray-50">
+            <section className=" bg-gray-50">
                 <section id="profile" className="flex-1 p-6 pt-0 w-full max-w-5xl mx-auto">
                     <section className="bg-white rounded-lg shadow p-6">
                         <form>
