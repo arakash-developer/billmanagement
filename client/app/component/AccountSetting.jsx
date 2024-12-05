@@ -87,32 +87,11 @@ function AccountSetting() {
         return null;
     }
     return (
-        <main className="h-full">
-                <section id="wellcome" className="flex-1 p-6 w-full mt-20 bg-gray-100">
-                    <header className="flex justify-between items-center ">
-                        <h1 className="text-2xl font-bold text-gray-800 capitalize">Wellcome !!</h1>
-                        <div className="flex items-center space-x-2">
-                            <span className="ml-2 text-gray-800 font-medium">{data.name}</span>
-                            <div className="imagefield rounded-full w-10 h-10 overflow-hidden">
-                                <Image
-                                    src={data.profileimage}
-                                    alt="Profile Picture"
-                                    width={40}
-                                    height={40}
-                                    className="object-cover w-full h-full"
-                                />
-                            </div>
-                        </div>
-                    </header>
-                </section>
-
-
-            <section className="w-full h-full overflow-y-scroll bg-gray-50">
+        <main className="h-full w-full bg-gray-50 overflow-y-scroll">
+                <section className=" bg-gray-50">
                 <section id="profile" className="flex-1 p-6 pt-0 w-full max-w-5xl mx-auto">
-                    {/* Form Section */}
                     <section className="bg-white rounded-lg shadow p-6">
                         <form>
-                            {/* Profile Picture Upload */}
                             <div className="flex justify-between px-10">
                                 <div className="flex items-center mb-6">
                                     <div className="relative w-24 h-24 rounded-full overflow-hidden bg-gray-200">

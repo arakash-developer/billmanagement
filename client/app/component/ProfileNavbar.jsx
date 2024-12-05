@@ -21,9 +21,9 @@ const ProfileNavbar = () => {
         router.push('/')
     }
     return (
-        <div className="h-screen  overflow-hidden bg-garay-100 flex">
+        <div className="h-full overflow-hidden bg-garay-100 flex">
             {/* Sidebar */}
-            <aside className="w-64 mt-28 h-full overflow-hidden">
+            <aside className="w-64 mt-10 h-full overflow-hidden">
                 <div className="">
                     <div className="">
                         <h2 className="text-2xl font-semibold ml-3 text-blue-600">NextEra</h2>

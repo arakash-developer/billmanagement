@@ -47,7 +47,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="absolute top-0 left-0 w-full pb-5 md:py-5 bg-gray-100 shadow-md z-50">
+    <div className="relative top-0 left-0 w-full pb-5 md:py-5 bg-gray-100 shadow-md z-50">
       <Container className="flex justify-between items-center">
         {/* Profile and Search Section */}
          {
