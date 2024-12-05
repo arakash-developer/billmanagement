@@ -384,5 +384,4 @@ function AccountSetting() {
         </main>
     );
 }
-
 export default AccountSetting;
