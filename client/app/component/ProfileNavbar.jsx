@@ -21,18 +21,18 @@ const ProfileNavbar = () => {
         router.push('/')
     }
     return (
-        <div className="h-[60%] overflow-hidden bg-gray-100 flex">
+        <div className="h-screen  overflow-hidden bg-garay-100 flex">
             {/* Sidebar */}
-            <aside className="w-64 bg-white shadow-md">
-                <div className="fixed">
-                    <div className="p-6">
-                        <h2 className="text-2xl font-semibold text-blue-600">Company Name</h2>
+            <aside className="w-64 mt-28 h-full overflow-hidden">
+                <div className="">
+                    <div className="">
+                        <h2 className="text-2xl font-semibold ml-3 text-blue-600">NextEra</h2>
                     </div>
-                    <nav className="mt-6">
-                        <ul className="space-y-2">
+                    <nav className="mt-6 w-full">
+                        <ul className="space-y-2 w-full">
                             <li>
                                 <Link href="#profile" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
-                                    Your Profile
+                                    Profile
                                 </Link>
                             </li>
 
@@ -44,7 +44,7 @@ const ProfileNavbar = () => {
 
                             <li>
                                 <Link href="#profile" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
-                                    your Orders
+                                     Orders
                                 </Link>
                             </li>
 
