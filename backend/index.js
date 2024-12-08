@@ -275,10 +275,10 @@ app.post("/cash",isLoggedInP, async (req,res) => {
     phone,
     totalPrice
   })
-  res.json({
+  res.status(200).json({
     result: true,
     userCreate,
-  })
+  })  
 })
 
 
