@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useLayoutEffect } from 'react'
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import Container from '../component/layers/Container'
 import Link from 'next/link'
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
@@ -17,22 +17,22 @@ const page = () => {
           setValidated(true)
       }
   }, [])
-  // useEffect(() => {
-  //   let token = localStorage.getItem("token")
-  //   let getdata = async () => {
-  //     let blobs = await fetch("https://billmanagement-server.vercel.app/clientdata", {
-  //       headers: {
-  //         "token": token ? token : "",
-  //       }
-  //     })
-  //     let response = await blobs.json();
-  //     let clients = response.clientdata;
-  //     // console.log(clients);
-  //     clients?.reverse();
-  //     setData(clients)
-  //   }
-  //   getdata()
-  // }, [])
+  let [cashData,setCashData] = useState([])
+  useEffect(() => {
+    let token = localStorage.getItem("token")
+    let getdata = async () => {
+      let blobs = await fetch("https://billmanagement-server.vercel.app/cash", {
+        headers: {
+          "token": token ? token : "",
+        }
+      })
+      let response = await blobs.json();
+      let cashData = response.cashData;
+      cashData?.reverse();
+      setCashData(cashData)
+    }
+    getdata()
+  }, [])
   const transition = [
     {
       id: 1,
@@ -70,7 +70,7 @@ const page = () => {
     <div className=''>
       <Container className={"max-w-[700px]"}>
           {
-            transition.map((item , index)=>(
+            cashData.map((item , index)=>(
               <Link href="/"
               key={index}
               className='flex justify-between items-center  border-b-2 border-blue-200 px-4 py-3 bg-blue-100 hover:bg-blue-200 shadow-sm '
