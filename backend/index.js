@@ -14,11 +14,11 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 let UserModel = require("./models/user");
 const ProfileModel = require("./models/profilesetting");
+const CashModel = require("./models/cash");
 const multer = require('./utils/multer');
 const cloudinary = require('cloudinary').v2;
 const multerCloudinary = require('./utils/multerCloudinary');
 let fs = require('fs');
-const { log } = require('console');
 
 app.use(cors({
   origin: ['https://billmanagements.vercel.app', 'http://localhost:3000', 'http://localhost:3000'],
@@ -249,6 +249,7 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
   })
 });
 
+
 // app.post("/upload",multerCloudinary.single("file"),(req,res) => {
 //     cloudinary.uploader.upload(req.file.path,(err,result) => {
 //       if(err){
@@ -265,6 +266,20 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
 //     })
 // })
 
+
+app.post("/cash",isLoggedInP, async (req,res) => {
+  let { name, address, phone, totalPrice } = req.body
+  let userCreate = await CashModel.create({
+    name,
+    address,
+    phone,
+    totalPrice
+  })
+  res.json({
+    result: true,
+    userCreate,
+  })
+})
 
 
 app.listen(4000, () => {
