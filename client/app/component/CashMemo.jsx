@@ -7,6 +7,7 @@ import Header from './Header';
 import { Contex } from '@/app/contexapi/Rights'
 import withAuth from '../auth/withAuth';
 import '../../app/globals.css'
+import axios from 'axios';
 
 const convertToBangla = (num) => {
     const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
@@ -36,8 +37,10 @@ const CashMemo = ({ className }) => {
     }, [])
 
     let [clients, setData] = useState([])
+    let [tok, setTok] = useState("")
     useEffect(() => {
         let token = localStorage.getItem("token")
+        setTok(token)
         let getdata = async () => {
             let blobs = await fetch("https://billmanagement-server.vercel.app/singleclient", {
                 headers: {

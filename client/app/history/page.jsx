@@ -17,6 +17,22 @@ const page = () => {
           setValidated(true)
       }
   }, [])
+  // useEffect(() => {
+  //   let token = localStorage.getItem("token")
+  //   let getdata = async () => {
+  //     let blobs = await fetch("https://billmanagement-server.vercel.app/clientdata", {
+  //       headers: {
+  //         "token": token ? token : "",
+  //       }
+  //     })
+  //     let response = await blobs.json();
+  //     let clients = response.clientdata;
+  //     // console.log(clients);
+  //     clients?.reverse();
+  //     setData(clients)
+  //   }
+  //   getdata()
+  // }, [])
   const transition = [
     {
       id: 1,

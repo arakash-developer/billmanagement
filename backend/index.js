@@ -281,6 +281,15 @@ app.post("/cash",isLoggedInP, async (req,res) => {
   })  
 })
 
+app.get('/cash', isLoggedInP, async (req, res) => {
+  let cashData = await CashModel.find();
+  // console.log(req.headers.token);
+  // res.setHeader('token',"AKASH")
+  res.status(200).json({
+    cashData,
+    result: true
+  });
+});
 
 app.listen(4000, () => {
   console.log("Server Start");
