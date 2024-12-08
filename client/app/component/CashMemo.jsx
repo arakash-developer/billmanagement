@@ -5,8 +5,8 @@ import { saveAs } from 'file-saver';
 import Container from './layers/Container';
 import Header from './Header';
 import { Contex } from '@/app/contexapi/Rights'
-import { useRouter } from 'next/navigation'
 import withAuth from '../auth/withAuth';
+import '../../app/globals.css'
 
 const convertToBangla = (num) => {
     const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
@@ -58,6 +58,7 @@ const CashMemo = ({ className }) => {
     const [tax, setTax] = useState('');
     const [language, setLanguage] = useState('en');
     const olRef = useRef(null);
+    const addButtonRef = useRef(null);
 
     // Handle input changes
     const handleInputChange = (index, field, value) => {
@@ -98,10 +99,10 @@ const CashMemo = ({ className }) => {
     const addNewRow = () => {
         setItems([...items, { item: '', quantity: '', rate: '', taka: '' }]);
 
-        if (olRef.current) {
-            olRef.current.scrollIntoView({
+        if (addButtonRef.current) {
+            addButtonRef.current.scrollIntoView({
                 behavior: 'smooth',
-                block: 'end',
+                block: 'start',
 
             });
         }
@@ -141,7 +142,7 @@ const CashMemo = ({ className }) => {
                     input.classList.add('placeholder-light');
                 });
 
-                const options = { quality: 2, backgroundColor: '#fff' , width: 700 };
+                const options = { quality: 2, backgroundColor: '#fff' , placeholder: '#' };
                 const dataUrl = await toPng(olRef.current, options);
 
                 saveAs(dataUrl, 'cash-memo.png');
@@ -179,7 +180,7 @@ const CashMemo = ({ className }) => {
                             </button>
                         </div>
 
-                        <ol ref={olRef} className=" flex flex-col gap-y-4">
+                        <ol ref={olRef} className=" flex flex-col gap-y-4 mb-10">
                             <Header name={name?name:""} phone={phone} companyName={companyName} address={address}/>
                             
                                 {items.map((row, index) => (
@@ -249,7 +250,7 @@ const CashMemo = ({ className }) => {
 
                         </ol>
 
-                        <div className=''>
+                        <div ref={addButtonRef} className=''>
                             <button
                                 onClick={addNewRow}
                                 className="w-full  bg-blue-500 text-white px-4 py-1 md:py-4  hover:bg-blue-600"
