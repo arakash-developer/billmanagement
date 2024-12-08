@@ -87,9 +87,9 @@ function AccountSetting() {
         return null;
     }
     return (
-        <main className="h-full w-full bg-gray-50 overflow-y-scroll">
+        <main className="h-full w-full bg-gray-50 ">
             <section className=" bg-gray-50">
-                <section id="profile" className="flex-1 p-6 pt-0 w-full max-w-5xl mx-auto">
+                {/* <section id="profile" className="flex-1 p-6 pt-0 w-full max-w-5xl mx-auto">
                     <section className="bg-white rounded-lg shadow p-6">
                         <form>
                             <div className="flex justify-between px-10">
@@ -127,7 +127,7 @@ function AccountSetting() {
                                 </div>
                             </div>
 
-                            {/* Input Fields */}
+                            
                             <div className="grid grid-cols-2 gap-6">
                                 <div>
                                     <label className="block text-gray-600 mb-2">First Name</label>
@@ -224,11 +224,11 @@ function AccountSetting() {
                             </div>
                         </form>
                     </section>
-                </section>
+                </section> */}
                 <section id="store" className="flex-1 p-6 w-full max-w-5xl mx-auto">
                     {/* Header */}
                     <header className="flex justify-between items-center mb-6">
-                        <h1 className="text-2xl font-bold text-gray-800 capitalize">Account Settings</h1>
+                        <h1 className="text-2xl font-bold text-gray-800 capitalize">Your Store Details</h1>
                         <div className="flex items-center space-x-2">
                             <span className="ml-2 text-gray-800 font-medium">{data.name}</span>
                             <div className="imagefield rounded-full w-10 h-10 overflow-hidden">

@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { Contex } from '@/app/contexapi/Rights'
 import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import ProfilePage from "./ProfilePage";
+import Orders from "./Orders ";
+import Settings from "./Settings ";
 const ProfileNavbar = () => {
     let { validated, setValidated } = useContext(Contex)
     const router = useRouter();
@@ -21,9 +23,9 @@ const ProfileNavbar = () => {
         router.push('/')
     }
     return (
-        <div className="h-full overflow-hidden bg-garay-100 flex">
+        <div className="h-screen overflow-hidden bg-garay-100 flex ">
             {/* Sidebar */}
-            <aside className="w-64 mt-10 h-full overflow-hidden">
+            <aside className="fixed w-64 mt-10 h-full overflow-hidden">
                 <div className="">
                     <div className="">
                         <h2 className="text-2xl font-semibold ml-3 text-blue-600">NextEra</h2>
@@ -43,20 +45,20 @@ const ProfileNavbar = () => {
                             </li>
 
                             <li>
-                                <Link href="#profile" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
+                                <Link href="#orders" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
                                      Orders
                                 </Link>
                             </li>
 
                             <li>
-                                <Link href="#" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
+                                <Link href="#dashboard" className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300">
                                     Dashboard
                                 </Link>
                             </li>
 
                             <li>
                                 <Link
-                                    href='#'
+                                    href='#setting'
                                     className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300"
                                 >
                                     Settings
@@ -72,9 +74,11 @@ const ProfileNavbar = () => {
                     </nav>
                 </div>
             </aside>
-            <div className="w-full">
+            <div className="w-full pl-[250px] overflow-scroll">
                 <ProfilePage />
-                <AccountSetting />
+                {/* <AccountSetting /> */}
+                <Orders/>
+                <Settings/>
             </div>
 
         </div>
