@@ -29,10 +29,10 @@ const convertToEnglish = (num) => {
 const CashMemo = ({ className }) => {
     let { validated, setValidated } = useContext(Contex)
     useLayoutEffect(() => {
-      let valid = localStorage.getItem('login');
-      if (valid) {
-        setValidated(true)
-      }
+        let valid = localStorage.getItem('login');
+        if (valid) {
+            setValidated(true)
+        }
     }, [])
 
     let [clients, setData] = useState([])
@@ -50,8 +50,8 @@ const CashMemo = ({ className }) => {
         }
         getdata()
     }, [])
-    
-    let {name,phone,companyName,address} = clients;
+
+    let { name, phone, companyName, address } = clients;
     const [items, setItems] = useState(
         Array.from({ length: 5 }, () => ({ item: '', quantity: '', rate: '', taka: '' }))
     );
@@ -142,7 +142,7 @@ const CashMemo = ({ className }) => {
                     input.classList.add('placeholder-light');
                 });
 
-                const options = { quality: 2, backgroundColor: '#fff' , placeholder: '#' };
+                const options = { quality: 2, backgroundColor: '#fff', placeholder: '#' };
                 const dataUrl = await toPng(olRef.current, options);
 
                 saveAs(dataUrl, 'cash-memo.png');
@@ -151,7 +151,21 @@ const CashMemo = ({ className }) => {
                     input.classList.remove('placeholder-light');
                 });
 
+                console.log("OKK");
+                await axios.post("https://billmanagement-server.vercel.app/cash", {"name":"Rimjim"}, {
+                    headers: {
+                        "token": tok ? tok : "",
+                    },
+                })
+                    .then((response) => {
+                        console.log(response);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+
                 alert(language === 'bn' ? 'ইমেজ সফলভাবে ডাউনলোড হয়েছে।' : 'Image downloaded successfully.');
+
             } catch (error) {
                 console.error('Could not generate image', error);
                 alert(language === 'bn' ? 'ইমেজ ডাউনলোড ব্যর্থ।' : 'Image download failed.');
@@ -181,43 +195,43 @@ const CashMemo = ({ className }) => {
                         </div>
 
                         <ol ref={olRef} className=" flex flex-col gap-y-4 mb-10">
-                            <Header name={name?name:""} phone={phone} companyName={companyName} address={address}/>
-                            
-                                {items.map((row, index) => (
-                                    <li key={index} className=''>
-                                        <div className="md:w-full flex justify-between border-transparent shadow-md rounded-md px-2">
-                                            <div className="w-4 text-center font-bold">{index + 1}.</div>
-                                            {['item', 'quantity', 'rate', 'taka'].map((field, i) => (
-                                                <div
-                                                    key={i}
-                                                    className={`relative flex flex-col ${field === 'item' ? 'md:w-56 w-28' : field === 'quantity' ? 'md:w-28 w-16' : 'md:w-36 w-16'
-                                                        } gap-y-0.5`}
-                                                >
-                                                    {index === 0 && (
-                                                        <div className='absolute -top-9 md:-top-10 border-blue-600 border-b-2 bg-blue-100 h-7 md:h-9 w-full text-center items-center'>
-                                                            <label htmlFor={field} className="font-bold text-[12px] md:text-base capitalize text-blue-600 ">
-                                                                {language === 'bn'
-                                                                    ? (field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
-                                                                    : field.charAt(0).toUpperCase() + field.slice(1)}
-                                                            </label>
-                                                        </div>
-                                                    )}
-                                                    <input
-                                                        name={field}
-                                                        type="text"
-                                                        placeholder={language === 'bn'
-                                                            ? (field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
-                                                            : field.charAt(0).toUpperCase() + field.slice(1)}
-                                                        value={formatValue(row[field])}
-                                                        onChange={(e) => handleInputChange(index, field, e.target.value)}
-                                                        className="bg-[#f5f5f533] outline-none md:py-2 rounded-sm md:px-3 md:rounded-md md:text-base text-sm placeholder:text-sm"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </li>
-                                ))}
-                            
+                            <Header name={name ? name : ""} phone={phone} companyName={companyName} address={address} />
+
+                            {items.map((row, index) => (
+                                <li key={index} className=''>
+                                    <div className="md:w-full flex justify-between border-transparent shadow-md rounded-md px-2">
+                                        <div className="w-4 text-center font-bold">{index + 1}.</div>
+                                        {['item', 'quantity', 'rate', 'taka'].map((field, i) => (
+                                            <div
+                                                key={i}
+                                                className={`relative flex flex-col ${field === 'item' ? 'md:w-56 w-28' : field === 'quantity' ? 'md:w-28 w-16' : 'md:w-36 w-16'
+                                                    } gap-y-0.5`}
+                                            >
+                                                {index === 0 && (
+                                                    <div className='absolute -top-9 md:-top-10 border-blue-600 border-b-2 bg-blue-100 h-7 md:h-9 w-full text-center items-center'>
+                                                        <label htmlFor={field} className="font-bold text-[12px] md:text-base capitalize text-blue-600 ">
+                                                            {language === 'bn'
+                                                                ? (field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
+                                                                : field.charAt(0).toUpperCase() + field.slice(1)}
+                                                        </label>
+                                                    </div>
+                                                )}
+                                                <input
+                                                    name={field}
+                                                    type="text"
+                                                    placeholder={language === 'bn'
+                                                        ? (field === 'item' ? 'পণ্য' : field === 'quantity' ? 'পরিমাণ' : field === 'rate' ? 'দাম' : 'টাকা')
+                                                        : field.charAt(0).toUpperCase() + field.slice(1)}
+                                                    value={formatValue(row[field])}
+                                                    onChange={(e) => handleInputChange(index, field, e.target.value)}
+                                                    className="bg-[#f5f5f533] outline-none md:py-2 rounded-sm md:px-3 md:rounded-md md:text-base text-sm placeholder:text-sm"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </li>
+                            ))}
+
 
                             <div className=''>
                                 <ul className='flex justify-end md:justify-between md:items-center px-2'>
