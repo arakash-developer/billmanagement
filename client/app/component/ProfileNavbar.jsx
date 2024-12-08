@@ -73,7 +73,7 @@ const ProfileNavbar = () => {
                 </div>
             </aside>
             <div className="w-full">
-                {/* <ProfilePage /> */}
+                <ProfilePage />
                 <AccountSetting />
             </div>
 
