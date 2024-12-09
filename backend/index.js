@@ -32,8 +32,10 @@ app.get('/', (req, res) => {
 });
 
 
-app.post('/create', (req, res) => {
+app.post('/create', async(req, res) => {
   let { name, password, companyName, phone, firstName, lastName, address, zipcode, country, username, email } = req.body;
+  let existemail = await UserModel.findOne({ email })
+  if (existemail) return res.json({ result: false, message: "Email Already Exist" })
   const saltRounds = 10;
   bcrypt.genSalt(saltRounds, function (err, salt) {
     bcrypt.hash(password, salt, async (err, hash) => {
@@ -52,7 +54,7 @@ app.post('/create', (req, res) => {
         firstName,
         lastName,
       })
-      res.json({
+      return res.status(200).json({
         result: true,
         token: token,
       });
