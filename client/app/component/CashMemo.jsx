@@ -56,7 +56,7 @@ const CashMemo = ({ className }) => {
 
     let { name, phone, companyName, address } = clients;
     const [items, setItems] = useState(
-        Array.from({ length: 5 }, () => ({ item: '', quantity: '', rate: '', taka: '' }))
+        Array.from({ length: 4 }, () => ({ item: '', quantity: '', rate: '', taka: '' }))
     );
     const [tax, setTax] = useState('');
     const [language, setLanguage] = useState('en');

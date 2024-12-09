@@ -64,7 +64,7 @@ const LocalClient = () => {
                     </p>
                 </div>
                 <p className='flex gap-x-1'>
-                <HiDotsVertical className='text-xl text-orange-600'/></p>
+                <HiDotsVertical className='text-xl text-orange-500'/></p>
               </Link>
               </li>
             ))
