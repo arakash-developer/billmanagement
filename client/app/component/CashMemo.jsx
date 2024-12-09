@@ -8,6 +8,7 @@ import { Contex } from '@/app/contexapi/Rights'
 import withAuth from '../auth/withAuth';
 import '../../app/globals.css'
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const convertToBangla = (num) => {
     const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
@@ -137,7 +138,14 @@ const CashMemo = ({ className }) => {
         return language === 'en' ? convertToEnglish(value) : convertToBangla(value);
     };
 
+    
+    let [usname,setusName] = useState("")
+    let [usphone,setusPhone] = useState("")
+    let [usaddress,setusAddress] = useState("")
+
     const downloadOlAsImage = async () => {
+        console.log(usname);
+        
         if (olRef.current) {
             try {
                 const inputs = olRef.current.querySelectorAll('input');
@@ -154,20 +162,37 @@ const CashMemo = ({ className }) => {
                     input.classList.remove('placeholder-light');
                 });
 
-                console.log("OKK");
-                await axios.post("https://billmanagement-server.vercel.app/cash", {"name":"Rimjim"}, {
+                await axios.post("https://billmanagement-server.vercel.app/cash", {
+                    name: usname,
+                    address: usaddress,
+                    phone: usphone,
+                    totalPrice:formatValue(calculateTotalPrice()),
+                }, {
                     headers: {
                         "token": tok ? tok : "",
                     },
                 })
                     .then((response) => {
                         console.log(response);
+                        if(response.data.result){
+                            toast.success('Cash Success!', {
+                                position: "bottom-left",
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "colored",
+                              }
+                              );
+                        }
                     })
                     .catch((error) => {
                         console.log(error);
                     });
 
-                alert(language === 'bn' ? 'ইমেজ সফলভাবে ডাউনলোড হয়েছে।' : 'Image downloaded successfully.');
+                // alert(language === 'bn' ? 'ইমেজ সফলভাবে ডাউনলোড হয়েছে।' : 'Image downloaded successfully.');
 
             } catch (error) {
                 console.error('Could not generate image', error);
@@ -198,7 +223,7 @@ const CashMemo = ({ className }) => {
                         </div>
 
                         <ol ref={olRef} className="flex flex-col gap-y-4 mb-10">
-                            <Header name={name ? name : ""} phone={phone} companyName={companyName} address={address} />
+                            <Header name={name ? name : ""} phone={phone} companyName={companyName} address={address} setusAddress={setusAddress} setusName={setusName} setusPhone={setusPhone} />
 
                             {items.map((row, index) => (
                                 <li key={index} className=''>

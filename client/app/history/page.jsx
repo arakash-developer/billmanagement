@@ -33,38 +33,7 @@ const page = () => {
     }
     getdata()
   }, [])
-  const transition = [
-    {
-      id: 1,
-      name: "abdul kadir",
-      address: "dhaka",
-      price: "15,000"
-    },
-    {
-      id: 2,
-      name: "md Aksh  ",
-      address: "dhaka",
-      price: "20,000"
-    },
-    {
-      id: 3,
-      name: "Abdur Rohim",
-      address: "Khunla",
-      price: "5,000"
-    },
-    {
-      id: 4,
-      name: "Abdul Korim",
-      address: "Rongpur",
-      price: "10,000.00"
-    },
-    {
-      id: 5,
-      name: "md mirza hasan",
-      address: "chuadanga",
-      price: "13,000.00"
-    },
-  ]
+ 
 
   return (
     <div className=''>
@@ -84,7 +53,7 @@ const page = () => {
               </div>
               <p className='flex gap-x-1'>
                 <span className='text-lg font-semibold capitalize text-gray-800 '>Total Price:
-                  <span className='text-green-600'> {item.price}.00</span>
+                  <span className='text-green-600'> {item.totalPrice}.00</span>
                 </span>
                 <FaBangladeshiTakaSign className='text-xl text-green-600'/></p>
             </Link>
