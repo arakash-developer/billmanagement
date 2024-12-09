@@ -33,38 +33,7 @@ const page = () => {
     }
     getdata()
   }, [])
-  const transition = [
-    {
-      id: 1,
-      name: "abdul kadir",
-      address: "dhaka",
-      price: "15,000"
-    },
-    {
-      id: 2,
-      name: "md Aksh  ",
-      address: "dhaka",
-      price: "20,000"
-    },
-    {
-      id: 3,
-      name: "Abdur Rohim",
-      address: "Khunla",
-      price: "5,000"
-    },
-    {
-      id: 4,
-      name: "Abdul Korim",
-      address: "Rongpur",
-      price: "10,000.00"
-    },
-    {
-      id: 5,
-      name: "md mirza hasan",
-      address: "chuadanga",
-      price: "13,000.00"
-    },
-  ]
+ 
 
   return (
     <div className=''>

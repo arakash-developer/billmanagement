@@ -137,7 +137,14 @@ const CashMemo = ({ className }) => {
         return language === 'en' ? convertToEnglish(value) : convertToBangla(value);
     };
 
+    
+    let [usname,setusName] = useState("")
+    let [usphone,setusPhone] = useState("")
+    let [usaddress,setusAddress] = useState("")
+
     const downloadOlAsImage = async () => {
+        console.log(usname);
+        
         if (olRef.current) {
             try {
                 const inputs = olRef.current.querySelectorAll('input');
@@ -154,11 +161,10 @@ const CashMemo = ({ className }) => {
                     input.classList.remove('placeholder-light');
                 });
 
-                console.log("OKK");
                 await axios.post("https://billmanagement-server.vercel.app/cash", {
-                    name: "Ayesha",
-                    address: "Chuadanga",
-                    phone: "01700000000",
+                    name: usname,
+                    address: usaddress,
+                    phone: usphone,
                     totalPrice:formatValue(calculateTotalPrice()),
                 }, {
                     headers: {
@@ -203,7 +209,7 @@ const CashMemo = ({ className }) => {
                         </div>
 
                         <ol ref={olRef} className="flex flex-col gap-y-4 mb-10">
-                            <Header name={name ? name : ""} phone={phone} companyName={companyName} address={address} />
+                            <Header name={name ? name : ""} phone={phone} companyName={companyName} address={address} setusAddress={setusAddress} setusName={setusName} setusPhone={setusPhone} />
 
                             {items.map((row, index) => (
                                 <li key={index} className=''>

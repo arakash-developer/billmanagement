@@ -1,5 +1,5 @@
 import React from 'react'
-const Header = ({name,phone,companyName,address}) => {
+const Header = ({name,phone,companyName,address,setusName,setusPhone,setusAddress}) => {
     const day = new Date().toLocaleDateString("en-BG" , {
         day: "2-digit",
     });
@@ -27,9 +27,9 @@ const Header = ({name,phone,companyName,address}) => {
                         <label htmlFor="" className='text-[12px] md:text-base'>Address:</label>
                     </div>
                     <div className='w-24 md:w-60 flex flex-col items-center gap-x-2'>
-                        <input type="text" className='w-full md:text-base text-[12px] px-1 md:px-3 md:py-1 bg-transparent outline-none border-b-2 border-[#7c7c7c5c] border-dashed  md:placeholder:text-base placeholder:text-[10px]' />
-                        <input type="number" className='w-full text-[12px] md:text-base  md:px-3 md:py-1 bg-transparent outline-none border-b-2 border-[#7c7c7c5c] border-dashed  md:placeholder:text-base placeholder:text-[10px]' />
-                        <input type="text" className='w-full px-1 md:px-3 md:py-1 text-[12px] md:text-base bg-transparent outline-none border-b-2 border-[#7c7c7c5c] border-dashed  md:placeholder:text-base placeholder:text-[10px]' />
+                        <input onChange={(e) => setusName(e.target.value)} type="text" className='w-full md:text-base text-[12px] px-1 md:px-3 md:py-1 bg-transparent outline-none border-b-2 border-[#7c7c7c5c] border-dashed  md:placeholder:text-base placeholder:text-[10px]' />
+                        <input onChange={(e) => setusPhone(e.target.value)} type="number" className='w-full text-[12px] md:text-base  md:px-3 md:py-1 bg-transparent outline-none border-b-2 border-[#7c7c7c5c] border-dashed  md:placeholder:text-base placeholder:text-[10px]' />
+                        <input onChange={(e) => setusAddress(e.target.value)} type="text" className='w-full px-1 md:px-3 md:py-1 text-[12px] md:text-base bg-transparent outline-none border-b-2 border-[#7c7c7c5c] border-dashed  md:placeholder:text-base placeholder:text-[10px]' />
                     </div>
                 </div>
                 <div className='w-80 text-end'>
