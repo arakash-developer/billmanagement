@@ -144,8 +144,6 @@ const CashMemo = ({ className }) => {
     let [usaddress,setusAddress] = useState("")
 
     const downloadOlAsImage = async () => {
-        console.log(usname);
-        
         if (olRef.current) {
             try {
                 const inputs = olRef.current.querySelectorAll('input');
