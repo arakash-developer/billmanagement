@@ -10,7 +10,7 @@ const Header = ({name,phone,companyName,address,setusName,setusPhone,setusAddres
         year: "numeric",
     })
     return (
-        <div className='pb-7 md:pb-8'>
+        <div className='w-full pb-7 md:pb-8'>
             <div className='flex justify-between pt-2.5 px-3'>
                 <p className='text-center text-[10px] md:text-sm font-normal text-blue-600 tracking-widest'>Your needs</p>
                 <p className='text-center text-[10px] md:text-sm font-normal text-blue-600 tracking-widest'>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
@@ -19,7 +19,7 @@ const Header = ({name,phone,companyName,address,setusName,setusPhone,setusAddres
             <div className='flex justify-center shadow-lg md:py-4 py-2'>
                 <h1 className='font-bold text-blue-600 text-xl md:text-4xl'>{companyName?companyName:"COMPANY NAME"}</h1>
             </div>
-            <div className='flex justify-between bg-[#9b9b9b2c] shadow-md px-3 py-2'>
+            <div className='w-full flex justify-between bg-[#9b9b9b2c] shadow-md px-3 py-2'>
                 <div className='flex  items-center gap-x-2 md:gap-x-5'>
                     <div className='flex flex-col gap-y-2 md:gap-y-5 md:text-bold text-blue-600'>
                         <label htmlFor="" className='text-[12px] md:text-base'>Name:</label>

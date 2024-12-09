@@ -207,32 +207,37 @@ const CashMemo = ({ className }) => {
 
     return (
         <div className={`${className} `}>
-
-            <Container className='w-[700px] flex justify-center items-center pt-5'>
-                <div className=" w-[211.81rem] cashbox">
+                <div className="cashbox w-full md:w-[700px] items-center pt-5">
                     <div className="flex flex-col justify-center">
-                        <div className="flex justify-end ">
+                        {/* <div className="flex justify-end ">
                             <button
                                 onClick={toggleLanguage}
                                 className="md:absolute top-4 text-[12px] md:text-base right-4 bg-gray-500 text-white px-4 py-1 md:py-2 rounded-md"
                             >
                                 {language === 'bn' ? 'English' : 'বাংলা'}
                             </button>
-                        </div>
+                        </div> */}
 
                         <ol ref={olRef} className="flex flex-col gap-y-4 mb-10">
-                            <Header name={name ? name : ""} phone={phone} companyName={companyName} address={address} setusAddress={setusAddress} setusName={setusName} setusPhone={setusPhone} />
+                               <Header name={name ? name : ""} 
+                                    phone={phone} 
+                                    companyName={companyName} 
+                                    address={address} 
+                                    setusAddress={setusAddress} 
+                                    setusName={setusName} 
+                                    setusPhone={setusPhone} 
+                                />
 
                             {items.map((row, index) => (
                                 <li key={index} className=''>
-                                    <div className="md:w-full flex justify-between border-transparent shadow-md rounded-md px-2">
+                                    <div className="w-full flex justify-between border-transparent shadow-md rounded-md px-2">
                                         <div className="w-4 text-center font-bold">{index + 1}.</div>
-                                        {['item', 'quantity', 'rate', 'taka'].map((field, i) => (
+                                            {['item', 'quantity', 'rate', 'taka'].map((field, i) => (
                                             <div
                                                 key={i}
-                                                className={`relative flex flex-col ${field === 'item' ? 'md:w-56 w-28' : field === 'quantity' ? 'md:w-28 w-16' : 'md:w-36 w-16'
+                                                className={`relative flex flex-col ${field === 'item' ? 'md:w-56 w-24' : field === 'quantity' ? 'md:w-28 w-16' : 'md:w-36 w-16'
                                                     } gap-y-0.5`}
-                                            >
+                                                    >
                                                 {index === 0 && (
                                                     <div className='absolute -top-9 md:-top-10 border-blue-600 border-b-2 bg-blue-100 h-7 md:h-9 w-full text-center items-center'>
                                                         <label htmlFor={field} className="font-bold text-[12px] md:text-base capitalize text-blue-600 ">
@@ -319,7 +324,6 @@ const CashMemo = ({ className }) => {
                         </div>
                     </div>
                 </div>
-            </Container>
         </div>
     );
 };

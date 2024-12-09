@@ -28,7 +28,7 @@ const YourProducts = () => {
   ];
 
   return (
-    <div>
+    <div className='hidden md:block'>
       <h1 className='text-2xl font-bold py-2 text-gray-700'>YOUR PRODUCTS</h1>
       <div className='relative'>
         <input 
