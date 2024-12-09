@@ -185,7 +185,7 @@ const CashMemo = ({ className }) => {
     return (
         <div className={`${className} bg-cash bg-no-repeat bg-cover h-screen`}>
 
-            <Container className=' flex justify-center items-center pt-5'>
+            <Container className='w-[700px] flex justify-center items-center pt-5'>
                 <div className="rounded-[30px] w-[211.81rem] cashbox">
                     <div className="flex flex-col justify-center">
                         <div className="flex justify-end ">
@@ -197,7 +197,7 @@ const CashMemo = ({ className }) => {
                             </button>
                         </div>
 
-                        <ol ref={olRef} className=" flex flex-col gap-y-4 mb-10">
+                        <ol ref={olRef} className="flex flex-col gap-y-4 mb-10">
                             <Header name={name ? name : ""} phone={phone} companyName={companyName} address={address} />
 
                             {items.map((row, index) => (

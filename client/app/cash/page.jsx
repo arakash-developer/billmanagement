@@ -1,9 +1,13 @@
 import React from 'react'
 import CashMemo from '../component/CashMemo'
+import LocalClient from '../component/LocalClient'
 
 const Home = () => {
   return (
-    <CashMemo />
+    <div className=''>
+      <LocalClient/>
+      <CashMemo />
+    </div>
   )
 }
 
