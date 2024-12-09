@@ -105,7 +105,7 @@ const CashMemo = ({ className }) => {
         if (addButtonRef.current) {
             addButtonRef.current.scrollIntoView({
                 behavior: 'smooth',
-                block: 'start',
+                block: 'center',
 
             });
         }
@@ -186,7 +186,7 @@ const CashMemo = ({ className }) => {
         <div className={`${className} `}>
 
             <Container className='w-[700px] flex justify-center items-center pt-5'>
-                <div className="rounded-[30px] w-[211.81rem] cashbox">
+                <div className=" w-[211.81rem] cashbox">
                     <div className="flex flex-col justify-center">
                         <div className="flex justify-end ">
                             <button
