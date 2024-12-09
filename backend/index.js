@@ -271,7 +271,9 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
 
 app.post("/cash",isLoggedInP, async (req,res) => {
   let { name, address, phone, totalPrice } = req.body
+  let loginemail = req.userdata.email
   let userCreate = await CashModel.create({
+    loginemail,
     name,
     address,
     phone,
