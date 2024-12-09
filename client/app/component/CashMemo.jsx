@@ -183,7 +183,7 @@ const CashMemo = ({ className }) => {
 
 
     return (
-        <div className={`${className} bg-cash bg-no-repeat bg-cover h-screen`}>
+        <div className={`${className} `}>
 
             <Container className='w-[700px] flex justify-center items-center pt-5'>
                 <div className="rounded-[30px] w-[211.81rem] cashbox">
