@@ -8,6 +8,7 @@ import { Contex } from '@/app/contexapi/Rights'
 import withAuth from '../auth/withAuth';
 import '../../app/globals.css'
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const convertToBangla = (num) => {
     const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
@@ -173,6 +174,19 @@ const CashMemo = ({ className }) => {
                 })
                     .then((response) => {
                         console.log(response);
+                        if(response.data.result){
+                            toast.success('Cash Success!', {
+                                position: "bottom-left",
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "colored",
+                              }
+                              );
+                        }
                     })
                     .catch((error) => {
                         console.log(error);
