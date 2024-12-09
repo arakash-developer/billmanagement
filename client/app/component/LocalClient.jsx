@@ -45,7 +45,7 @@ const LocalClient = () => {
     ];
 
   return (
-    <div className='h-screen overflow-hidden bg-transparent flex flex-col'>
+    <div className='hidden h-screen overflow-hidden bg-transparent md:flex flex-col'>
         <h1>Your Clients</h1>
         <ul className='w-80'>
            {
