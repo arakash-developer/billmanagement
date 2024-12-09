@@ -19,6 +19,8 @@ const multer = require('./utils/multer');
 const cloudinary = require('cloudinary').v2;
 const multerCloudinary = require('./utils/multerCloudinary');
 let fs = require('fs');
+const cashRouter = require("./routes/cash")
+const profileSettingRouter = require("./routes/profile")
 
 app.use(cors({
   origin: ['https://billmanagements.vercel.app', 'http://localhost:3000', 'http://localhost:3000'],
@@ -174,39 +176,10 @@ app.get('/singleclient', isLoggedInP, async (req, res) => {
 //     })
 // });
 
-app.get('/profilesetting', isLoggedInP, async (req, res) => {
-  let singleemail = req.userdata.email
-  let profileset = await UserModel.findOne({ email: singleemail })
-  let { email, profileimage } = profileset
-  res.json({
-    profileset: {
-      email,
-      profileimage: "https://billmanagement-server.vercel.app/images/" + profileimage
-    }
-  })
-});
 
 
-
-app.post('/profileSetting', isLoggedInP, async (req, res) => {
-  let { name, phone, address, firstName, lastName, country, zipcode, profileimage } = req.body
-  let loginemail = req.userdata.email
-  let user = await UserModel.findOneAndUpdate({ email: loginemail }, {
-    name,
-    phone,
-    address,
-    firstName,
-    lastName,
-    country,
-    zipcode,
-    profileimage,
-  }, { new: true });
-  res.json({
-    loginemail,
-    result: true,
-    user,
-  })
-});
+app.use('/profilesetting',profileSettingRouter);
+app.use('/profileSetting',profileSettingRouter);
 
 
 app.get('/profileSettingUpdate', isLoggedInP, async (req, res) => {
@@ -269,30 +242,11 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
 // })
 
 
-app.post("/cash",isLoggedInP, async (req,res) => {
-  let { name, address, phone, totalPrice } = req.body
-  let loginemail = req.userdata.email
-  let userCreate = await CashModel.create({
-    email: loginemail,
-    name,
-    address,
-    phone,
-    totalPrice
-  })
-  res.status(200).json({
-    result: true,
-    userCreate,
-  })  
-})
+app.post("/cash",cashRouter)
+app.use('/cash',cashRouter);
 
-app.get('/cash', isLoggedInP, async (req, res) => {
-  let loginemail = req.userdata.email
-  let cashData = await CashModel.find({email:loginemail});
-  res.status(200).json({
-    cashData,
-    result: true
-  });
-});
+
+
 
 app.post('/akash', async (req, res) => {
   let token = req.headers?.authorization?.split(' ')[1];
@@ -301,6 +255,8 @@ app.post('/akash', async (req, res) => {
     result: true
   })
 })
+
+
 app.listen(4000, () => {
   console.log("Server Start");
 
