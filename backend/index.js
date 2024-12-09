@@ -273,7 +273,7 @@ app.post("/cash",isLoggedInP, async (req,res) => {
   let { name, address, phone, totalPrice } = req.body
   let loginemail = req.userdata.email
   let userCreate = await CashModel.create({
-    loginemail,
+    email: loginemail,
     name,
     address,
     phone,
@@ -286,10 +286,8 @@ app.post("/cash",isLoggedInP, async (req,res) => {
 })
 
 app.get('/cash', isLoggedInP, async (req, res) => {
-  let loginemail = req.userdata.email
+  // let loginemail = req.userdata.email
   let cashData = await CashModel.findOne({email:loginemail});
-  // console.log(req.headers.token);
-  // res.setHeader('token',"AKASH")
   res.status(200).json({
     cashData,
     result: true
