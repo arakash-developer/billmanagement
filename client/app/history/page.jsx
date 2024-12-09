@@ -84,7 +84,7 @@ const page = () => {
               </div>
               <p className='flex gap-x-1'>
                 <span className='text-lg font-semibold capitalize text-gray-800 '>Total Price:
-                  <span className='text-green-600'> {item.price}.00</span>
+                  <span className='text-green-600'> {item.totalPrice}.00</span>
                 </span>
                 <FaBangladeshiTakaSign className='text-xl text-green-600'/></p>
             </Link>
