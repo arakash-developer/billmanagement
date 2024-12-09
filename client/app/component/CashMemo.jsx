@@ -192,7 +192,7 @@ const CashMemo = ({ className }) => {
                         console.log(error);
                     });
 
-                alert(language === 'bn' ? 'ইমেজ সফলভাবে ডাউনলোড হয়েছে।' : 'Image downloaded successfully.');
+                // alert(language === 'bn' ? 'ইমেজ সফলভাবে ডাউনলোড হয়েছে।' : 'Image downloaded successfully.');
 
             } catch (error) {
                 console.error('Could not generate image', error);
