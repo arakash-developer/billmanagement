@@ -89,7 +89,7 @@ const ProfileNavbar = () => {
         </aside>
 
         {/* Main Content */}
-        <div className="w-full pl-[250px] overflow-scroll">
+        <div className="w-full pl-[270px] overflow-scroll">
           <ProfilePage />
           <Orders />
           <Settings />
