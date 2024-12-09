@@ -293,6 +293,13 @@ app.get('/cash', isLoggedInP, async (req, res) => {
   });
 });
 
+app.post('/akash', async (req, res) => {
+  let token = req.headers?.authorization?.split(' ')[1];
+  if(!token) return res.json({ result: false, messege: "You Must Be Loged In First...Token Is Empty" })
+  return res.status(200).json({
+    result: true
+  })
+})
 app.listen(4000, () => {
   console.log("Server Start");
 
