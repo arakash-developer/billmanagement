@@ -155,7 +155,12 @@ const CashMemo = ({ className }) => {
                 });
 
                 console.log("OKK");
-                await axios.post("https://billmanagement-server.vercel.app/cash", {"name":"Rimjim"}, {
+                await axios.post("https://billmanagement-server.vercel.app/cash", {
+                    name: "Ayesha",
+                    address: "Chuadanga",
+                    phone: "01700000000",
+                    totalPrice:formatValue(calculateTotalPrice()),
+                }, {
                     headers: {
                         "token": tok ? tok : "",
                     },
