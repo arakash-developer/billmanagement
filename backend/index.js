@@ -286,7 +286,8 @@ app.post("/cash",isLoggedInP, async (req,res) => {
 })
 
 app.get('/cash', isLoggedInP, async (req, res) => {
-  let cashData = await CashModel.find();
+  let loginemail = req.userdata.email
+  let cashData = await CashModel.findOne({email:loginemail});
   // console.log(req.headers.token);
   // res.setHeader('token',"AKASH")
   res.status(200).json({
