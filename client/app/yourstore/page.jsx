@@ -3,7 +3,7 @@ import Container from '../component/layers/Container';
 import Image from 'next/image';
 import kadir from '@/public/kadir.jpg';
 import Link from 'next/link';
-import ProductCatd from '../component/layers/productCatd';
+import ProductCatd from '../component/layers/ProductCatd';
 
 const page = () => {
   const categoryItems = [
