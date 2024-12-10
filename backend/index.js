@@ -104,13 +104,13 @@ app.get('/logout', (req, res) => {
 //   next();
 // }
 
-app.get('/profile', isLoggedIn, (req, res) => {
-  res.json({
-    result: true,
-    content: "Yes You Can See",
-    data: req.userdata,
-  })
-})
+// app.get('/profile', isLoggedIn, (req, res) => {
+//   res.json({
+//     result: true,
+//     content: "Yes You Can See",
+//     data: req.userdata,
+//   })
+// })
 
 
 
@@ -179,7 +179,7 @@ app.get('/singleclient', isLoggedInP, async (req, res) => {
 
 
 app.use('/profilesetting',profileSettingRouter);
-app.use('/profileSetting',profileSettingRouter);
+// app.use('/profileSetting',profileSettingRouter);
 
 
 app.get('/profileSettingUpdate', isLoggedInP, async (req, res) => {
