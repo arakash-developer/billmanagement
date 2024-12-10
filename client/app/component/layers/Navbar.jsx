@@ -35,7 +35,7 @@ const Navbar = () => {
   const navLinks = [
     { href: '/cash', label: "Cash", icon: <TbHomeFilled /> },
     { href: '/history', label: 'History', icon: <MdHistoryEdu /> },
-    { href: '/clientdata', label: 'Your Store', icon: <FaStoreAlt /> },
+    { href: '/yourstore', label: 'Your Store', icon: <FaStoreAlt /> },
     { href: '/notification', label: 'Notification', icon: <AiFillNotification /> },
   ];
   const pubnavLinks = [
