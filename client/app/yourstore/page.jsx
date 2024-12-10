@@ -1,9 +1,9 @@
 import React from 'react';
-import Container from '../component/layers/Container';
+import Container from '@/app/component/layers/Container';
 import Image from 'next/image';
 import kadir from '@/public/kadir.jpg';
 import Link from 'next/link';
-import ProductCatd from '../component/layers/ProductCatd';
+import ProductCatd from '@/app/component/layers/ProductCatd';
 
 const page = () => {
   const categoryItems = [
