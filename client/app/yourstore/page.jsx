@@ -3,7 +3,7 @@ import Container from '@/app/component/layers/Container';
 import Image from 'next/image';
 import kadir from '@/public/kadir.jpg';
 import Link from 'next/link';
-// import ProductCatd from '@/app/component/layers/ProductCatd';
+import ProductCatd from '@/app/component/layers/ProductCatd';
 
 const page = () => {
   const categoryItems = [
@@ -73,11 +73,7 @@ const page = () => {
           </ul>
         </div>
         {/* <YourProducts /> */}
-<<<<<<< Updated upstream
-        <div>
-          {/* <ProductCatd /> */}
-=======
-        <div className='grid grid-cols-4 gap-5'>
+        <div className='grid grid-cols-4 gap-5 h-screen overflow-y-scroll'>
           <ProductCatd />
           <ProductCatd />
           <ProductCatd />
@@ -110,7 +106,6 @@ const page = () => {
           <ProductCatd />
           <ProductCatd />
           <ProductCatd />
->>>>>>> Stashed changes
         </div>
       </Container>
     </div>
