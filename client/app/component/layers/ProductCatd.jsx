@@ -4,12 +4,11 @@ import kadir from '@/public/kadir.jpg'
 
 const ProductCatd = () => {
   return (
-    <div>
-       <div className='w-60 bg-gray-200'>
+       <div className='w-72 bg-gray-200 rounded-md shadow-md'>
           <div className='w-full h-60 '>
           <Image src={kadir} alt='kadir' className='w-full h-full object-cover' />
           </div>
-          <div className='p-3'>
+          <div className='p-3 flex justify-between'>
               <div>
               <h1 className='text-lg font-semibold text-gray-800'>Product Name</h1>
               <p className='text-sm font-simebold text-gray-500'>product description</p>
@@ -19,8 +18,7 @@ const ProductCatd = () => {
                 <button className='px-3 py-1 bg-orange-500 text-white'>Buy</button>
               </div>
           </div>
-      </div>
-    </div>
+      </div> 
   )
 }
 

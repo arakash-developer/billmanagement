@@ -73,8 +73,44 @@ const page = () => {
           </ul>
         </div>
         {/* <YourProducts /> */}
+<<<<<<< Updated upstream
         <div>
           {/* <ProductCatd /> */}
+=======
+        <div className='grid grid-cols-4 gap-5'>
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+          <ProductCatd />
+>>>>>>> Stashed changes
         </div>
       </Container>
     </div>
