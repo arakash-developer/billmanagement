@@ -3,7 +3,7 @@ import Container from '@/app/component/layers/Container';
 import Image from 'next/image';
 import kadir from '@/public/kadir.jpg';
 import Link from 'next/link';
-import ProductCatd from '@/app/component/layers/ProductCatd';
+// import ProductCatd from '@/app/component/layers/ProductCatd';
 
 const page = () => {
   const categoryItems = [
@@ -74,7 +74,7 @@ const page = () => {
         </div>
         {/* <YourProducts /> */}
         <div>
-          <ProductCatd />
+          {/* <ProductCatd /> */}
         </div>
       </Container>
     </div>
