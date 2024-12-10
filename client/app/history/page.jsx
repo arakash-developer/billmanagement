@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { Contex } from '../contexapi/Rights';
 
 const page = () => {
+
   let { validated, setValidated } = useContext(Contex)
   const router = useRouter();
   useLayoutEffect(() => {
@@ -51,11 +52,30 @@ const page = () => {
                   {item.address}
                   </p>
               </div>
+              <div>
               <p className='flex gap-x-1'>
                 <span className='text-lg font-semibold capitalize text-gray-800 '>Total Price:
                   <span className='text-green-600'> {item.totalPrice}.00</span>
                 </span>
                 <FaBangladeshiTakaSign className='text-xl text-green-600'/></p>
+                <p> 
+                  {
+                    new Date().toLocaleDateString("en-BG",{
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    })
+                  } {" - "}
+                   <span>
+                    {
+                      new Date().toLocaleTimeString("en-BG",{
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })
+                    }
+                   </span>
+                </p>
+              </div>
             </Link>
             ))
           }
