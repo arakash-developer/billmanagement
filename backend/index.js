@@ -72,7 +72,7 @@ app.post('/login', async (req, res) => {
     // result == true
     if (result) {
       let token = jwt.sign({ email }, 'Akash');
-      res.cookie('token', token);
+      // res.cookie('token', token);
       return res.json({
         result,
         token: token,
@@ -90,19 +90,19 @@ app.get('/logout', (req, res) => {
   return res.json({ status: "success", token: "" });
 })
 
-let isLoggedIn = (req, res, next) => {
-  if (req.cookies.token === "") {
-    res.json({
-      result: false,
-      content: "You Must Be Loged In First",
-    })
-  } else {
-    let data = jwt.verify(req.cookies.token, 'Akash')
-    req.userdata = data;
-  }
-  // console.log(req.cookies);
-  next();
-}
+// let isLoggedIn = (req, res, next) => {
+//   if (req.cookies.token === "") {
+//     res.json({
+//       result: false,
+//       content: "You Must Be Loged In First",
+//     })
+//   } else {
+//     let data = jwt.verify(req.cookies.token, 'Akash')
+//     req.userdata = data;
+//   }
+//   // console.log(req.cookies);
+//   next();
+// }
 
 app.get('/profile', isLoggedIn, (req, res) => {
   res.json({
