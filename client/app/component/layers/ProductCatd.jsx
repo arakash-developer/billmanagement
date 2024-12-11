@@ -5,9 +5,9 @@ import { MdFavoriteBorder } from "react-icons/md";
 
 const ProductCatd = () => {
   return (
-       <div className='w-72 bg-gray-200 rounded-md shadow-md'>
-          <div className='w-full h-60 '>
-          <Image src={kadir} alt='kadir' className='w-full h-full object-cover' />
+       <div className='w-72 bg-gray-200 rounded-md shadow-md cursor-pointer'>
+          <div className='w-full h-60 overflow-hidden'>
+          <Image src={kadir} alt='kadir' className='w-full h-full object-cover hover:scale-110 transition-all duration-300' />
           </div>
           <div className='p-3'>
               <div>

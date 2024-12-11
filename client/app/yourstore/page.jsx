@@ -73,39 +73,45 @@ const page = () => {
           </ul>
         </div>
         {/* <YourProducts /> */}
-        <div className='grid grid-cols-4 gap-5 h-screen overflow-y-scroll'>
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
-          <ProductCatd />
+        <div>
+          <div className='flex justify-between items-center py-5'>
+            <h1 className='text-2xl font-bold py-2 text-gray-700'>Your Products</h1>
+            <button className='px-4 py-1 bg-orange-500 text-white hover:bg-orange-600 rounded-md'>Uploade Product</button>
+          </div>
+          <div className='grid grid-cols-4 gap-5 h-screen overflow-y-scroll'>
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+            <ProductCatd />
+          </div>
         </div>
       </Container>
     </div>
