@@ -3,7 +3,7 @@ const axios = require('axios');
 
 
 const page = () => {
-  axios.get('https://billmanagement-server.vercel.app/pro',{
+  axios.get('https://billmanagement-server.vercel.app/pro', {
     withCredentials: true
   })
     .then(function (response) {
