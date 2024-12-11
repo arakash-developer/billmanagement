@@ -74,6 +74,7 @@ app.post('/login', async (req, res) => {
       let token = jwt.sign({ email }, 'Akash');
       res.cookie('token', token,{
         httpOnly:true,
+        secure:true,
       });
       return res.json({
         result,
