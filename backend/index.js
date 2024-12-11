@@ -23,7 +23,7 @@ const cashRouter = require("./routes/cash")
 const profileSettingRouter = require("./routes/profile")
 
 app.use(cors({
-  origin: ['https://billmanagements.vercel.app','http://localhost:3000'],
+  origin: ['https://billmanagements.vercel.app', 'http://localhost:3000'],
   methods: ['GET', 'POST'],
   credentials: true,
 }));
@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.post('/create', async(req, res) => {
+app.post('/create', async (req, res) => {
   let { name, password, companyName, phone, firstName, lastName, address, zipcode, country, username, email } = req.body;
   let existemail = await UserModel.findOne({ email })
   if (existemail) return res.json({ result: false, message: "Email Already Exist" })
@@ -72,9 +72,9 @@ app.post('/login', async (req, res) => {
     // result == true
     if (result) {
       let token = jwt.sign({ email }, 'Akash');
-      res.cookie('token', token,{
-        httpOnly:true,
-        secure:true,
+      res.cookie('token', token, {
+        httpOnly: true,
+        secure: true,
       });
       return res.json({
         result,
@@ -181,7 +181,7 @@ app.get('/singleclient', isLoggedInP, async (req, res) => {
 
 
 
-app.use('/profilesetting',profileSettingRouter);
+app.use('/profilesetting', profileSettingRouter);
 // app.use('/profileSetting',profileSettingRouter);
 
 
@@ -202,12 +202,12 @@ function toBase64(filePath) {
 
 app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req, res) => {
 
-  
+
   const base64String = toBase64(req.file.path);
   // console.log(base64String);
   const withPrefix = 'data:image/png;base64,' + base64String;
   console.log(withPrefix);
-  
+
   let { name, phone, address, firstName, lastName, country, zipcode } = req.body
   let loginemail = req.userdata.email
   let user = await UserModel.findOneAndUpdate({ email: loginemail }, {
@@ -245,15 +245,50 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
 // })
 
 
-app.post("/cash",cashRouter)
-app.use('/cash',cashRouter);
+app.post("/cash", cashRouter)
+app.use('/cash', cashRouter);
 
+let isLoggedIn = (req, res, next) => {
+  let token = req.cookies.token
+  if (token) {
+    if (token === '') {
+      res.json({
+        result: false,
+        messege: "You Must Be Loged In First...Token Is Empty"
+      })
+    } else {
+      let data = jwt.verify(token, 'Akash')
+      req.userdata = data;
+      next()
+    }
+  } else {
+    res.json({
+      result: false,
+      messege: "You Must Be Loged In First...Token Not Found"
+    })
+  }
+}
 
+app.get('/pro', isLoggedIn, async (req, res) => {
+  let token = req.cookies.token
+  res.status(200).json({
+    result: true,
+    token
+  })
+})
+
+app.post('/log', isLoggedIn, async (req, res) => {
+  res.cookie('token', '');
+  res.status(200).json({
+    result: true,
+    messege: "You Have Successfully Logout"
+  })
+})
 
 
 app.post('/akash', async (req, res) => {
   let token = req.headers?.authorization?.split(' ')[1];
-  if(!token) return res.json({ result: false, messege: "You Must Be Loged In First...Token Is Empty" })
+  if (!token) return res.json({ result: false, messege: "You Must Be Loged In First...Token Is Empty" })
   return res.status(200).json({
     result: true
   })
