@@ -23,7 +23,7 @@ const cashRouter = require("./routes/cash")
 const profileSettingRouter = require("./routes/profile")
 
 app.use(cors({
-  origin: ['https://billmanagements.vercel.app', 'http://localhost:3000', 'http://localhost:3000'],
+  origin: ['https://billmanagements.vercel.app','http://localhost:3000'],
   methods: ['GET', 'POST'],
   credentials: true,
 }));
@@ -72,7 +72,7 @@ app.post('/login', async (req, res) => {
     // result == true
     if (result) {
       let token = jwt.sign({ email }, 'Akash');
-      // res.cookie('token', token);
+      res.cookie('token', token);
       return res.json({
         result,
         token: token,
