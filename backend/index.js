@@ -299,14 +299,3 @@ app.listen(4000, () => {
   console.log("Server Start");
 
 })
-
-// ===============================================================
-
-const path = require('path');
-
-
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
-
-app.listen(3000, () => {
-    console.log('Server is running at http://localhost:3000');
-});
