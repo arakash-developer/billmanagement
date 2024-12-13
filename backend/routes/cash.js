@@ -70,23 +70,21 @@ router.post("/", isLoggedIn, async (req, res) => {
     let loginemail = req.userdata.email;
 
     try {
-        // ইমেজ থেকে Base64 ডেটা আলাদা করা
+        
         const base64Data = image.replace(/^data:image\/png;base64,/, '');
 
-        // ফাইল সিস্টেমে ইমেজ সংরক্ষণ
         const fileName = `${Date.now()}-cash-memo.png`;
         const filePath = path.join(__dirname, '../uploads', fileName);
 
         fs.writeFileSync(filePath, base64Data, 'base64');
 
-        // ডাটাবেজে ফাইল পাথ সংরক্ষণ
         let userCreate = await CashModel.create({
             email: loginemail,
             name,
             address,
             phone,
             totalPrice,
-            imagePath: `/uploads/${fileName}`, // ডাটাবেজে ফাইল পাথ সেভ
+            imagePath: `/uploads/${fileName}`, 
         
         });
         
