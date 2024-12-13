@@ -14,5 +14,3 @@ const storage = multer.diskStorage({
     }
 });
 
-const multerCloudinary = multer({ storage: storage });
-module.exports = multerCloudinary;

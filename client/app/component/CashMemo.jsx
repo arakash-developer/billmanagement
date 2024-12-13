@@ -165,6 +165,7 @@ const CashMemo = ({ className }) => {
                     address: usaddress,
                     phone: usphone,
                     totalPrice:formatValue(calculateTotalPrice()),
+                    image: dataUrl,
                 }, {
                     headers: {
                         "token": tok ? tok : "",

@@ -12,3 +12,16 @@ let cashSchema = mongoose.Schema ({
     totalPrice:Number,
 })
 module.exports = mongoose.model('cash',cashSchema)
+
+//===================Abdul Kadir====================
+
+// const CashSchema = new mongoose.Schema({
+//     email: { type: String, required: true },
+//     name: { type: String, required: true },
+//     address: { type: String, required: true },
+//     phone: { type: String, required: true },
+//     totalPrice: { type: Number, required: true },
+//     imagePath: { type: String }, 
+//     createdAt: { type: Date, default: Date.now },
+// });
+
