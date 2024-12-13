@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const CashModel = require("../models/cash");
+const fs = require('fs');
+const path = require('path');
+const { log } = require("console");
 
 let isLoggedIn = (req, res, next) => {
     let token = req.headers.token
@@ -35,20 +38,72 @@ router.get('/', isLoggedIn, async (req, res) => {
     });
 });
 
+// router.post("/", isLoggedIn, async (req, res) => {
+//     let { name, address, phone, totalPrice , image } = req.body
+//     let loginemail = req.userdata.email
+//     let userCreate = await CashModel.create({
+//         email: loginemail,
+//         name,
+//         address,
+//         phone,
+//         totalPrice,
+//         image,
+//     })
+//     res.status(200).json({
+//         result: true,
+//         userCreate,
+//     })
+// })
+
+
+
 router.post("/", isLoggedIn, async (req, res) => {
-    let { name, address, phone, totalPrice } = req.body
-    let loginemail = req.userdata.email
-    let userCreate = await CashModel.create({
-        email: loginemail,
-        name,
-        address,
-        phone,
-        totalPrice
-    })
-    res.status(200).json({
-        result: true,
-        userCreate,
-    })
-})
+    let { name, address, phone, totalPrice, image } = req.body;
+
+    if (!image) {
+        return res.status(400).json({
+            result: false,
+            message: "Image is required",
+        });
+    }
+
+    let loginemail = req.userdata.email;
+
+    try {
+        // ইমেজ থেকে Base64 ডেটা আলাদা করা
+        const base64Data = image.replace(/^data:image\/png;base64,/, '');
+
+        // ফাইল সিস্টেমে ইমেজ সংরক্ষণ
+        const fileName = `${Date.now()}-cash-memo.png`;
+        const filePath = path.join(__dirname, '../uploads', fileName);
+
+        fs.writeFileSync(filePath, base64Data, 'base64');
+
+        // ডাটাবেজে ফাইল পাথ সংরক্ষণ
+        let userCreate = await CashModel.create({
+            email: loginemail,
+            name,
+            address,
+            phone,
+            totalPrice,
+            imagePath: `/uploads/${fileName}`, // ডাটাবেজে ফাইল পাথ সেভ
+        
+        });
+        
+
+        res.status(200).json({
+            result: true,
+            userCreate,
+        });
+    } catch (error) {
+        console.error('Error saving image:', error);
+        res.status(500).json({
+            result: false,
+            message: "Failed to save data",
+        });
+    }
+    
+});
+
 
 module.exports = router

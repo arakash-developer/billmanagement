@@ -7,6 +7,7 @@ import { MdLocationCity } from "react-icons/md";
 import withAuth from '../auth/withAuth';
 import { useRouter } from 'next/navigation';
 import { Contex } from '../contexapi/Rights';
+import Image from 'next/image';
 
 const page = () => {
 
@@ -76,7 +77,11 @@ const page = () => {
                    </span>
                 </p>
               </div>
+              <div>
+                <Image src={item.image} alt='kadir' className='w-16 h-16 object-cover' />
+              </div>
             </Link>
+            
             ))
           }
       </Container>
