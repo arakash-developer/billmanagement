@@ -305,7 +305,6 @@ app.listen(4000, () => {
 const path = require('path');
 
 
-// Static ফোল্ডারকে সার্ভ করা
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 app.listen(3000, () => {
