@@ -106,7 +106,7 @@ const CashMemo = ({ className }) => {
         if (addButtonRef.current) {
             addButtonRef.current.scrollIntoView({
                 behavior: 'smooth',
-                block: 'center',
+                block: 'end',
 
             });
         }
@@ -208,7 +208,7 @@ const CashMemo = ({ className }) => {
 
     return (
         <div className={`${className} `}>
-                <div className="cashbox w-full md:w-[700px] items-center pt-5">
+                <div className="cashbox w-full md:w-[700px] items-center pt-1 overflow-hidden overflow-y-scroll">
                     <div className="flex flex-col justify-center">
                         {/* <div className="flex justify-end ">
                             <button
@@ -219,7 +219,7 @@ const CashMemo = ({ className }) => {
                             </button>
                         </div> */}
 
-                        <ol ref={olRef} className="flex flex-col gap-y-4 mb-10">
+                        <ol ref={olRef} className="flex flex-col gap-y-4 mb-5">
                                <Header name={name ? name : ""} 
                                     phone={phone} 
                                     companyName={companyName} 
@@ -296,7 +296,7 @@ const CashMemo = ({ className }) => {
 
                         </ol>
 
-                        <div ref={addButtonRef} className=''>
+                        <div className=''>
                             <button
                                 onClick={addNewRow}
                                 className="w-full  bg-blue-500 text-white px-4 py-1 md:py-4  hover:bg-blue-600"
@@ -304,7 +304,8 @@ const CashMemo = ({ className }) => {
                                 {language === 'bn' ? 'রো যোগ করুন' : 'Add Row'}
                             </button>
 
-                            <div className=" pb-3 mt-2 md:mt-2 w-full flex justify-between">
+                            <div ref={addButtonRef}
+                              className=" pb-3 mt-2 md:mt-2 w-full flex justify-between">
                                 <button
                                     onClick={downloadOlAsImage}
                                     className="w-full bg-green-500 text-white py-1 md:py-3  hover:bg-green-600"
