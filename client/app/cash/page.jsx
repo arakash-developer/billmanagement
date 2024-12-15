@@ -6,7 +6,7 @@ import YourProducts from '../component/YourProducts'
 
 const Home = () => {
   return (
-    <div className='bg-cash bg-no-repeat bg-cover h-screen'>
+    <div className='bg-cash bg-no-repeat bg-cover'>
       <Container className={"flex justify-between"}>
          <LocalClient/>
          <CashMemo />

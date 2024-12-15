@@ -5,7 +5,7 @@ import { IoSearch } from "react-icons/io5";
 import tir from '@/public/tir.jpg';
 
 const YourProducts = () => {
-  // পণ্যের ডেটার তালিকা
+
   const products = [
     { id: 1,
       name: 'Tir Shoyabin', 
@@ -39,6 +39,9 @@ const YourProducts = () => {
             <IoSearch />
         </button>
       </div>
+       <div>
+         <Link href='#' className='w-full text-sm text-gray-500 py-2 hober:text-orange-500 hover:underline'>See All</Link>
+       </div>
       <ul className="w-[420px]">
         {products.map((product) => (
           <li
@@ -50,12 +53,12 @@ const YourProducts = () => {
                 <div className='flex items-center gap-x-3'>
                     <Image src={product.thumbnail} alt={product.name} width={50} height={50}/>
                 <div>
-                  <h1>{product.name}</h1>
-                  <p>{product.description}</p>
+                  <h1 className='text-lg font-semibold text-gray-800 capitalize'>{product.name}</h1>
+                  <p className='text-sm text-gray-500 capitalize'>{product.description}</p>
                 </div>
                 </div>
                 <div className='flex flex-col gap-y-2'>
-                <p>{product.price}</p>
+                <p className='font-semibold text-gray-800'>{product.price}</p>
                 <button className='p-1 bg-orange-500 text-white rounded'>Add to Memo</button>
                 </div>
             </Link>

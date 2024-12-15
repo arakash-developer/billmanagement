@@ -45,20 +45,20 @@ const LocalClient = () => {
     ];
 
   return (
-    <div className='hidden h-screen overflow-hidden bg-transparent md:flex flex-col'>
-        <h1>Your Clients</h1>
+    <div className='hidden overflow-hidden bg-transparent md:flex flex-col'>
+        <h1 className='text-2xl font-bold py-2 text-gray-700'>Your Clients</h1>
         <ul className='w-80'>
            {
             clients.map((client ,index)=>(
               <li 
               key={index} 
-              className='hover:bg-gray-200'>
+              className='w-full p-2 bg-white my-2 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'>
               <Link href="/"
-                className='flex justify-between w-full items-center  border-b-2 border-blue-200 px-4 py-3 bg-blue-100 hover:bg-blue-200 shadow-sm'
+                className='flex justify-between w-full items-center shadow-sm'
               >
                 <div>
-                <h3 className='font-bold capitalize text-[#FFA500] text-lg '>{client.name}</h3>
-                  <p className='text-[12px] capitalize text-gray-800 flex items-center gap-x-1'>
+                <h3 className='font-bold capitalize text-orange-500 text-lg '>{client.name}</h3>
+                  <p className='text-[12px] capitalize text-gray-500 flex items-center gap-x-1'>
                     <FaLocationDot className='text-sm text-gray-800'/>
                     <span>{client.address}</span>
                     </p>
