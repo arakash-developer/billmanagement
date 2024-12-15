@@ -208,7 +208,7 @@ const CashMemo = ({ className }) => {
 
     return (
         <div className={`${className} `}>
-                <div className="cashbox w-full md:w-[700px] items-center pt-1 overflow-hidden overflow-y-scroll">
+                <div className="cashbox w-full md:w-[700px] mx-auto items-center pt-1">
                     <div className="flex flex-col justify-center">
                         {/* <div className="flex justify-end ">
                             <button
@@ -219,7 +219,7 @@ const CashMemo = ({ className }) => {
                             </button>
                         </div> */}
 
-                        <ol ref={olRef} className="flex flex-col gap-y-4 mb-5">
+                        <ol ref={olRef} className="flex flex-col gap-y-4 mb-5 ">
                                <Header name={name ? name : ""} 
                                     phone={phone} 
                                     companyName={companyName} 

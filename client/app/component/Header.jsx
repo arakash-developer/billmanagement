@@ -13,7 +13,7 @@ const Header = ({name,phone,companyName,address,setusName,setusPhone,setusAddres
         <div className='w-full pb-7 md:pb-8'>
             <div className='flex justify-between pt-2.5 px-3'>
                 <p className='text-center text-[10px] md:text-sm font-normal text-blue-600 tracking-widest'>Your needs</p>
-                <p className='text-center text-[10px] md:text-sm font-normal text-blue-600 tracking-widest'>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                <p className='text-center text-[8px] md:text-sm font-normal text-blue-600 tracking-widest'>بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
                 <p className='text-center text-[10px] md:text-sm font-normal text-blue-600 tracking-widest'>our commitment</p>
             </div>
             <div className='flex justify-center shadow-lg md:py-4 py-2'>
@@ -32,7 +32,7 @@ const Header = ({name,phone,companyName,address,setusName,setusPhone,setusAddres
                         <input onChange={(e) => setusAddress(e.target.value)} type="text" className='w-full px-1 md:px-3 md:py-1 text-[12px] md:text-base bg-transparent outline-none border-b-2 border-[#7c7c7c5c] border-dashed  md:placeholder:text-base placeholder:text-[10px]' />
                     </div>
                 </div>
-                <div className='w-80 text-end'>
+                <div className='w-full md:w-80 text-end'>
                     <p className='font-semibold text-blue-600 text-[12px] md:text-lg '>{address}</p>
                     <p className='md:font-bold text-[10px] md:text-lg text-blue-400'>Proprietor: {name}</p>
                     <p className='md:font-bold text-sm md:text-lg text-blue-400'>Phone: {phone?phone:"00000000000"}</p>
