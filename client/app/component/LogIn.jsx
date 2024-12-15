@@ -70,14 +70,14 @@ const Login = () => {
 
 
   return (
-    <div className={`flex justify-center items-center h-screen bg-gray-100`}>
-      <Container className="w-full md:w-[700px] px-10 py-12 bg-white shadow-lg rounded-lg">
+    <div className={`flex justify-center items-center md:h-screen bg-gray-100`}>
+      <Container className="w-full md:w-[700px] px-10 md:py-12 py-8 bg-white shadow-lg rounded-lg">
         <h1 className="text-3xl font-bold text-center text-[#FFA500] uppercase mb-6">EStore Login</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email Field */}
           <div>
             <label
-              className="block text-lg font-medium text-gray-700"
+              className="block text-sm md:text-lg font-medium text-gray-700"
               htmlFor="email"
             >
               * Email:
@@ -89,7 +89,7 @@ const Login = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full mt-1 px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+              className="w-full mt-1 px-4 md:py-3 py-2 text-sm md:text-base border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
               placeholder="Enter your email"
             />
           </div>
@@ -108,14 +108,14 @@ const Login = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full mt-1 px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+              className="w-full mt-1 px-4 md:py-3 py-2 text-sm md:text-base border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
               placeholder="Enter your password"
             />
           </div>
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 z-20 px-6 relative overflow-hidden text-white bg-orange-400 rounded-md shadow-md hover:bg-orange-600 focus:outline-none"
+            className="w-full md:py-3 py-2 z-20 px-6 relative overflow-hidden text-white bg-orange-400 rounded-md shadow-md hover:bg-orange-600 focus:outline-none"
           >
             Login
             <div className="absolute left-0 top-0 w-full h-full z-[-1]">
