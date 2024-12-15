@@ -69,12 +69,12 @@ const SignUp = () => {
   return (
     <div className='flex justify-center items-center h-screen bg-gray-100'>
       <Container className="w-full md:w-[700px]  p-8 bg-white shadow-lg rounded-lg">
-        <h1 className="text-3xl font-bold text-center text-[#FFA500] mb-6 uppercase">Estore SignUp</h1>
+        <h1 className=" text-lg md:text-3xl font-bold text-center text-[#FFA500] mb-6 uppercase">Estore SignUp</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="flex justify-between gap-x-3 items-center">
+          <div className="w-full md:flex md:justify-between gap-x-3 items-center">
             {/* Name Field */}
-            <div className='w-1/2'>
-              <label className="block text-lg font-medium text-gray-700" htmlFor="name">
+            <div className='w-full md:w-1/2 py-2'>
+              <label className="block text-sm md:text-lg font-medium text-gray-700" htmlFor="name">
                 * Enter your name:
               </label>
               <input
@@ -89,8 +89,8 @@ const SignUp = () => {
               />
             </div>
             {/* Company Name */}
-            <div className='w-1/2'>
-              <label className="block text-lg font-medium text-gray-700" htmlFor="companyName">
+            <div className='w-full md:w-1/2'>
+              <label className="block text-sm md:text-lg font-medium text-gray-700" htmlFor="companyName">
                 * Enter your Company/Store name:
               </label>
               <input
@@ -106,8 +106,8 @@ const SignUp = () => {
             </div>
           </div>
           {/* Address */}
-          <div className="flex justify-between items-center gap-x-3">
-            <div className='w-1/2'>
+          <div className="md:flex justify-between items-center gap-x-3">
+            <div className='w-full md:w-1/2'>
               <label className="block text-lg font-medium text-gray-700" htmlFor="address">
                 * Enter your company/store address:
               </label>
@@ -123,7 +123,7 @@ const SignUp = () => {
               />
             </div>
             {/* Email */}
-            <div className='w-1/2'>
+            <div className='w-fullmd:w-1/2'>
               <label className="block text-lg font-medium text-gray-700" htmlFor="email">
                 * Enter your email:
               </label>
@@ -139,9 +139,9 @@ const SignUp = () => {
               />
             </div>
           </div>
-          <div className="flex justify-between items-center gap-x-3">
+          <div className="md:flex justify-between items-center gap-x-3">
             {/* Phone */}
-            <div className='w-1/2'>
+            <div className='w-full md:w-1/2'>
               <label className="block text-lg font-medium text-gray-700" htmlFor="phone">
                 * Enter your phone number:
               </label>
@@ -156,7 +156,7 @@ const SignUp = () => {
               />
             </div>
             {/* Fax */}
-            <div className='w-1/2'>
+            <div className='w-fullmd:w-1/2'>
               <label className="block text-lg font-medium text-gray-700" htmlFor="fax">
                 Enter your fax number:
               </label>
