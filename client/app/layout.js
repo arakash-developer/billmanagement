@@ -2,6 +2,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./component/layers/Navbar";
 import StoreProvider from "./StoreProvider";
+import ProfileNavbar from "./component/ProfileNavbar";
+import Container from "./component/layers/Container";
+import YourProducts from "./component/YourProducts";
 
 
 
@@ -27,7 +30,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased `}>
         <StoreProvider>
         <Navbar />
-        {children}
+         {children}
         </StoreProvider>
       </body>
     </html>

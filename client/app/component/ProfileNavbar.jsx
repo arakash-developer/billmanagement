@@ -28,9 +28,9 @@ const ProfileNavbar = () => {
 
   return (
     <>
-      <div className="h-screen overflow-hidden bg-gray-100 flex">
+      <div className="h-screen bg-gray-100 flex shadow-md">
         {/* Sidebar */}
-        <aside className="fixed w-64 mt-10 h-full overflow-hidden">
+        <aside className=" w-64 mt-10 h-full overflow-hidden">
           <div>
             <h2 className="text-2xl font-semibold ml-3 text-blue-600">NextEra</h2>
             <nav className="mt-6 w-full">
@@ -89,11 +89,7 @@ const ProfileNavbar = () => {
         </aside>
 
         {/* Main Content */}
-        <div className="w-full pl-[270px] overflow-scroll">
-          <ProfilePage />
-          <Orders />
-          <Settings />
-        </div>
+        
       </div>
 
       {/* Logout Confirmation Popup */}

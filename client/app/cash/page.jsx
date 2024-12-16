@@ -1,16 +1,16 @@
 import React from 'react'
 import CashMemo from '../component/CashMemo'
-import LocalClient from '../component/LocalClient'
 import Container from '../component/layers/Container'
 import YourProducts from '../component/YourProducts'
+import ProfileNavbar from '../component/ProfileNavbar'
 
 const Home = () => {
   return (
-    <div className='bg-cash bg-no-repeat bg-cover'>
+    <div className='bg-no-repeat bg-cover'>
       <Container className={"flex justify-between"}>
-         <LocalClient/>
+         <ProfileNavbar/>
          <CashMemo />
-         <YourProducts/>
+         <YourProducts />
       </Container>
     </div>
   )

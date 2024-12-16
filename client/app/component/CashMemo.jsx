@@ -208,7 +208,7 @@ const CashMemo = ({ className }) => {
 
     return (
         <div className={`${className} `}>
-                <div className="cashbox w-full md:w-[700px] mx-auto items-center pt-1">
+                <div className="w-full md:w-[700px] mx-auto items-center pt-1">
                     <div className="flex flex-col justify-center">
                         {/* <div className="flex justify-end ">
                             <button

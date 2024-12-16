@@ -41,7 +41,7 @@ const page = () => {
 
   return (
     <div className=''>
-      <Container className={"max-w-[700px]"}>
+      <Container className={"md:w-[700px]"}>
         {
           cashData.map((item, index) => (
             <div onClick={ () => setShow(item)}

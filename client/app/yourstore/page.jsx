@@ -37,7 +37,7 @@ const page = () => {
   ];
 
   return (
-    <div>
+    <div className="">
       <Container className={"flex gap-x-10"}>
         <div className="w-80 h-screen shadow-xl bg-gray-200">
           <h1 className="text-2xl font-bold p-3 text-gray-700">Your Store</h1>
@@ -78,7 +78,7 @@ const page = () => {
             <h1 className='text-2xl font-bold py-2 text-gray-700'>Your Products</h1>
             <button className='px-4 py-1 bg-orange-500 text-white hover:bg-orange-600 rounded-md'>Uploade Product</button>
           </div>
-          <div className='grid grid-cols-4 gap-5 h-screen overflow-y-scroll'>
+          <div className='grid grid-cols-5 gap-3 h-screen overflow-hidden overflow-y-scroll'>
             <ProductCatd />
             <ProductCatd />
             <ProductCatd />
