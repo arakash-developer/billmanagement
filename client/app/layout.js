@@ -27,6 +27,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+         {/* <!-- App css --> */}
+         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+         <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+         <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased `}>
         <StoreProvider>
         <Navbar />
