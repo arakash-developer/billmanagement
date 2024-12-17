@@ -83,7 +83,7 @@ const page = () => {
               </div>
               {/* csah memo iamge */}
               <div className={`w-full h-80 border flex justify-center items-center ${show === item ? "block" : "hidden"}`}>
-                <Image src={item.image} alt='kadir' className='w-16 h-16 object-cover' />
+                <Image src={item.image} alt='kadir' className='bg-red-200 w-16 h-16 object-cover' />
               </div>
             </div>
 
