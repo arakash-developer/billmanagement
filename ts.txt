@@ -1,0 +1,40 @@
+1) Variable Declarations in TypeScript
+const message: string = "Hello, TypeScript!";
+// or let TypeScript infer the type
+
+let count: number = 0;
+count = 5;
+
+var isValid: boolean = true; // Avoid using `var` in modern TypeScript/JavaScript.
+
+let username: string = "Atiqur";
+let age: number = 25;
+let isLoggedIn: boolean = true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
