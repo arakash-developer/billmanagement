@@ -1,33 +1,35 @@
-import React from 'react'
-
 const page = () => {
-  let uninum:number = 54;
-  uninum = 54.1234;
-    
-  let bew = uninum.toFixed(2)
-  console.log(bew);
 
-  let teo:number|string = 54;
-  teo = "Hello, World!";
-  teo =100;
-  console.log(teo);
-  
-  
-  let calc = (a:number,b:number):number =>{
-    return a*b
-  }
-  calc(10,20)
+  type bew = number | string;
+  let bew:bew = "Hello, World!";
 
+  type person = {
+    name: string;
+    age: number;
+    address?:string;
+  };
+
+  let person:person = {
+    name: "Akash",
+    age: 25,
+  };
 
   // a= 100;
-  // let b:String = 'Hello, World!';
-  // let calc = (a:Number,b:Number):Number=> a+b
-  // calc(10,20)
-  return (
-    <div>
-      Home {bew}
-    </div>
-  )
-}
+  type calc = (a:number,b:number) => number
+  let calc:calc = (a,b)=> a+b
+  let res = calc(10,20)
 
-export default page
+  let jj:number[] = [1,2,3,4,5,6]
+  let jjk:string[] = ["aa"]
+  console.log(jj);
+
+
+  let arr:Array<string | number> = ["a","b","c",10,20,30]
+
+
+  console.log(arr);
+  
+  return <div>Home {res}</div>;
+};
+
+export default page;
