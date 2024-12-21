@@ -69,8 +69,8 @@ const page = () => {
 
   return (
     <div className='flex justify-center items-center h-full bg-[var(--bg1)]'>
-      <Container className="w-full md:w-[1000px]  py-[20px] px-[46px] bg-[var(--bg20)] shadow-lg rounded-[40px]">
-        <h1 className="text-3xl font-bold text-center text-[#FFA500] mb-6 uppercase">Estore SignUp</h1>
+      <Container className="w-full md:w-[1000px]  py-[30px] px-[56px] bg-[var(--bg20)] shadow-lg rounded-[40px]">
+        <h1 className="text-3xl font-bold text-center text-[var(--bg1)] mb-6 capitalize">Estore SignUp</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex justify-between gap-x-3 items-center">
             {/* Name Field */}
@@ -172,8 +172,9 @@ const page = () => {
               />
             </div>
           </div>
+          <div className="flex justify-between items-center gap-x-3">
           {/* Password */}
-          <div>
+          <div className='w-1/2'>
             <label className="block text-lg font-medium text-gray-700" htmlFor="password">
               * Set your password:
             </label>
@@ -189,7 +190,7 @@ const page = () => {
             />
           </div>
           {/* Confirm Password */}
-          <div>
+          <div className='w-1/2'>
             <label className="block text-lg font-medium text-gray-700" htmlFor="confirmPassword">
               * Confirm your password:
             </label>
@@ -203,6 +204,7 @@ const page = () => {
               className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
               placeholder="Confirm your password"
             />
+          </div>
           </div>
           {/* Submit Button */}
           <button
