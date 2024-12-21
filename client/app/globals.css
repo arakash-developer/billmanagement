@@ -3,8 +3,40 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* All Background-Color Here */
+  --bg1:#001E2B;
+  --bg2:#000000;
+  --bg3:#023430;
+
+  --bg4:#21313c;
+  --bg5:#27455c;
+  --bg6:#00684a;
+
+  --bg7:#42494f;
+  --bg8:#3d4f58;
+  --bg9:#555555;
+  
+  --bg9:#006cfa;
+  --bg10:#3860be;
+  --bg11:#656565;
+
+  --bg12:#5d6c74;
+  --bg13:#696969;
+  --bg14:#13aa52;
+
+  --bg15:#00ed64;
+  --bg16:#6cc04a;
+  --bg17:#b8c4c2;
+
+  /* All Highlight-Color Here */
+  --high:#00ED64;
+  /* All Text-Color Here */
+  --text1:#ffffff;
+  --text2:#b8c4c2;
+  --text3:#001e2b;
+  --text4:#001e2b;
+  --text5:#3d4f58;
+  /* All Shadows-Color Here */
 }
 
 .cashbox{
