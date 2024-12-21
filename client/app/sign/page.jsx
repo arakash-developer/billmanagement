@@ -70,12 +70,12 @@ const page = () => {
   return (
     <div className='flex justify-center items-center h-full bg-[var(--bg1)]'>
       <Container className="w-full md:w-[1000px]  py-[30px] px-[56px] bg-[var(--bg20)] shadow-lg rounded-[40px]">
-        <h1 className="text-3xl font-bold text-center text-[var(--bg1)] mb-6 capitalize">Estore SignUp</h1>
+        {/* <h1 className="text-3xl font-bold text-center text-[var(--bg1)] mb-6 capitalize">Estore SignUp</h1> */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex justify-between gap-x-3 items-center">
             {/* Name Field */}
             <div className='w-1/2'>
-              <label className="block text-lg font-medium text-gray-700" htmlFor="name">
+              <label className="block text-lg font-medium text-[var(--bg1)]" htmlFor="name">
                 * Enter your name:
               </label>
               <input
@@ -91,8 +91,8 @@ const page = () => {
             </div>
             {/* Company Name */}
             <div className='w-1/2'>
-              <label className="block text-lg font-medium text-gray-700" htmlFor="companyName">
-                * Enter your Company/Store name:
+              <label className="block text-lg font-medium text-[var(--bg1)]" htmlFor="companyName">
+                Enter your Company/Store name:
               </label>
               <input
                 type="text"
@@ -101,7 +101,7 @@ const page = () => {
                 value={formData.companyName}
                 onChange={handleChange}
                 required
-                className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                className="w-full inline-block mt-1 px-4 py-2 border border-[var(--bg21)] rounded-md shadow-sm focus:ring-[var(--high1)] focus:border-[var-(--high1)]"
                 placeholder="Enter your company/store name"
               />
             </div>
@@ -109,8 +109,8 @@ const page = () => {
           {/* Address */}
           <div className="flex justify-between items-center gap-x-3">
             <div className='w-1/2'>
-              <label className="block text-lg font-medium text-gray-700" htmlFor="address">
-                * Enter your company/store address:
+              <label className="block text-lg font-medium text-[var(--bg1)]" htmlFor="address">
+                Enter your company/store address:
               </label>
               <input
                 type="text"
@@ -209,7 +209,7 @@ const page = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 px-6 relative text-white bg-orange-400 overflow-hidden z-10 rounded-md shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
+            className="w-full py-3 px-6 relative text-white bg-[var(--bg21)] overflow-hidden z-10 rounded-md shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
           >
             <div className="absolute left-0 top-0 w-full h-full z-[-1]">
               <BarLoader height={50} width={700} color="#F97316" loading={loading ? true : false} />
