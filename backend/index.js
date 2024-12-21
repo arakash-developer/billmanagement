@@ -242,7 +242,7 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
 // })
 
 
-app.post("/cash",cashRouter)
+app.use("/cash",cashRouter)
 app.use('/cash',cashRouter);
 
 
