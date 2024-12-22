@@ -49,8 +49,7 @@ const Navbar = () => {
     <div className="fixed top-0 left-0 w-full py-6 bg-[var(--bg20)] shadow-md z-50">
       <Container className="flex justify-between items-center">
         {/* Profile and Search Section */}
-         {
-           validated &&
+   
            <div className="relative flex items-center space-x-4">
           <Link
             href="/profile"
@@ -71,20 +70,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-         }
-         {
-           !validated &&
-           <div className="w-12 md:w-14 logo font-bold text-xl text-gray-700">
-           <Link href="/">
-           <Image src={eStoreLogo} alt="e-store" className="w-full h-full object-center" />
-           </Link>
-         </div>
-         }
-        {/* Logo Section */}
        
-
-        {
-          validated &&
           <ul
             className="absolute left-1/2 bottom-0 md:bottom-1/2 md:translate-y-1/2 -translate-x-1/2 flex space-x-10 items-center"
             role="navigation"
@@ -106,56 +92,9 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-        }
-        {validated ? "" :
-          <ul
-            className="absolute left-1/2 bottom-0 md:bottom-1/2 md:translate-y-1/2 -translate-x-1/2 flex space-x-10 items-center"
-            role="navigation"
-            aria-label="Main Navigation"
-          >
-            {pubnavLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`${router?.pathname === link.href // Safe access to pathname
-                    ? 'text-orange-500 underline'
-                    : 'text-gray-700 font-medium'
-                    } hover:text-orange-400 transition duration-300 text-xl md:text-base flex items-center md:gap-x-2 px-5
-                     md:px-0 py-2 md:py-0 hover:bg-gray-300 md:hover:bg-transparent`}
-                >
-                  {link.icon}
-                  <span className='hidden md:block'>{link.label}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        }
-
-        {/* Button */}
-        {
-          validated &&
           <div className='w-12 md:w-14'>
             <Image src={eStoreLogo} alt='estore' className='w-full h-full object-center' />
           </div>
-        }
-       {
-        !validated &&
-        <div className="flex items-center space-x-2 group">
-        <Link
-          href="/login"
-          className="bg-blue-600 text-white text-[12px] py-1 px-3 md:text-base md:py-2 md:px-6 rounded-lg group-hover:bg-orange-500 transition duration-300"
-        >
-          Log In Akash
-        </Link>
-        <Link
-          href="/sign"
-          className="bg-orange-500 text-white text-[12px] py-1 px-3 md:text-base md:py-2 md:px-6 rounded-lg group-hover:bg-blue-600 transition duration-300"
-        >
-          Sign Up Akash
-        </Link>
-      </div>
-       }
-
       </Container>
     </div>
   );
