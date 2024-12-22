@@ -21,12 +21,9 @@ const multerCloudinary = require('./utils/multerCloudinary');
 let fs = require('fs');
 const cashRouter = require("./routes/cash")
 const profileSettingRouter = require("./routes/profile")
+app.use(cors());
 
-app.use(cors({
-  origin: ['https://billmanagements.vercel.app','http://localhost:3000'],
-  methods: ['GET', 'POST'],
-  credentials: true,
-}));
+
 
 
 app.get('/', (req, res) => {
