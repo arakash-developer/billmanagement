@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
-import Container from '@/app/component/layers/Container';
+import Container from './Container';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { TbHomeFilled } from "react-icons/tb";
@@ -145,13 +145,13 @@ const Navbar = () => {
           href="/login"
           className="bg-blue-600 text-white text-[12px] py-1 px-3 md:text-base md:py-2 md:px-6 rounded-lg group-hover:bg-orange-500 transition duration-300"
         >
-          Log In Akash
+          Log In
         </Link>
         <Link
           href="/sign"
           className="bg-orange-500 text-white text-[12px] py-1 px-3 md:text-base md:py-2 md:px-6 rounded-lg group-hover:bg-blue-600 transition duration-300"
         >
-          Sign Up Akash
+          Sign Up
         </Link>
       </div>
        }
