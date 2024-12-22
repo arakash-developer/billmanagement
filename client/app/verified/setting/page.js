@@ -1,5 +1,5 @@
 import React from 'react'
-import AccountSetting from '../component/AccountSetting'
+import AccountSetting from '../../component/AccountSetting'
 
 const page = () => {
   return (

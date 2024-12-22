@@ -36,6 +36,11 @@ app.get('/', (req, res) => {
 
 app.post('/create', async(req, res) => {
   let { name, password, companyName, phone, firstName, lastName, address, zipcode, country, username, email } = req.body;
+  console.log(req.body);  
+  
+  if(!req.body){
+    return res.json({ result: false, message: "Please Fill All Fields" })
+  }
   let existemail = await UserModel.findOne({ email })
   if (existemail) return res.json({ result: false, message: "Email Already Exist" })
   const saltRounds = 10;
@@ -58,6 +63,7 @@ app.post('/create', async(req, res) => {
       })
       return res.status(200).json({
         result: true,
+        message: "Successfully Created", 
         token: token,
       });
     });

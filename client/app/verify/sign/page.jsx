@@ -46,6 +46,8 @@ const page = () => {
     })
       .then(function (response) {
         let token = response.data.token
+        console.log(response);
+        
         localStorage.setItem("token", token)
         localStorage.setItem("login", 'true')
         setValidated(true)
