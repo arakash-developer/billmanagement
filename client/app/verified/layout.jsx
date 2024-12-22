@@ -33,9 +33,9 @@ function RootLayout2({ children }) {
   apiClient
     .post("/berier", null, { headers })
     .then((response) => {
-      if (!response.data.result) {
+      if(!response.data.result) {
         router.push("/verify");
-        return null;
+        return null;   
       }
     })
     .catch((error) => {
@@ -43,15 +43,16 @@ function RootLayout2({ children }) {
         "Error:",
         error.response ? error.response.data : error.message
       );
+      router.push("/verify");
+      return null;
     });
   }, []);
   return (
-    <html lang="en">
-      <body className={`${euclid.className}`}>
+      <>
         <Navbar />
         {children}
-      </body>
-    </html>
+      </>
+
   );
 }
 export default RootLayout2;
