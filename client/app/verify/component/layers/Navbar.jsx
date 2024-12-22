@@ -142,13 +142,13 @@ const Navbar = () => {
         !validated &&
         <div className="flex items-center space-x-2 group">
         <Link
-          href="/login"
+          href="/verify/login"
           className="bg-blue-600 text-white text-[12px] py-1 px-3 md:text-base md:py-2 md:px-6 rounded-lg group-hover:bg-orange-500 transition duration-300"
         >
           Log In
         </Link>
         <Link
-          href="/sign"
+          href="/verify/sign"
           className="bg-orange-500 text-white text-[12px] py-1 px-3 md:text-base md:py-2 md:px-6 rounded-lg group-hover:bg-blue-600 transition duration-300"
         >
           Sign Up
