@@ -13,6 +13,9 @@ const euclid = localFont({
 
 function RootLayout2({ children }) {
   const router = useRouter();
+  useEffect(() => {
+
+
   const apiClient = axios.create({
     baseURL: "https://billmanagement-server.vercel.app", // Base URL
     withCredentials: true, // Enables cookies or credentials if needed
@@ -41,7 +44,7 @@ function RootLayout2({ children }) {
         error.response ? error.response.data : error.message
       );
     });
-
+  }, []);
   return (
     <html lang="en">
       <body className={`${euclid.className}`}>
