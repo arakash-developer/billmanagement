@@ -43,7 +43,7 @@ function RootLayout2({ children }) {
         "Error:",
         error.response ? error.response.data : error.message
       );
-      router.push("/verify");
+      // router.push("/verify");
       return null;
     });
   }, []);
