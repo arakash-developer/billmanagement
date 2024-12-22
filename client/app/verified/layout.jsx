@@ -1,15 +1,22 @@
 "use client";
 import Navbar from "@/app/verified/component/Navbar";
-import localFont from 'next/font/local'
-import withAuth from "../auth/withAuth";
- 
+import localFont from "next/font/local";
+import { useRouter } from "next/navigation";
+
 // Font files can be colocated inside of `app`
 const euclid = localFont({
-  src: '../fonts/euclid.ttf',
-  display: 'swap',
-})
+  src: "../fonts/euclid.ttf",
+  display: "swap",
+});
 
- function RootLayout2({ children }) {
+function RootLayout2({ children }) {
+  const router = useRouter();
+  let token = localStorage.getItem("token");
+  console.log(token);
+  if (!token) {
+    router.push("/verify");
+    return null;
+  }
   return (
     <html lang="en">
       <body className={`${euclid.className}`}>
@@ -19,4 +26,4 @@ const euclid = localFont({
     </html>
   );
 }
-export default withAuth(RootLayout2)
+export default RootLayout2;

@@ -20,6 +20,7 @@ const cloudinary = require('cloudinary').v2;
 const multerCloudinary = require('./utils/multerCloudinary');
 let fs = require('fs');
 const cashRouter = require("./routes/cash")
+const berierRouter = require("./routes/berier")
 const profileSettingRouter = require("./routes/profile")
 app.use(cors({
   origin: ['https://billmanagements.vercel.app','http://localhost:3000/verify/sign','http://localhost:3000','http://localhost:5173/'],
@@ -257,6 +258,7 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
 
 app.use("/cash",cashRouter)
 app.use('/cash',cashRouter);
+app.use('/berier',berierRouter);
 
 
 

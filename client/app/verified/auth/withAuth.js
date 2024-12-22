@@ -1,9 +1,11 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-// import localStorage from 'localstorage-polyfill';
 
 export default function withAuth(Component){
+    let token = localStorage.getItem("token")
+    console.log(token);
+    
     return function withAuth(props){
         const router = useRouter()
         const [valid, setValid] = useState(false);
