@@ -327,4 +327,4 @@ const CashMemo = ({ className }) => {
     );
 };
 
-export default withAuth(CashMemo);
+export default CashMemo
