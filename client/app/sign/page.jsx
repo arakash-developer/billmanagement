@@ -120,7 +120,7 @@ const page = () => {
                 onChange={handleChange}
                 required
                 className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-                placeholder="Enter your address"
+                placeholder="example address" 
               />
             </div>
             {/* Email */}
@@ -136,7 +136,7 @@ const page = () => {
                 onChange={handleChange}
                 required
                 className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-                placeholder="Enter your email"
+                placeholder="example@me.com"
               />
             </div>
           </div>
@@ -152,8 +152,8 @@ const page = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-                placeholder="Enter your phone number"
+                className="w-full mt-1 px-4 py-2 border text-[var(--text7)] border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                placeholder="+880 123 456 7890"
               />
             </div>
             {/* Fax */}
@@ -167,8 +167,8 @@ const page = () => {
                 name="fax"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-                placeholder="Enter your fax number"
+                className="w-full mt-1 px-4 py-2 text-[var(--text7)] border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                placeholder="+1 907 555 1234" 
               />
             </div>
           </div>
