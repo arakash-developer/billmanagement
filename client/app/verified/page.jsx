@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>Varified Page page</div>
+    <div>Varified Dashboard Page...</div>
   )
 }
 

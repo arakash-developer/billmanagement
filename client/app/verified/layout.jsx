@@ -15,7 +15,7 @@ export const metadata = {
   description: "E-Store",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout2({ children }) {
   return (
     <html lang="en">
       <body className={`${euclid.className}`}>

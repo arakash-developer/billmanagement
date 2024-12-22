@@ -49,7 +49,7 @@ const page = () => {
         localStorage.setItem("token", token)
         localStorage.setItem("login", 'true')
         setValidated(true)
-        router.push('/profile')
+        router.push('/verified')  
         toast.success('SignUp Success!', {
           position: "bottom-left",
           autoClose: 5000,

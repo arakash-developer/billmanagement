@@ -9,15 +9,7 @@ import { useRouter } from 'next/navigation';
 import { Contex } from '../contexapi/Rights';
 
 const page = () => {
-
-  let { validated, setValidated } = useContext(Contex)
   const router = useRouter();
-  useLayoutEffect(() => {
-      let valid = localStorage.getItem('login');
-      if (valid) {
-          setValidated(true)
-      }
-  }, [])
   let [cashData,setCashData] = useState([])
   useEffect(() => {
     let token = localStorage.getItem("token")

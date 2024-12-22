@@ -33,20 +33,13 @@ const Navbar = () => {
   let  router = useRouter()
   let {com} = useContext(Contex)
   const navLinks = [
-    { href: '/cash', label: "Cash", icon: <TbHomeFilled /> },
-    { href: '/history', label: 'History', icon: <MdHistoryEdu /> },
-    { href: '/yourstore', label: 'Your Store', icon: <FaStoreAlt /> },
-    { href: '/notification', label: 'Notification', icon: <AiFillNotification /> },
+    { href: '/verified/cash', label: "Cash", icon: <TbHomeFilled /> },
+    { href: '/verified/history', label: 'History', icon: <MdHistoryEdu /> },
+    { href: '/verified/yourstore', label: 'Your Store', icon: <FaStoreAlt /> },
+    { href: '/verified/notification', label: 'Notification', icon: <AiFillNotification /> },
   ];
-  const pubnavLinks = [
-    { href: '/', label: "Home", icon: <TbHomeFilled /> },
-    { href: '/offers', label: 'Offers', icon: <MdHistoryEdu /> },
-    { href: '/services', label: 'Services', icon: <FaStoreAlt /> },
-    { href: '/aboutus', label: 'About Us', icon: <ImProfile /> },
-  ];
-
   return (
-    <div className="fixed top-0 left-0 w-full py-6 bg-[var(--bg20)] shadow-md z-50">
+    <div className="relative top-0 left-0 w-full py-6 bg-[var(--bg20)] shadow-md z-50">
       <Container className="flex justify-between items-center">
         {/* Profile and Search Section */}
    
