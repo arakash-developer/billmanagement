@@ -42,7 +42,7 @@ const page = () => {
   let savedata = () => {
     setLoading(true)
     axios.post('https://billmanagement-server.vercel.app/create', formData, {
-      withCredentials: true
+      withCredentials: true,
     })
       .then(function (response) {
         let token = response.data.token

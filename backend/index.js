@@ -40,14 +40,14 @@ app.post('/create', async(req, res) => {
   if(Object.keys(req.body).length === 0){
     return res.json({ 
       result: false, 
-      message: "Please Fill All Fields"
+      message: "Please Fill All Fields",
       token: "",
     })
   }
   let existemail = await UserModel.findOne({ email })
   if (existemail) return res.json({ 
     result: false, 
-    message: "Email Already Exist"
+    message: "Email Already Exist",
     token: "",
   })
   const saltRounds = 10;
