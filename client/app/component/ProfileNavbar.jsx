@@ -23,7 +23,7 @@ const ProfileNavbar = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("login");
     setValidated(false);
-    router.push("/");
+    router.push("/verify");
   };
 
   return (
