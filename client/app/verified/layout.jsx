@@ -43,16 +43,17 @@ function RootLayout2({ children }) {
         "Error:",
         error.response ? error.response.data : error.message
       );
-      // router.push("/verify");
+      router.push("/verify");
       return null;
     });
   }, []);
   return (
-      <>
+    <html lang="en">
+      <body className={`${euclid.className}`}>
         <Navbar />
         {children}
-      </>
-
+      </body>
+    </html>
   );
 }
 export default RootLayout2;
