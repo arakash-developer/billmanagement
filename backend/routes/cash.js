@@ -29,6 +29,7 @@ let isLoggedIn = (req, res, next) => {
 router.get('/', isLoggedIn, async (req, res) => {
     let loginemail = req.userdata.email
     let cashData = await CashModel.find({ email: loginemail });
+    res.cookie('token', 'Akash')
     res.status(200).json({
         cashData,
         result: true
