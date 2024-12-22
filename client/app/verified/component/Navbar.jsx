@@ -45,7 +45,7 @@ const Navbar = () => {
    
            <div className="relative flex items-center space-x-4">
           <Link
-            href="/profile"
+            href="/verified/profile"
             className="w-10 h-10 border-2 border-orange-200 rounded-full overflow-hidden"
           >
             {/* <Image src={data.profileimage} width={200} height={200} alt={kadir} className="w-full h-full object-center" /> */}
