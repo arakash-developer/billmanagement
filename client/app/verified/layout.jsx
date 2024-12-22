@@ -39,12 +39,12 @@ function RootLayout2({ children }) {
       }
     })
     .catch((error) => {
+      router.push("/verify");
+      return null;
       console.error(
         "Error:",
         error.response ? error.response.data : error.message
       );
-      router.push("/verify");
-      return null;
     });
   }, []);
   return (
