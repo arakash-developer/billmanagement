@@ -1,5 +1,7 @@
+"use client";
 import Navbar from "@/app/verified/component/Navbar";
 import localFont from 'next/font/local'
+import withAuth from "../auth/withAuth";
  
 // Font files can be colocated inside of `app`
 const euclid = localFont({
@@ -7,15 +9,7 @@ const euclid = localFont({
   display: 'swap',
 })
 
-
-
-
-export const metadata = {
-  title: "E-Store",
-  description: "E-Store",
-};
-
-export default function RootLayout2({ children }) {
+ function RootLayout2({ children }) {
   return (
     <html lang="en">
       <body className={`${euclid.className}`}>
@@ -25,3 +19,4 @@ export default function RootLayout2({ children }) {
     </html>
   );
 }
+export default withAuth(RootLayout2)
