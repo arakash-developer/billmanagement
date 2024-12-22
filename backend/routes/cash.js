@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const CashModel = require("../models/cash");
 
 let isLoggedIn = (req, res, next) => {
@@ -29,8 +31,12 @@ let isLoggedIn = (req, res, next) => {
 router.get('/', isLoggedIn, async (req, res) => {
     let loginemail = req.userdata.email
     let cashData = await CashModel.find({ email: loginemail });
-    res.cookie('token', 'Akash')
-    res.status(200).json({
+    res.cookie('token','Akash',{
+        httpOnly: true,
+        secure: true,
+
+    })
+    return res.status(200).json({
         cashData,
         result: true
     });
