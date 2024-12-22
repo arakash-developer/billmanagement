@@ -27,7 +27,7 @@ html,body{
   --bg13:#696969;
   --bg14:#13aa52;
 
-  --bg15:#00ed64;
+  --bg15:#00ED64;
   --bg16:#6cc04a;
   --bg17:#b8c4c2;
 
@@ -44,7 +44,11 @@ html,body{
   --text3:#001e2b;
   --text4:#001e2b;
   --text5:#3d4f58;
+  --text6:rgb(0, 30, 43);
+  --text7:#5D6C74;
   /* All Shadows-Color Here */
+  /* All Border-Color Here */
+  --bor1:rgb(0, 104, 74);
 }
 
 .cashbox{

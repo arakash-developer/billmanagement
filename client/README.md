@@ -38,6 +38,43 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 
+rgba(0, 0, 0, 0)
+rgb(6, 22, 33)
+rgb(0, 30, 43)
+rgb(0, 0, 238)
+rgb(2, 52, 48)
+rgb(29, 43, 53)
+rgb(33, 49, 60)
+rgb(39, 69, 92)
+rgb(0, 104, 74)
+rgb(61, 79, 88)
+rgb(85, 85, 85)
+rgb(0, 108, 250)
+rgb(56, 96, 190)
+rgb(101, 101, 101)
+rgb(93, 108, 116)
+rgb(105, 105, 105)
+rgb(0, 170, 87)
+rgb(0, 237, 100)
+rgb(108, 192, 74)
+rgb(184, 196, 194)
+rgb(177, 255, 5)
+rgb(205, 220, 242)
+rgb(255, 236, 158)
+rgb(244, 244, 244)
+rgb(248, 248, 248)
+rgb(250, 251, 252)
+rgb(249, 255, 250)
+rgb(255, 255, 255)
+
+
+
+
+
+
+
+
+
 
 tomar oi new design ta er vitore kore feliom....
 assa ami oi design ta thik kortaci 

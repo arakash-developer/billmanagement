@@ -69,14 +69,14 @@ const page = () => {
 
   return (
     <div className='flex justify-center items-center h-full bg-[var(--bg1)]'>
-      <Container className="w-full md:w-[1000px]  py-[30px] px-[56px] bg-[var(--bg20)] shadow-lg rounded-[40px]">
+      <Container className="w-full md:w-[800px] py-[40px] px-[56px] bg-[var(--bg20)] shadow-lg">
         {/* <h1 className="text-3xl font-bold text-center text-[var(--bg1)] mb-6 capitalize">Estore SignUp</h1> */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex justify-between gap-x-3 items-center">
             {/* Name Field */}
             <div className='w-1/2'>
               <label className="block text-lg font-medium text-[var(--bg1)]" htmlFor="name">
-                * Enter your name:
+                Enter your name:
               </label>
               <input
                 type="text"
@@ -126,7 +126,7 @@ const page = () => {
             {/* Email */}
             <div className='w-1/2'>
               <label className="block text-lg font-medium text-gray-700" htmlFor="email">
-                * Enter your email:
+                Enter your email:
               </label>
               <input
                 type="email"
@@ -144,7 +144,7 @@ const page = () => {
             {/* Phone */}
             <div className='w-1/2'>
               <label className="block text-lg font-medium text-gray-700" htmlFor="phone">
-                * Enter your phone number:
+                Enter your phone number:
               </label>
               <input
                 type="number"
@@ -176,7 +176,7 @@ const page = () => {
           {/* Password */}
           <div className='w-1/2'>
             <label className="block text-lg font-medium text-gray-700" htmlFor="password">
-              * Set your password:
+              Set your password:
             </label>
             <input
               type="password"
@@ -185,14 +185,14 @@ const page = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-              placeholder="Enter your password"
+              className="w-full mt-1 px-4 py-2 text-[var(--text7)] border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+              placeholder="example@123"
             />
           </div>
           {/* Confirm Password */}
           <div className='w-1/2'>
             <label className="block text-lg font-medium text-gray-700" htmlFor="confirmPassword">
-              * Confirm your password:
+              Confirm your password:
             </label>
             <input
               type="password"
@@ -201,15 +201,15 @@ const page = () => {
               value={formData.confirmPassword}
               onChange={handleChange}
               required
-              className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-              placeholder="Confirm your password"
+              className="w-full mt-1 text-[var(--text7)] px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+              placeholder="example@123"
             />
           </div>
           </div>
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 px-6 relative text-white bg-[var(--bg21)] overflow-hidden z-10 rounded-md shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
+            className="w-full py-3 px-6 relative text-[var(--text6)] bg-[var(--bg15)] border-[1px] inline-block capitalize  border-[var(--bor1)] overflow-hidden z-10 rounded-md shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
           >
             <div className="absolute left-0 top-0 w-full h-full z-[-1]">
               <BarLoader height={50} width={700} color="#F97316" loading={loading ? true : false} />
@@ -218,9 +218,9 @@ const page = () => {
           </button>
         </form>
         <div className="text-center mt-4">
-          <p className="text-gray-600">
+          <p className="text-[var(--text7)]">
             Already have an account?{" "}
-            <Link href='/' className="text-orange-500 hover:underline">
+            <Link href='/' className="text-[var(--bg1)] hover:underline">
               Log in
             </Link>
           </p>
