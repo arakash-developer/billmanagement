@@ -37,10 +37,18 @@ app.get('/', (req, res) => {
 app.post('/create', async(req, res) => {
   let { name, password, companyName, phone, firstName, lastName, address, zipcode, country, username, email } = req.body;
   if(Object.keys(req.body).length === 0){
-    return res.json({ result: false, message: "Please Fill All Fields" })
+    return res.json({ 
+      result: false, 
+      message: "Please Fill All Fields"
+      token: "",
+    })
   }
   let existemail = await UserModel.findOne({ email })
-  if (existemail) return res.json({ result: false, message: "Email Already Exist" })
+  if (existemail) return res.json({ 
+    result: false, 
+    message: "Email Already Exist"
+    token: "",
+  })
   const saltRounds = 10;
   bcrypt.genSalt(saltRounds, function (err, salt) {
     bcrypt.hash(password, salt, async (err, hash) => {
