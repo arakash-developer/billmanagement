@@ -22,7 +22,7 @@ let fs = require('fs');
 const cashRouter = require("./routes/cash")
 const profileSettingRouter = require("./routes/profile")
 app.use(cors({
-  origin: ['https://billmanagements.vercel.app','http://localhost:3000/verify/sign','http://localhost:3000'],
+  origin: ['https://billmanagements.vercel.app','http://localhost:3000/verify/sign','http://localhost:3000','http://localhost:5173/'],
   methods: ['GET', 'POST'],
   credentials: true,
 }));
