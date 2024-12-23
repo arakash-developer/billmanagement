@@ -7,7 +7,7 @@ const CashModel = require("../models/cash");
 
 let isLoggedIn = (req, res, next) => {
   try {
-    let token = req.headers.token;
+    let token = req.cookies.token;
     if (token) {
       if (token === "") {
         res.json({
@@ -40,9 +40,9 @@ let isLoggedIn = (req, res, next) => {
   }
 };
 
-router.post("/", isLoggedIn, async (req, res) => {
+router.post("/", isLoggedIn,async (req, res) => {
   res.cookie('userSession', 'abcd1234'); // Cookie name and value
-  let cok = req.cookies
+  let cok = req.cookies;
   console.log(cok);
   res.status(200).json({
     result: true,
