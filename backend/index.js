@@ -22,6 +22,7 @@ let fs = require('fs');
 const cashRouter = require("./routes/cash")
 const berierRouter = require("./routes/berier")
 const profileSettingRouter = require("./routes/profile")
+const studentRouter = require("./routes/student")
 app.use(cors({
   origin: ['https://billmanagements.vercel.app','http://localhost:3000/verify/sign','http://localhost:3000','http://localhost:5173/'],
   methods: ['GET', 'POST'],
@@ -258,6 +259,7 @@ app.post('/profileuploadupdate', isLoggedInP, multer.single('file'), async (req,
 
 app.use("/cash",cashRouter)
 app.use('/cash',cashRouter);
+app.use('/student',studentRouter);
 app.use('/berier',berierRouter);
 
 
