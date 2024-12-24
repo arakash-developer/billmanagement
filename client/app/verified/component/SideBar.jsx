@@ -5,7 +5,7 @@ import kadir from '@/public/kadir.jpg'
 
 const SideBar = () => {
   return (
-    <aside className="fixed w-64 mt-10 h-full overflow-hidden border-r border-gray-200">
+    <aside className="w-64 mt-10  overflow-hidden border-r border-gray-200">
           <div className='pl-5'>
              <div>
                <div className='w-20 h-20 overflow-hidden rounded-md ml-3'>
