@@ -1,8 +1,11 @@
 import React from 'react'
+import Dashboard from './component/Dashboard'
 
 const page = () => {
   return (
-    <div>Varified Dashboard Page...</div>
+    <div>
+      <Dashboard/>
+    </div>
   )
 }
 
