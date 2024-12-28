@@ -33,19 +33,19 @@ const Navbar = () => {
   let  router = useRouter()
   let {com} = useContext(Contex)
   const navLinks = [
-    { href: '/verified/cash', label: "Cash", icon: <TbHomeFilled /> },
-    { href: '/verified/history', label: 'History', icon: <MdHistoryEdu /> },
-    { href: '/verified/yourstore', label: 'Your Store', icon: <FaStoreAlt /> },
-    { href: '/verified/notification', label: 'Notification', icon: <AiFillNotification /> },
+    // { href: '/verified/cash', label: "Cash", icon: <TbHomeFilled /> },
+    // { href: '/verified/history', label: 'History', icon: <MdHistoryEdu /> },
+    // { href: '/verified/yourstore', label: 'Your Store', icon: <FaStoreAlt /> },
+    { href: '/verified/notification', label: '', icon: <AiFillNotification /> },
   ];
   return (
-    <div className="relative top-0 left-0 w-full py-6 bg-[var(--bg20)] shadow-md z-50">
+    <div className="relative top-0 left-0 w-full py-2 bg-[var(--bg20)] shadow-md z-50">
       <Container className="flex justify-between items-center">
         {/* Profile and Search Section */}
    
            <div className="relative flex items-center space-x-4">
           <Link
-            href="/verified/profile"
+            href="/verified"
             className="w-10 h-10 border-2 border-orange-200 rounded-full overflow-hidden"
           >
             {/* <Image src={data.profileimage} width={200} height={200} alt={kadir} className="w-full h-full object-center" /> */}
@@ -79,7 +79,7 @@ const Navbar = () => {
                     } hover:text-orange-400 transition duration-300 flex items-center md:gap-x-2 text-xl md:text-base
                      px-5 md:px-0 py-2 md:py-0 hover:bg-gray-300 md:hover:bg-transparent`}
                 >
-                  <span>{link.icon} </span>
+                  <span className='text-2xl'>{link.icon} </span>
                   <span className='hidden md:block'>{link.label}</span>
                 </Link>
               </li>

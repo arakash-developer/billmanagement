@@ -57,7 +57,7 @@ const SideBar = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/profile"
                     className="flex items-center p-3 text-gray-700 hover:bg-orange-500 hover:text-white transition duration-300"
                   >
                     Profile
