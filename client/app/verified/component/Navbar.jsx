@@ -12,6 +12,8 @@ import Image from 'next/image';
 import { LuSearch } from "react-icons/lu";
 import { Contex } from '@/app/contexapi/Rights'
 import eStoreLogo from '@/public/e-store.png'
+import { LuMail } from "react-icons/lu";
+import { LuMailOpen } from "react-icons/lu";
 
 const Navbar = () => {
   let [show , setShow] = useState()
@@ -37,6 +39,8 @@ const Navbar = () => {
     // { href: '/verified/history', label: 'History', icon: <MdHistoryEdu /> },
     // { href: '/verified/yourstore', label: 'Your Store', icon: <FaStoreAlt /> },
     { href: '/verified/notification', label: '', icon: <AiFillNotification /> },
+    { href: '/verified/notification', label: '', icon: <LuMail /> },
+    { href: '/verified/notification', label: '', icon: <LuMailOpen /> },
   ];
   return (
     <div className="relative top-0 left-0 w-full py-2 bg-[var(--bg20)] shadow-md z-50">
@@ -64,7 +68,7 @@ const Navbar = () => {
           </div>
         </div>
        
-          <ul
+          {/* <ul
             className="absolute left-1/2 bottom-0 md:bottom-1/2 md:translate-y-1/2 -translate-x-1/2 flex space-x-10 items-center"
             role="navigation"
             aria-label="Main Navigation"
@@ -84,7 +88,11 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
-          </ul>
+          </ul> */}
+          <div>
+              <Link onChange={""} href="#"><LuMailOpen /></Link>
+              <Link href="#"><LuMailOpen /></Link>
+          </div>
           <div className='w-12 md:w-14'>
             <Image src={eStoreLogo} alt='estore' className='w-full h-full object-center' />
           </div>
