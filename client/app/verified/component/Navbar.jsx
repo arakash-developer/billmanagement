@@ -89,13 +89,13 @@ const Navbar = () => {
               </li>
             ))}
           </ul> */}
-          <div>
-              <Link onChange={""} href="#"><LuMailOpen /></Link>
-              <Link href="#"><LuMailOpen /></Link>
+          <div className='flex items-center ml-auto pr-8 text-2xl'>
+              <Link href="#" className='hover:bg-orange-400 transition-all duration-300 p-3 rounded-full'><LuMailOpen /></Link>
+              <Link href="#" className='hover:bg-orange-400 transition-all duration-300 p-3 rounded-full'><AiFillNotification/></Link>
           </div>
           <div className='w-12 md:w-14'>
             <Image src={eStoreLogo} alt='estore' className='w-full h-full object-center' />
-          </div>
+          </div> 
       </Container>
     </div>
   );
