@@ -20,7 +20,6 @@ const Dashboard = () => {
   return (
     <div>
       <Container className="h-screen flex gap-x-40">
-        <SideBar />
         <div className="mt-10 flex w-full justify-between border-b border-gray-800">
           <div>
             <ButtonLink

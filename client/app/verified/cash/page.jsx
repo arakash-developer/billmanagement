@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className='bg-cash bg-no-repeat bg-cover h-screen'>
       <Container className={"flex justify-between"}>
-         <LocalClient/>
+         {/* <LocalClient/> */}
          <CashMemo />
          <YourProducts/>
       </Container>
