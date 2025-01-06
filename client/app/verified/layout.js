@@ -1,4 +1,4 @@
-import Navbar from "@/app/verified/component/Navbar";
+import Navbar from "@/app/dashboard/component/Navbar";
 import localFont from "next/font/local";
 import SideBar from "./component/SideBar";
 
@@ -14,7 +14,7 @@ function RootLayout2({ children }) {
       <body className={`${euclid.className}`}>
         <Navbar />
         <div className="flex ">
-          <SideBar/>
+          <SideBar />
           {children}
         </div>
       </body>

@@ -1,25 +1,25 @@
 "use client";
-import React, { useContext, useState } from 'react';
-import Container from '@/app/component/layers/Container';
-import Link from 'next/link';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { Contex } from '@/app/contexapi/Rights'
-import { useRouter } from 'next/navigation'
+import Container from "@/app/component/layers/Container";
+import { Contex } from "@/app/contexapi/Rights";
+import axios from "axios";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
 import { BarLoader } from "react-spinners";
+import { toast } from "react-toastify";
 
 const page = () => {
-  let [loading, setLoading] = useState(false)
-  const router = useRouter()
-  let { setValidated } = useContext(Contex)
+  let [loading, setLoading] = useState(false);
+  const router = useRouter();
+  let { setValidated } = useContext(Contex);
   const [formData, setFormData] = useState({
-    name: '',
-    companyName: '',
-    address: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
+    name: "",
+    companyName: "",
+    address: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
@@ -30,29 +30,29 @@ const page = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match!');
+      alert("Passwords do not match!");
       return;
     }
     // Further form submission logic
     console.log(formData);
-    savedata()
-    
+    savedata();
   };
-  
+
   let savedata = () => {
-    setLoading(true)
-    axios.post('https://billmanagement-server.vercel.app/create', formData, {
-      withCredentials: true,
-    })
+    setLoading(true);
+    axios
+      .post("https://billmanagement-server.vercel.app/create", formData, {
+        withCredentials: true,
+      })
       .then(function (response) {
-        let token = response.data.token
+        let token = response.data.token;
         console.log(response);
-        
-        localStorage.setItem("token", token)
-        localStorage.setItem("login", 'true')
-        setValidated(true)
-        router.push('/verified')  
-        toast.success('SignUp Success!', {
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("login", "true");
+        setValidated(true);
+        router.push("/dashboard");
+        toast.success("SignUp Success!", {
           position: "bottom-left",
           autoClose: 5000,
           hideProgressBar: false,
@@ -62,22 +62,25 @@ const page = () => {
           progress: undefined,
           theme: "colored",
         });
-        setLoading(false)
+        setLoading(false);
       })
       .catch(function (error) {
         console.log(error);
       });
-  }
+  };
 
   return (
-    <div className='flex justify-center items-center h-full bg-[var(--bg1)]'>
+    <div className="flex justify-center items-center h-full bg-[var(--bg1)]">
       <Container className="w-full md:w-[800px] py-[40px] px-[56px] bg-[var(--bg20)] shadow-lg">
         {/* <h1 className="text-3xl font-bold text-center text-[var(--bg1)] mb-6 capitalize">Estore SignUp</h1> */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex justify-between gap-x-3 items-center">
             {/* Name Field */}
-            <div className='w-1/2'>
-              <label className="block text-lg font-medium text-[var(--bg1)]" htmlFor="name">
+            <div className="w-1/2">
+              <label
+                className="block text-lg font-medium text-[var(--bg1)]"
+                htmlFor="name"
+              >
                 Enter your name:
               </label>
               <input
@@ -92,8 +95,11 @@ const page = () => {
               />
             </div>
             {/* Company Name */}
-            <div className='w-1/2'>
-              <label className="block text-lg font-medium text-[var(--bg1)]" htmlFor="companyName">
+            <div className="w-1/2">
+              <label
+                className="block text-lg font-medium text-[var(--bg1)]"
+                htmlFor="companyName"
+              >
                 Enter your Company/Store name:
               </label>
               <input
@@ -110,8 +116,11 @@ const page = () => {
           </div>
           {/* Address */}
           <div className="flex justify-between items-center gap-x-3">
-            <div className='w-1/2'>
-              <label className="block text-lg font-medium text-[var(--bg1)]" htmlFor="address">
+            <div className="w-1/2">
+              <label
+                className="block text-lg font-medium text-[var(--bg1)]"
+                htmlFor="address"
+              >
                 Enter your company/store address:
               </label>
               <input
@@ -122,12 +131,15 @@ const page = () => {
                 onChange={handleChange}
                 required
                 className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-                placeholder="example address" 
+                placeholder="example address"
               />
             </div>
             {/* Email */}
-            <div className='w-1/2'>
-              <label className="block text-lg font-medium text-gray-700" htmlFor="email">
+            <div className="w-1/2">
+              <label
+                className="block text-lg font-medium text-gray-700"
+                htmlFor="email"
+              >
                 Enter your email:
               </label>
               <input
@@ -144,8 +156,11 @@ const page = () => {
           </div>
           <div className="flex justify-between items-center gap-x-3">
             {/* Phone */}
-            <div className='w-1/2'>
-              <label className="block text-lg font-medium text-gray-700" htmlFor="phone">
+            <div className="w-1/2">
+              <label
+                className="block text-lg font-medium text-gray-700"
+                htmlFor="phone"
+              >
                 Enter your phone number:
               </label>
               <input
@@ -159,8 +174,11 @@ const page = () => {
               />
             </div>
             {/* Fax */}
-            <div className='w-1/2'>
-              <label className="block text-lg font-medium text-gray-700" htmlFor="fax">
+            <div className="w-1/2">
+              <label
+                className="block text-lg font-medium text-gray-700"
+                htmlFor="fax"
+              >
                 Enter your fax number:
               </label>
               <input
@@ -170,43 +188,49 @@ const page = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full mt-1 px-4 py-2 text-[var(--text7)] border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-                placeholder="+1 907 555 1234" 
+                placeholder="+1 907 555 1234"
               />
             </div>
           </div>
           <div className="flex justify-between items-center gap-x-3">
-          {/* Password */}
-          <div className='w-1/2'>
-            <label className="block text-lg font-medium text-gray-700" htmlFor="password">
-              Set your password:
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              className="w-full mt-1 px-4 py-2 text-[var(--text7)] border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-              placeholder="example@123"
-            />
-          </div>
-          {/* Confirm Password */}
-          <div className='w-1/2'>
-            <label className="block text-lg font-medium text-gray-700" htmlFor="confirmPassword">
-              Confirm your password:
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-              className="w-full mt-1 text-[var(--text7)] px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
-              placeholder="example@123"
-            />
-          </div>
+            {/* Password */}
+            <div className="w-1/2">
+              <label
+                className="block text-lg font-medium text-gray-700"
+                htmlFor="password"
+              >
+                Set your password:
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                className="w-full mt-1 px-4 py-2 text-[var(--text7)] border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                placeholder="example@123"
+              />
+            </div>
+            {/* Confirm Password */}
+            <div className="w-1/2">
+              <label
+                className="block text-lg font-medium text-gray-700"
+                htmlFor="confirmPassword"
+              >
+                Confirm your password:
+              </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+                className="w-full mt-1 text-[var(--text7)] px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500"
+                placeholder="example@123"
+              />
+            </div>
           </div>
           {/* Submit Button */}
           <button
@@ -214,7 +238,12 @@ const page = () => {
             className="w-full py-3 px-6 relative text-[var(--text6)] bg-[var(--bg15)] border-[1px] inline-block capitalize  border-[var(--bor1)] overflow-hidden z-10 rounded-md shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2"
           >
             <div className="absolute left-0 top-0 w-full h-full z-[-1]">
-              <BarLoader height={50} width={700} color="#F97316" loading={loading ? true : false} />
+              <BarLoader
+                height={50}
+                width={700}
+                color="#F97316"
+                loading={loading ? true : false}
+              />
             </div>
             Sign Up
           </button>
@@ -222,7 +251,7 @@ const page = () => {
         <div className="text-center mt-4">
           <p className="text-[var(--text7)]">
             Already have an account?{" "}
-            <Link href='/' className="text-[var(--bg1)] hover:underline">
+            <Link href="/" className="text-[var(--bg1)] hover:underline">
               Log in
             </Link>
           </p>

@@ -1,18 +1,17 @@
 "use client";
-import React, { useContext, useState } from "react";
-import Container from "./layers/Container";
-import Link from "next/link";
+import { Contex } from "@/app/contexapi/Rights";
 import axios from "axios";
-import { toast } from 'react-toastify';
-import { useRouter } from 'next/navigation'
-import { Contex } from '@/app/contexapi/Rights'
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
 import { BarLoader } from "react-spinners";
-
+import { toast } from "react-toastify";
+import Container from "./layers/Container";
 
 const Login = () => {
-  let [loading, setLoading] = useState(false)
-  let { validated, setValidated } = useContext(Contex)
-  const router = useRouter()
+  let [loading, setLoading] = useState(false);
+  let { validated, setValidated } = useContext(Contex);
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,18 +24,19 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true)
-    axios.post('https://billmanagement-server.vercel.app/login', formData, {
-      withCredentials: true
-    })
+    setLoading(true);
+    axios
+      .post("https://billmanagement-server.vercel.app/login", formData, {
+        withCredentials: true,
+      })
       .then(function (response) {
         if (response.data.result) {
-          let token = response.data.token
-          localStorage.setItem("token", token)
-          localStorage.setItem("login", 'true')
-          setValidated(true)
-          router.push('/verified')  
-          toast.success('Login Success!', {
+          let token = response.data.token;
+          localStorage.setItem("token", token);
+          localStorage.setItem("login", "true");
+          setValidated(true);
+          router.push("/dashboard");
+          toast.success("Login Success!", {
             position: "bottom-left",
             autoClose: 5000,
             hideProgressBar: false,
@@ -45,12 +45,11 @@ const Login = () => {
             draggable: true,
             progress: undefined,
             theme: "colored",
-          }
-          );
-          setLoading(false)
+          });
+          setLoading(false);
         } else {
           console.log("fail");
-          toast.success('Email Or Password Wrong !!', {
+          toast.success("Email Or Password Wrong !!", {
             position: "bottom-left",
             autoClose: 5000,
             hideProgressBar: false,
@@ -61,18 +60,18 @@ const Login = () => {
             theme: "colored",
           });
         }
-
       })
       .catch(function (error) {
         console.log(error);
       });
-  }
-
+  };
 
   return (
     <div className={`flex justify-center items-center h-screen bg-gray-100`}>
       <Container className="w-full md:w-[700px] px-10 py-12 bg-white shadow-lg rounded-lg">
-        <h1 className="text-3xl font-bold text-center text-[#FFA500] uppercase mb-6">EStore Login</h1>
+        <h1 className="text-3xl font-bold text-center text-[#FFA500] uppercase mb-6">
+          EStore Login
+        </h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email Field */}
           <div>
@@ -119,7 +118,12 @@ const Login = () => {
           >
             Login
             <div className="absolute left-0 top-0 w-full h-full z-[-1]">
-              <BarLoader height={50} width={700} color="#F97316" loading={loading ? true : false} />
+              <BarLoader
+                height={50}
+                width={700}
+                color="#F97316"
+                loading={loading ? true : false}
+              />
             </div>
           </button>
         </form>

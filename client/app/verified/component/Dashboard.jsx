@@ -1,8 +1,6 @@
-import React from 'react';
-import SideBar from './SideBar';
-import Link from 'next/link';
+import Container from "@/app/component/layers/Container";
+import Link from "next/link";
 import { FcMoneyTransfer } from "react-icons/fc";
-import Container from '@/app/component/layers/Container';
 
 // Reusable ButtonLink Component
 const ButtonLink = ({ href, icon, label }) => (
@@ -23,7 +21,7 @@ const Dashboard = () => {
         <div className="mt-10 flex w-full justify-between border-b border-gray-800">
           <div>
             <ButtonLink
-              href="/verified/cash"
+              href="/dashboard/cash"
               icon={<FcMoneyTransfer className="w-20 h-20" />}
               label="Cash-Memo"
             />
