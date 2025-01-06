@@ -35,7 +35,7 @@ const Login = () => {
           localStorage.setItem("token", token)
           localStorage.setItem("login", 'true')
           setValidated(true)
-          router.push('/cash')
+          router.push('/dashboard')
           toast.success('Login Success!', {
             position: "bottom-left",
             autoClose: 5000,
