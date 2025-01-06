@@ -2,7 +2,7 @@
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-export const addUser = async (formData) => {
+export const login = async (formData) => {
   const cookieStore = await cookies();
   let email = formData.get("email");
   let password = formData.get("password");
