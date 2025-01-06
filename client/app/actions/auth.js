@@ -1,32 +1,42 @@
 "use server";
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export const login = async (formData) => {
-  const cookieStore = await cookies();
-  let email = formData.get("email");
-  let password = formData.get("password");
-  let data = { email, password };
-  let url = "https://billmanagement-server.vercel.app/student/";
-  fetch(url, {
-    method: "POST",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => {
+    let email = formData.get("email");
+    let password = formData.get("password");
+    let data = { email, password };
+    console.log(data);
+    
+    let url = "https://billmanagement-server.vercel.app/login";
+  
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        credentials: "include", // To include cookies
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      console.log("Response:", response);
-      return response.json();
-    })
-    .then((data,cookieHandler) => {
-      console.log("Response:", data);
-    })
-    .catch((error) => console.error("Error:", error));
-    revalidatePath("/");
-    cookieStore.set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNjY0BnbWFpbC5jb20iLCJpYXQiOjE3MzQ4NDg1ODF9.Fv5TPIL_eBb8JnjQl1MQy6jWbb80Qimer_EGaNhtKkc');
-};
+  
+      const result = await response.json();
+      console.log("Response:", result);
+      if(result.result){
+        redirect("/dashboard")
+      }else{
+        redirect("/login")
+      }
+  
+      // Optionally, return the result if needed
+      return result;
+    } catch (error) {
+      console.error("Error:", error);
+      throw error; // Re-throwing the error for further handling
+    }
+  };
+  

@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation'
 import { Contex } from '@/app/contexapi/Rights'
 import { BarLoader } from "react-spinners";
+import { login } from "../actions/auth";
 
 
 const Login = () => {
@@ -73,7 +74,7 @@ const Login = () => {
     <div className={`flex justify-center items-center h-screen bg-gray-100`}>
       <Container className="w-full md:w-[700px] px-10 py-12 bg-white shadow-lg rounded-lg">
         <h1 className="text-3xl font-bold text-center text-[#FFA500] uppercase mb-6">EStore Login</h1>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form action={login} className="space-y-6">
           {/* Email Field */}
           <div>
             <label
