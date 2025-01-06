@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${euclid.className}`}>
         <StoreProvider>
+        <Navbar />
         {children}
         </StoreProvider>
       </body>
