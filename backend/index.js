@@ -23,6 +23,7 @@ const cashRouter = require("./routes/cash")
 const berierRouter = require("./routes/berier")
 const profileSettingRouter = require("./routes/profile")
 const studentRouter = require("./routes/student")
+const billsRouter = require("./routes/bills")
 app.use(cors({
   origin: ['https://billmanagements.vercel.app','http://localhost:3000/verify/sign','http://localhost:3000','http://localhost:5173/'],
   methods: ['GET', 'POST'],
@@ -261,6 +262,7 @@ app.use("/cash",cashRouter)
 app.use('/cash',cashRouter);
 app.use('/student',studentRouter);
 app.use('/berier',berierRouter);
+app.use('/bills',billsRouter);
 
 
 
