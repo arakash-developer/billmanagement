@@ -8,6 +8,9 @@ const CashModel = require("../models/cash");
 let isLoggedIn = (req, res, next) => {
   try {
     let token = req.cookies.token;
+    console.log(`token: ${token}`);
+    console.log("Okk");
+    
     if (token) {
       if (token === "") {
         res.json({
